@@ -10,9 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_05_145615) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_05_164216) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "day_plans", force: :cascade do |t|
+    t.integer "day_number"
+    t.bigint "weekly_plan_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["weekly_plan_id"], name: "index_day_plans_on_weekly_plan_id"
+  end
+
+  create_table "diet_plans", force: :cascade do |t|
+    t.string "day_plan_content"
+    t.bigint "day_plan_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["day_plan_id"], name: "index_diet_plans_on_day_plan_id"
+  end
+
+  create_table "exercise_plans", force: :cascade do |t|
+    t.string "day_plan_content"
+    t.bigint "day_plan_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["day_plan_id"], name: "index_exercise_plans_on_day_plan_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -20,10 +44,27 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_145615) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "name"
+    t.integer "age"
+    t.integer "height"
+    t.string "dietary_requirements", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "weekly_plans", force: :cascade do |t|
+    t.string "fitness_goal"
+    t.integer "weight"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_weekly_plans_on_user_id"
+  end
+
+  add_foreign_key "day_plans", "weekly_plans"
+  add_foreign_key "diet_plans", "day_plans"
+  add_foreign_key "exercise_plans", "day_plans"
+  add_foreign_key "weekly_plans", "users"
 end
