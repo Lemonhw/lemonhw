@@ -1,19 +1,19 @@
 <!-- show.html.erb -->
 <h1>Welcome, <%= @user.email %></h1>
 
-<% if @user.details_completed? %>
+<%# <% if @user.details_completed? %> %>
   <!-- Display user's plans and other content -->
   <h2>Your Weekly Plans</h2>
   <% @plans.each do |plan| %>
     <p><%= plan.name %></p>
     <!-- Display any other relevant plan information -->
   <% end %>
-  <h2>Day Plans</h2>
-  <% @days.each do |day| %>
-    <h3><%= link_to day.day.strftime("%A, %B %d, %Y"), weekly_plan_day_plan_path(day.weekly_plan, day) %></h3>
+  <%# <h2>Day Plans</h2> %>
+  <%# <% @days.each do |day| %> %>
+    <%# <h3><%= link_to day.day.strftime("%A, %B %d, %Y"), weekly_plan_day_plan_path(day.weekly_plan, day) %></h3> %>
     <!-- Display any other relevant day information -->
-  <% end %>
-<% else %>
+  <%# <% end %> %>
+<%# <% else %> %>
   <!-- Display a button to generate first plans -->
-  <%= link_to 'Generate First Plans', edit_user_path(@user), class: 'btn btn-primary' %>
-<% end %>
+  <%= link_to 'Generate First Plans', new_weekly_plan_path(@user), class: 'btn btn-primary' %>
+<%# <% end %> %>
