@@ -1,0 +1,13 @@
+<h1>Weekly Plan<%= @week.name %></h1>
+
+<h2>Diet Plans</h2>
+<% @diet_plans.each do |diet_plan| %>
+  <!-- Display diet plan details -->
+  <p><%= diet_plan.name %></p>
+<% end %>
+
+<h2>Exercise Plans</h2>
+<% @exercise_plans.each do |exercise_plan| %>
+  <!-- Display exercise plan details -->
+  <p><%= exercise_plan.name %></p>
+<% end %>
