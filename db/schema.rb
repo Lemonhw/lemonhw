@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_06_06_121536) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -58,10 +59,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_121536) do
 
   create_table "weekly_plans", force: :cascade do |t|
     t.string "fitness_goal"
-    t.integer "weight"
+    t.integer "current_weight"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "weight_goal"
+    t.text "weekly_diet_plan"
+    t.text "weekly_exercise_plan"
     t.index ["user_id"], name: "index_weekly_plans_on_user_id"
   end
 
