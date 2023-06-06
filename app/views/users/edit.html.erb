@@ -1,6 +1,6 @@
 <p><strong>Full Registration</strong></p>
 
-<%= form_for @user, url: complete_signup_path(@user) do |f| %>
+<%= form_for @user do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
 
