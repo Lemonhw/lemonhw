@@ -37,8 +37,8 @@ class WeeklyPlansController < ApplicationController
       )
     end
     puts "Execution time: #{time.real} seconds"
+    redirect_to weekly_plan_path(@weekly_plan) if @weekly_plan.save
 
-    # redirect_to weekly_plan_path(@weekly_plan) if @weekly_plan.save
   end
 
   private
