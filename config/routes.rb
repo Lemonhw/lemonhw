@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
-  get 'users/:id/complete_signup', to: 'users#complete_signup', as: :complete_signup
+  resources :users, only: [:edit, :update]
 
 
   get 'dashboard', to: 'dashboards#show', as: :dashboard
