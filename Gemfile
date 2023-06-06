@@ -51,6 +51,8 @@ gem "sassc-rails"
 # Use OpenAI API
 gem "ruby-openai"
 
+gem "faraday"
+
 gem "bootstrap", "~> 5.2"
 gem "devise"
 gem "autoprefixer-rails"
