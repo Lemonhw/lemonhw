@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root to: "pages#home"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root to: 'pages#home'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  devise_for :users, controllers: {
+    registrations: 'devise/sessions'
+  }
+
+  get 'dashboard', to: 'dashboards#show', as: :dashboard
+
+  resources :weekly_plans, only: [:new, :create, :show, :index] do
+    resources :day_plans, only: [:show]
+  end
 end
