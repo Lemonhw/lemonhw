@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_07_101939) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_07_131108) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,7 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_07_101939) do
   end
 
   create_table "diet_plans", force: :cascade do |t|
-    t.string "day_plan_content"
+    t.jsonb "day_plan_content"
     t.bigint "day_plan_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -31,7 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_07_101939) do
   end
 
   create_table "exercise_plans", force: :cascade do |t|
-    t.string "day_plan_content"
+    t.jsonb "day_plan_content"
     t.bigint "day_plan_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
