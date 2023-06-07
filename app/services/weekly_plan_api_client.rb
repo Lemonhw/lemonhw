@@ -1,4 +1,4 @@
-class WeeklyPlanAPIClient
+class WeeklyPlanApiClient
 
   def fetch_plans(user_info, criteria)
     # Access the API key based on the current environment
@@ -6,6 +6,11 @@ class WeeklyPlanAPIClient
     config_file = File.join(File.dirname(__FILE__), '..', '..', 'config', 'api_keys.yml')
     config = YAML.load_file(config_file)
     api_key = config['development']['api_key']
+    puts
+    puts
+    puts api_key
+    puts
+    puts
     # production
     # config_file = Rails.root.join('config', 'api_keys.yml')
     # api_key = config[Rails.env]['api_key']
@@ -81,6 +86,7 @@ class WeeklyPlanAPIClient
           messages: [{ role: "user", content: prompt_type}], # Required.
           temperature: 0.7,
       })
+    puts response
     response["choices"][0]["message"]["content"]
   end
 end

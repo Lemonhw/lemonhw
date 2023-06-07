@@ -1,5 +1,3 @@
-require_relative "../services/weekly_plan_api_client"
-
 class WeeklyPlansController < ApplicationController
   before_action :take_params, only: [:create]
 
@@ -16,15 +14,15 @@ class WeeklyPlansController < ApplicationController
 
   def create
     time = Benchmark.measure do
-      api_client = WeeklyPlanAPIClient.new
+      api_client = WeeklyPlanApiClient.new
       birth_date = current_user.date_of_birth
       current_date = Date.today
       user_age = current_date.year - birth_date.year
       user_age -= 1 if current_date.month < birth_date.month || (current_date.month == birth_date.month && current_date.day < birth_date.day)
       user_info = {
-        age: user_age, # change this to curernt_user.age
-        gender: current_user.gender, # chane this to current_user.gender
-        height: current_user.height # change this to current_user.height
+        age: user_age,
+        gender: current_user.gender,
+        height: current_user.height
       }
 
       @weekly_plan = WeeklyPlan.create!(take_params.merge(user: current_user))
@@ -51,6 +49,7 @@ class WeeklyPlansController < ApplicationController
       end
     end
     puts "Execution time: #{time.real} seconds"
+    redirect_to dashboard_path
   end
 
   private

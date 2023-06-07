@@ -1,12 +1,10 @@
-require "openai"
-require "faraday"
-require "json"
-
-class WeeklyPlanAPIClient
+class testAPIClient
 
   def fetch_plans(user_info, criteria)
 
-    api_key = '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'
+    config_file = File.join(File.dirname(__FILE__), '..', '..', 'config', 'api_keys.yml')
+    config = YAML.load_file(config_file)
+    api_key = config['development']['api_key']
     # production:
     # config_file = Rails.root.join('config', 'api_keys.yml')
     # api_key = config[Rails.env]['api_key']
