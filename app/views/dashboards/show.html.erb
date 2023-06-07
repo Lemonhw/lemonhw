@@ -5,12 +5,12 @@
 <h2>Your Weekly Plans</h2>
 <% @weekly_plans.each do |plan| %>
   <p><%= plan.name %></p>
-  <p><%= link_to weekly_plan.name, weekly_plan_path(weekly_plan) %></p>
+  <p><%= link_to plan.name, weekly_plan_path(plan) %></p>
   <!-- Display any other relevant plan information -->
 <h2>Day Plans for <%= plan.name %></h2>
 <% plan.day_plans do |day_plan| %>
-  <h3><%= link_to day_plan.day.day_number, weekly_plan_day_plan_path(day_plan.weekly_plan, day_plan) %></h3>
-  <!-- Display any other relevant day information -->
+  <h3><%= link_to day_plan.day.day_number, day_plan_path(day_plan) %></h3>
+    <!-- Display any other relevant day information -->
 <% end %>
 <% end %>
 
