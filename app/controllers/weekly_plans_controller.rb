@@ -6,7 +6,7 @@ class WeeklyPlansController < ApplicationController
   before_action :take_params, only: [:create]
 
   def index
-    @plans = @user.weekly_plans.order(created_at: :desc)
+    @weekly_plans = current_user.weekly_plans.order(created_at: :desc)
   end
 
   def show
@@ -24,7 +24,6 @@ class WeeklyPlansController < ApplicationController
     time = Benchmark.measure do
       api_client = WeeklyPlanAPIClient.new
       user_info = {
-        age: current_user.age,
         gender: current_user.gender,
         height: current_user.height
       }

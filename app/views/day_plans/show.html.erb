@@ -2,15 +2,11 @@
 <h1>Day Plan for <%= @day_plan.day_number %></h1>
 
 <h2>Diet Plan</h2>
-<% @day_plan.diet.each do |diet| %>
-  <p><%= diet_plan.name %></p>
+<p><%= @diet_plan.day_plan_content%></p>
   <!-- Display any other relevant meal information -->
-<% end %>
 
 <h2>Exercise Plan</h2>
-<% @day_plan.exercises.each do |exercise| %>
-  <p><%= exercise_plan.name %></p>
+<p><%= @exercise_plan.day_plan_content %></p>
   <!-- Display any other relevant exercise information -->
-<% end %>
 
 <!-- Add any other relevant information or UI elements as needed -->

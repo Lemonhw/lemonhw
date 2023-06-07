@@ -1,6 +1,6 @@
 <h1>Your Plan History</h1>
 
-<% @plans.each do |plan| %>
+<% @weekly_plans.each do |plan| %>
   <h2>Week of <%= plan.start_date.strftime("%A, %B #{plan.start_date.day_number.ordinalize}, %Y") %></h2>
   <p>Current Weight: <%= plan.current_weight %></p>
   <p>Weight Goal: <%= plan.weight_goal %></p>
