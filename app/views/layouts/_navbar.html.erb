@@ -1,0 +1,26 @@
+<nav class="navbar">
+  <div class="container">
+    <%= link_to image_tag("logo-main.png", alt: "Company Logo" , class: "logo-img"), root_path, class: "navbar-brand" %>
+    <div class="navbar-links">
+      <% if user_signed_in? %>
+        <div class="dropdown">
+          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <% if current_user.avatar.attached? %>
+              <%= image_tag current_user.avatar.variant(resize: "100x100") %>
+            <% else %>
+              <%= image_tag(gravatar_url(current_user.email, 30), alt: current_user.email) %>
+            <% end %>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <li><%= link_to "Profile", dashboard_path, class: "dropdown-item" %></li>
+            <li><%= form_with url: destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
+                  <%= submit_tag 'Sign Out' %>
+                <% end %></li>
+          </ul>
+        </div>
+      <% else %>
+        <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
+      <% end %>
+    </div>
+  </div>
+</nav>
