@@ -1,2 +1,20 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <div class="hcontainer">
+    <h1 class="primary-font">LEMON HEALTH SOLUTIONS</h1>
+    <h6 class="secondary-font">Through the magic of artificial intelligence we generate health and fitness solutions for different goals.</h6>
+  </div>
+
+  <%= form_with url: new_user_registration_path, method: :get, class: 'signup-bar' do |form| %>
+    <%= form.text_field :email, placeholder: 'Enter your email...', class: 'signup-bar__email' %>
+    <%= form.submit 'START YOUR JOURNEY', class: 'signup-bar__submit', class: 'secondary-button' %>
+  <% end %>
+
+  <div class="button-container">
+    <button class="primary-button">WEIGHT LOSS</button>
+    <button class="primary-button">MUSCLE GAIN</button>
+  </div>
+  <div class="button-container">
+    <button class="primary-button">HEALTHY ROUTINE</button>
+    <button class="primary-button">OLYMPICS READY</button>
+  </div>
+</div>
