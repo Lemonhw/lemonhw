@@ -1,9 +1,7 @@
 class DashboardsController < ApplicationController
-  def show
-    # Fetch user-specific data or perform any necessary logic here
-    @user = current_user
-    @plans = @user.weekly_plans
+  # before_action :authenticate_user!
 
-    # Render the dashboard view
+  def show
+    @weekly_plans = current_user.weekly_plans.order(created_at: :desc)
   end
 end

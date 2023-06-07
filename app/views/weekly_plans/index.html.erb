@@ -1,0 +1,14 @@
+<h1>Your Plan History</h1>
+
+<% @weekly_plans.each do |plan| %>
+  <h2>Week of <%= plan.start_date.strftime("%A, %B #{plan.start_date.day_number.ordinalize}, %Y") %></h2>
+  <p>Current Weight: <%= plan.current_weight %></p>
+  <p>Weight Goal: <%= plan.weight_goal %></p>
+  <p>Fitness Goal: <%= plan.fitness_goal %></p>
+  <!-- Display any other relevant plan information -->
+
+  <!-- Link to view the full week's meal and exercise plans -->
+  <%= link_to "View Full Week", weekly_plan_path(plan) %>
+
+  <hr>
+<% end %>

@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def edit
     @user = User.find(params[:id])
   end
@@ -7,6 +6,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
+      @weekly_plans = @user.weekly_plans.order(created_at: :desc)
       redirect_to dashboard_path
     else
       render :edit

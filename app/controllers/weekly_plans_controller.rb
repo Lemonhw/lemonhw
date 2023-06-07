@@ -6,10 +6,14 @@ class WeeklyPlansController < ApplicationController
   before_action :take_params, only: [:create]
 
   def index
+    @weekly_plans = current_user.weekly_plans.order(created_at: :desc)
   end
 
   def show
     @weekly_plan = WeeklyPlan.find(params[:id])
+    # Retrieve diet and exercise plans for the week
+    @diet_plans = @weekly_plan.diet_plans
+    @exercise_plans = @weekly_plan.exercise_plans
   end
 
   def new
@@ -20,9 +24,8 @@ class WeeklyPlansController < ApplicationController
     time = Benchmark.measure do
       api_client = WeeklyPlanAPIClient.new
       user_info = {
-        age: 65, # change this to curernt_user.age
-        gender: "male", # chane this to current_user.gender
-        height: 150 # change this to current_user.height
+        gender: current_user.gender,
+        height: current_user.height
       }
 
       plans = api_client.fetch_plans(user_info, take_params)
