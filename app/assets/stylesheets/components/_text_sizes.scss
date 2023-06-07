@@ -1,0 +1,25 @@
+@import 'fonts';
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffff13;
+  @extend .primary-font;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 18px;
+  font-weight: normal;
+  color: #000000;
+  @extend .secondary-font;
+  margin-bottom: 10px;
+}
+
+.main-text {
+  font-size: 16px;
+  font-weight: normal;
+  color: #666666;
+  @extend .secondary-font;
+  line-height: 1.5;
+}
