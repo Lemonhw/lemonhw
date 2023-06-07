@@ -2,6 +2,5 @@
   <%= f.input :current_weight, label: "Current Weight", input_html: { type: "number", required: true } %>
   <%= f.input :weight_goal, label: "Weight Goal", input_html: { type: "number", required: true } %>
   <%= f.input :fitness_goal, label: "Fitness Goal", collection: ["Weight Loss", "Muscle Gain"], prompt: "Select a fitness goal", required: true %>
-
   <%= f.button :submit %>
 <% end %>

@@ -1,4 +1,5 @@
 class DayPlan < ApplicationRecord
   belongs_to :weekly_plan
-  has_many :diet_plans, :exercise_plans
+  has_one :diet_plan
+  has_one :exercise_plan
 end
