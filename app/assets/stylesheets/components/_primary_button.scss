@@ -1,0 +1,22 @@
+
+.primary-button {
+  background-color: #ffff13;
+  border-radius: 8px;
+  color: #000;
+  cursor: pointer;
+  font-weight: medium;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  transition: 200ms;
+  width: 100%;
+  box-sizing: border-box;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+}
+
+// .begin-button {
+//   @extend .primary-button;
+//   background-color: blue;
+// }

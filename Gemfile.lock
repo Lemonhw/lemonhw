@@ -125,6 +125,7 @@ GEM
       sassc (~> 2.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    gravatar_image_tag (1.2.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.1.6)
@@ -279,6 +280,7 @@ DEPENDENCIES
   dotenv-rails
   faraday
   font-awesome-sass (~> 6.1)
+  gravatar_image_tag
   importmap-rails
   jbuilder
   pg (~> 1.1)

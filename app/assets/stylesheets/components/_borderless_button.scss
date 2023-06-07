@@ -1,0 +1,16 @@
+.borderless-button {
+  background-color: #dedede;
+  border-radius: 8px;
+  color: #000;
+  cursor: pointer;
+  font-weight: lighter;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  transition: 200ms;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  font-size: 16px;
+  user-select: none;
+}

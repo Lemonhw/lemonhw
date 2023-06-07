@@ -2,10 +2,14 @@ class WeeklyPlansController < ApplicationController
   before_action :take_params, only: [:create]
 
   def index
+    @weekly_plans = current_user.weekly_plans.order(created_at: :desc)
   end
 
   def show
     @weekly_plan = WeeklyPlan.find(params[:id])
+    # Retrieve diet and exercise plans for the week
+    @diet_plans = @weekly_plan.diet_plans
+    @exercise_plans = @weekly_plan.exercise_plans
   end
 
   def new
