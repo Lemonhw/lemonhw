@@ -51,7 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_07_141531) do
   end
 
   create_table "diet_plans", force: :cascade do |t|
-    t.string "day_plan_content"
+    t.jsonb "day_plan_content"
     t.bigint "day_plan_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -59,7 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_07_141531) do
   end
 
   create_table "exercise_plans", force: :cascade do |t|
-    t.string "day_plan_content"
+    t.jsonb "day_plan_content"
     t.bigint "day_plan_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -91,8 +91,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_07_141531) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "weight_goal"
-    t.text "weekly_diet_plan"
-    t.text "weekly_exercise_plan"
     t.index ["user_id"], name: "index_weekly_plans_on_user_id"
   end
 

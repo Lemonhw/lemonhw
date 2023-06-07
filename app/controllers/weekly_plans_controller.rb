@@ -1,8 +1,4 @@
-require_relative "../services/weekly_plan_api_client"
-require 'benchmark'
-
 class WeeklyPlansController < ApplicationController
-  # skip_before_action :authenticate_user!, only: [:new]
   before_action :take_params, only: [:create]
 
   def index
@@ -22,26 +18,42 @@ class WeeklyPlansController < ApplicationController
 
   def create
     time = Benchmark.measure do
-      api_client = WeeklyPlanAPIClient.new
+      api_client = WeeklyPlanApiClient.new
+      birth_date = current_user.date_of_birth
+      current_date = Date.today
+      user_age = current_date.year - birth_date.year
+      user_age -= 1 if current_date.month < birth_date.month || (current_date.month == birth_date.month && current_date.day < birth_date.day)
       user_info = {
+        age: user_age,
         gender: current_user.gender,
         height: current_user.height
       }
 
-      plans = api_client.fetch_plans(user_info, take_params)
+      @weekly_plan = WeeklyPlan.create!(take_params.merge(user: current_user))
 
-      @weekly_plan = WeeklyPlan.new(
-        current_weight: take_params[:current_weight],
-        weight_goal: take_params[:weight_goal],
-        fitness_goal: take_params[:fitness_goal],
-        weekly_diet_plan: plans[:diet_plan],
-        weekly_exercise_plan: plans[:exercise_plan],
-        user_id: current_user.id
-      )
+      plans_json = api_client.fetch_plans(user_info, take_params)
+      week_diet_plan = JSON.parse(plans_json[:diet_plan])
+      week_exercise_plan = JSON.parse(plans_json[:exercise_plan])
+      diet_plans = week_diet_plan.values
+      exercise_plans = week_exercise_plan.values
+
+      (0...6).to_a.each do |index|
+        @day_plan = DayPlan.create!(
+          day_number: index + 1,
+          weekly_plan: @weekly_plan
+        )
+        DietPlan.create!(
+          day_plan_content: diet_plans[index],
+          day_plan: @day_plan
+        )
+        ExercisePlan.create!(
+          day_plan_content: exercise_plans[index],
+          day_plan: @day_plan
+        )
+      end
     end
     puts "Execution time: #{time.real} seconds"
-    redirect_to weekly_plan_path(@weekly_plan) if @weekly_plan.save
-
+    redirect_to dashboard_path
   end
 
   private
