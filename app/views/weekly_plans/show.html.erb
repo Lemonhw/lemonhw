@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h1>Weekly Plan<%= @week.name %></h1>
 
 <h2>Diet Plans</h2>
@@ -11,3 +12,9 @@
   <!-- Display exercise plan details -->
   <p><%= exercise_plan.name %></p>
 <% end %>
+=======
+<h2>Diet plan</h2>
+<%= simple_format(@weekly_plan.weekly_diet_plan) %>
+<h2>Exercise plan</h2>
+<%= simple_format(@weekly_plan.weekly_exercise_plan) %>
+>>>>>>> 38a3e96b121b24b2ffe6f214fa3e8ff140a547d2
