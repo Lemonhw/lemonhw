@@ -1,1 +1,57 @@
-// Specific CSS for your home-page
+body {
+  background-image: image-url('background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1 {
+  text-align: center;
+  color: #FFFF13;
+}
+
+h6 {
+  color: white;
+}
+
+.hcontainer {
+  display: flex;
+  flex-direction: column;
+  grid-column: auto;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  margin-top: 10px
+
+}
+
+
+.signup-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 70px;
+}
+
+.signup-bar__email {
+  flex-grow: 1;
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: white
+}
+
+.signup-bar__submit {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: transparent;
+}
