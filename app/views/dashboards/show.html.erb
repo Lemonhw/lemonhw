@@ -14,6 +14,15 @@
     <p>No exercise plan available for the first day.</p>
   <% end %>
 
+<% if @first_day_diet_plan %>
+  <h3>Diet Plan for the First Day:</h3>
+  <% @first_day_diet_plan.day_plan_content.each do |meal, food_items| %>
+    <p><strong><%= meal %>:</strong> <%= food_items %></p>
+  <% end %>
+<% else %>
+  <p>No diet plan available for the first day.</p>
+<% end %>
+
 
     <!-- Add your existing dashboard content here -->
   </div>
