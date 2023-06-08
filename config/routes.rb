@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
 
+  require "sidekiq/web"
+  mount Sidekiq::Web => '/sidekiq'
+
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
   resources :users, only: [:edit, :update]
-
 
   get 'dashboard', to: 'dashboards#show', as: :dashboard
 
