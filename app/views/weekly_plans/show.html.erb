@@ -1,5 +1,9 @@
-<h1>Day plans</h1>
+<h1>Day Plans</h1>
 
 <% @day_plans.each do |plan| %>
   <%= link_to "Day #{plan.day_number}", weekly_plan_day_plan_path(@weekly_plan, plan), class: "card" %>
+<% end %>
+
+ <% if @next_plan %>
+  <%= link_to "Next Plan", weekly_plan_path(@next_plan) %>
 <% end %>
