@@ -12,6 +12,7 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "pages/dashboard";
 
 @import "components/navbar";
 @import "components/primary_button";
@@ -22,6 +23,7 @@
 @import "components/email_address_bar";
 @import "components/fonts";
 @import "components/text_sizes";
+@import "components/sidebar";
 
 body {
   padding-top: 60px; /* Match this to your navbar's height */
