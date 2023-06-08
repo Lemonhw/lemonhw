@@ -1,14 +1,17 @@
-<h1>Your Plan History</h1>
+<h1>Weekly Plans</h1>
+
+<% @weekly_plans.each_with_index do |plan, index| %>
+  <a href="/weekly_plans/<%= plan.id %>" class="card">
+    <h2>Week <%= index + 1 %></h2>
+    <p>Starting weight: <%= plan.current_weight %></p>
+    <p>Weight Goal: <%= plan.weight_goal %></p>
+    <p>Fitness goal: <%= plan.fitness_goal %></p>
+  </a>
+<% end %>
+<%= button_to "Generate Next Plan", new_weekly_plan_path, class: "btn btn-primary" %>
+
+<%#
+<h1>Weekly Plans</h1>
 
 <% @weekly_plans.each do |plan| %>
-  <h2>Week of <%= plan.start_date.strftime("%A, %B #{plan.start_date.day_number.ordinalize}, %Y") %></h2>
-  <p>Current Weight: <%= plan.current_weight %></p>
-  <p>Weight Goal: <%= plan.weight_goal %></p>
-  <p>Fitness Goal: <%= plan.fitness_goal %></p>
-  <!-- Display any other relevant plan information -->
-
-  <!-- Link to view the full week's meal and exercise plans -->
-  <%= link_to "View Full Week", weekly_plan_path(plan) %>
-
-  <hr>
-<% end %>
+  <%# <%= link_to @weekly_plan_path(@weekly_plan), "Week #{@weekly_plan.id}" %>
