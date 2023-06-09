@@ -3,7 +3,7 @@ require 'yaml'
 require 'faraday'
 require 'openai'
 
-class TestAPIClient
+class TestApiClient
 
   def fetch_plans
     time = Benchmark.measure do
