@@ -1,20 +1,71 @@
-<div class="container">
-  <div class="hcontainer">
-    <h1 class="primary-font">LEMON HEALTH SOLUTIONS</h1>
-    <h6 class="secondary-font">Through the magic of artificial intelligence we generate health and fitness solutions for different goals.</h6>
-  </div>
+ <div class="top-section">
+    <div class="hcontainer">
+      <h1 class="primary-font">LEMON HEALTH SOLUTIONS</h1>
+      <h6 class="secondary-font">Through the magic of artificial intelligence we generate health and fitness solutions for different goals.</h6>
+    </div>
 
-  <%= form_with url: new_user_registration_path, method: :get, class: 'signup-bar' do |form| %>
-    <%= form.text_field :email, placeholder: 'Enter your email...', class: 'signup-bar__email' %>
-    <%= form.submit 'START YOUR JOURNEY', class: 'signup-bar__submit', class: 'secondary-button' %>
-  <% end %>
+    <%= form_with url: new_user_registration_path, method: :get, class: 'signup-bar' do |form| %>
+      <%= form.text_field :email, placeholder: 'Enter your email...', class: 'signup-bar__email' %>
+      <%= form.submit 'START YOUR JOURNEY', class: 'signup-bar__submit', class: 'secondary-button' %>
+    <% end %>
+    <div class="econtainer">
+      <h6 class="secondary-font">Choose one of the options below to find out what we can do for you...</h6>
+    </div>
+    <div class="button-container">
+      <a href="#weight-loss-card"><button class="primary-button">WEIGHT LOSS</button></a>
+      <a href="#muscle-gain-card"><button class="primary-button">MUSCLE GAIN</button></a>
+    </div>
+    <div class="button-container">
+      <a href="#healthy-routine-card"><button class="primary-button">HEALTHY ROUTINE</button></a>
+      <a href="#olympics-ready-card"><button class="primary-button">OLYMPICS READY</button></a>
+    </div>
+</div>
 
-  <div class="button-container">
-    <button class="primary-button">WEIGHT LOSS</button>
-    <button class="primary-button">MUSCLE GAIN</button>
-  </div>
-  <div class="button-container">
-    <button class="primary-button">HEALTHY ROUTINE</button>
-    <button class="primary-button">OLYMPICS READY</button>
+<div class="bottom-section">
+  <button data-controller="scroll-to-top" data-action="click->scroll-to-top#scrollToTop" data-scroll-to-top-target="scrollButton" id="myBtn" title="Go to top">Top</button>
+  <div class="my-container">
+    <div id="weight-loss-card" class="acard">
+      <div class="card-image">
+        <%= image_tag("weight-loss.png", alt: "Weight Loss") %>
+      </div>
+      <div class="card-content">
+        <h2 class="primary-font">WEIGHT LOSS</h2>
+        <hr>
+        <p class="secondary-font">Modern approaches to weight loss have evolved significantly, with a holistic focus on combining balanced diet, regular physical activity, and mental health. Instead of adhering strictly to restrictive diets or intensive workout regimes, the emphasis is on sustainable lifestyle changes. This includes personalized meal plans that are rich in whole foods and low in processed ones, along with a diverse exercise regimen that incorporates both cardio and strength training. Moreover, the importance of mental health is recognized, with practices like mindfulness and stress management being integral to weight loss strategies. Digital technology also plays a crucial role, with fitness apps, virtual coaching, and wearable devices providing real-time tracking, personalized guidance, and motivational support.</p>
+      </div>
+    </div>
+
+    <div id="muscle-gain-card" class="bcard">
+      <div class="card-image">
+        <%= image_tag("muscle-gain.png", alt: "muscle gain") %>
+      </div>
+      <div class="card-content">
+        <h2 class="primary-font">MUSCLE GAIN</h2>
+        <hr>
+        <p class="secondary-font">The modern approach to muscle gain goes beyond simply lifting weights and consuming a protein-rich diet. It incorporates a comprehensive understanding of one's unique body composition, metabolism, and nutritional needs to curate personalized workout and diet plans. While strength training remains a core component, there's an increased emphasis on exercise diversity, rest, and recovery to prevent injuries and promote muscle growth. Nutrition-wise, the focus is not just on protein, but also on a balanced intake of carbohydrates, healthy fats, and micronutrients to support overall health and performance. Additionally, the use of technology, such as fitness apps and wearable devices, enables precise tracking of workouts, nutritional intake, and progress. Mental health, too, is considered vital.</p>
+      </div>
+    </div>
+
+    <div id="healthy-routine-card" class="acard">
+      <div class="card-image">
+        <%= image_tag("lifestyle.png", alt: "healthy lifestyle") %>
+      </div>
+      <div class="card-content">
+        <h2 class="primary-font">HEALTHY ROUTINE</h2>
+        <hr>
+        <p class="secondary-font">The modern concept of a healthy lifestyle embraces a multifaceted approach that balances physical, emotional, and mental wellbeing. Rather than just focusing on diet and exercise, it considers the totality of a person's lifestyle choices. A diverse and balanced diet, regular physical activity, sufficient rest, and good sleep hygiene form the foundation of this approach. But equally important is the emphasis on mental health, with practices like mindfulness, meditation, and stress management becoming mainstream. Furthermore, the role of social connections and maintaining a healthy work-life balance are also highlighted. The digital era has brought about innovative tools like fitness apps, wearable devices, and telehealth services, enabling individuals to monitor and manage their health more effectively.</p>
+      </div>
+    </div>
+
+    <div id="olympics-ready-card" class="bcard">
+      <div class="card-image">
+        <%= image_tag("olympics.png", alt: "olympics ready") %>
+      </div>
+      <div class="card-content">
+        <h2 class="primary-font">OLYMPICS READY</h2>
+        <hr>
+        <p class="secondary-font">In the modern age, preparing for the Olympics involves a blend of cutting-edge technology, rigorous training routines, and specialized nutrition plans, all underpinned by an in-depth understanding of sports science. Athletes leverage wearables and AI-driven analytics to track their progress and fine-tune performance, from optimizing sleep patterns to refining biomechanics. Training regimes are personalized and periodized, leveraging insights from data and biomechanical analysis to maximize efficiency and reduce injury risks. Nutritionists devise diet plans based on the athlete's physiology and training demands, using food as fuel to optimize performance and aid recovery. Mental conditioning is also prioritized, with psychologists providing tools and strategies to handle the extreme pressures of the Olympics.</p>
+      </div>
+    </div>
   </div>
 </div>

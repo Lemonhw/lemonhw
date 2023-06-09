@@ -6,15 +6,10 @@ class WeeklyPlanApiClient
     config_file = File.join(File.dirname(__FILE__), '..', '..', 'config', 'api_keys.yml')
     config = YAML.load_file(config_file)
     api_key = config['development']['api_key']
-    puts
-    puts
-    puts api_key
-    puts
-    puts
     # production
     # config_file = Rails.root.join('config', 'api_keys.yml')
     # api_key = config[Rails.env]['api_key']
-    client = OpenAI::Client.new(access_token: api_key) do |config|
+    client = OpenAI::Client.new(access_token: api_key, request_timeout: 240) do |config|
       config.http_client = Faraday.new do |faraday|
         faraday.options.timeout = 180 # Set the response timeout to 180 seconds
         faraday.options.open_timeout = 180 # Set the connection timeout to 180 seconds
@@ -32,19 +27,19 @@ class WeeklyPlanApiClient
 
     diet_prompt = <<~PROMPT
       You are a personal trainer.
+      You are addressing your client.
       Your client is a #{age} year old #{gender} who weighs #{current_weight}kg.
       #{prompt_for_fitness_goal}
       Suggest a 7 day diet plan for them. Do not include any introductory text.
       Start your response with Day 1.
       After you have finished day 7 give a bief explanation of the diet plan, explaining why this diet plan suits your client.
-      Give the explanation as though you are addressing your client.
+      The final explanation should be a key with the value being the explanation.
       Give the entire response in JSON format. The response should be enclosed in curly braces and each key should be enclosed in double quotes.
       With each day as a key and the value as each meal (breakfast, lunch, dinner and snack) separated into separate keys.
       The value of each meal key should be a list of the different foods each meal contains and a total_calories key of which the value is total amount of calories in the meal.
       Those foods should be keys themselves with the value being the calories that each food contains.
-      The final explanation should be a key with the value being the explanation.
       Every key should be lowercase and separated by underscores.
-      Do not include line breaks. The response must be under 4000 tokens.
+      Do not include line breaks. The response must be no greater than 1500 tokens.
     PROMPT
 
     exercise_prompt = <<~PROMPT
@@ -55,13 +50,12 @@ class WeeklyPlanApiClient
       Start your response with Day 1.
       For each day, list 5 distinct exercises that the client can do.
       After you have finished day 7 give a bief explanation of the exercise plan, explaining why this exercise plan suits your client.
-      Give the explanation as though you are addressing your client.
+      The final explanation should be a key with the value being the explanation.
       Give the entire response in JSON format. The response should be enclosed in curly braces and each key should be enclosed in double quotes.
       With each day as a key and the value as each exercise separated into separate keys.
       The value of each exercise key should be a brief description of the exercise.
-      The final explanation should be a key with the value being the explanation.
       Every key should be lowercase and separated by underscores.
-      Do not include line breaks. The response must be under 4000 tokens.
+      Do not include line breaks. The response must be no greater than 1500 tokens.
     PROMPT
 
     diet_plan = make_request(diet_prompt, client)
@@ -82,10 +76,18 @@ class WeeklyPlanApiClient
 
     response = client.chat(
       parameters: {
-          model: "gpt-3.5-turbo", # Required.
-          messages: [{ role: "user", content: prompt_type}], # Required.
-          temperature: 0.7,
-      })
+        model: "gpt-3.5-turbo", # Required.
+        messages: [{ role: "user", content: prompt_type}], # Required.
+        temperature: 0.7
+      }
+    )
+    # response = client.completions(
+    #   parameters: {
+    #     model: "text-davinci-003",
+    #     prompt: prompt_type,
+    #     max_tokens: 1500
+    #   }
+    # )
     puts response
     response["choices"][0]["message"]["content"]
   end

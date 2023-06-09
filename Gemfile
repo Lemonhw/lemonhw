@@ -53,6 +53,8 @@ gem "sassc-rails"
 # Use OpenAI API
 gem "ruby-openai"
 
+gem "benchmark"
+
 gem "faraday"
 
 gem "bootstrap", "~> 5.2"

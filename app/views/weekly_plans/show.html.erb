@@ -1,18 +1,9 @@
-<h1>Weekly Plan <%= @weekly_plan.name %></h1>
+<h1>Day Plans</h1>
 
-<h2>Diet Plans</h2>
-<% @diet_plans.each do |diet_plan| %>
-  <!-- Display diet plan details -->
-  <p><%= diet_plan.name %></p>
+<% @day_plans.each do |plan| %>
+  <%= link_to "Day #{plan.day_number}", weekly_plan_day_plan_path(@weekly_plan, plan), class: "card" %>
 <% end %>
 
-<h2>Exercise Plans</h2>
-<% @exercise_plans.each do |exercise_plan| %>
-  <!-- Display exercise plan details -->
-  <p><%= exercise_plan.name %></p>
+ <% if @next_plan %>
+  <%= link_to "Next Plan", weekly_plan_path(@next_plan) %>
 <% end %>
-
-<h2>Diet plan</h2>
-<%= simple_format(@weekly_plan.weekly_diet_plan) %>
-<h2>Exercise plan</h2>
-<%= simple_format(@weekly_plan.weekly_exercise_plan) %>

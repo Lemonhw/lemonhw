@@ -1,0 +1,46 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+#page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+#content-wrap {
+  flex: 1 0 auto;
+}
+
+footer {
+  flex-shrink: 0;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+footer a {
+  color: #fff;
+}
+
+footer a:hover {
+  color: #ddd;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+
+.social-icons a {
+  margin: 0 10px; /* Adjust this value to control the space between icons */
+}
+
+.social-icons a i {
+  color: #ffff13; /* Change this to the color you want */
+}
