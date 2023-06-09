@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates&display=swap');
+
+body {
+  background: black;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.my-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+}
+
+  h1.text-center {
+    text-align: center;
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
+    margin-top: 60px;
+  }
+
+  p.text-center {
+    text-align: center;
+    font-family: "Montserrat Alternates", sans-serif;
+    color: white;
+    margin-bottom: 40px;
+  }
+
+  .device-form {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 1200px;
+    border-radius: 8px;
+  }
+
+  .form-actions button[type="submit"] {
+    background-color: yellow;
+    color: black;
+    font-family: "Raleway", sans-serif;
+  }
+
+  .text-center a {
+    display: block;
+    margin-top: 10px;
+    color: black;
+  }
+
+  .button-login {
+    background-color: grey;
+    color: black;
+    font-family: "Montserrat Alternates", sans-serif;
+  }
+
+  main {
+    flex: 1;
+    padding-top: 50px;
+  }
+
+.button-yellow {
+  color: black;
+  background-color: yellow;
+  width: 100%;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+
+  &:hover {
+    background-color: #FFFFAD;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  }
+}
+
+.button-black {
+  color: #ffff13;
+  background-color: black;
+  width: 100%;
+  font-family: "Montserrat Alternates", sans-serif;
+  margin-left: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+
+  &:hover {
+    background-color: #FFFFAD;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  }
+}
+
+
+h2 {
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  margin-top: 60px;
+  color: white;
+}
+
+.form-inputs input[type="email"],
+.form-inputs input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.form-actions {
+  text-align: center;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-actions button[type="submit"] {
+  background-color: grey;
+  color: black;
+  font-family: "Montserrat Alternates", sans-serif;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.text-center a {
+  display: block;
+  margin-top: 10px;
+  color: black;
+}
+
+.shared-links {
+  margin-top: 20px;
+}
+
+
+//FULL REGISTRATION FORM
+.form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.device-form {
+  padding: 40px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+
+.form-label-text {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: bold;
+}

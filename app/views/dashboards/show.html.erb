@@ -1,33 +1,42 @@
-<!-- show.html.erb -->
-
-<!-- Display user's plans and other content -->
 <div class="dashboard-container">
-  <%= render 'shared/sidebar' %>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <%= render 'shared/sidebar' %>
+  </div>
+
+  <!-- Main Content -->
   <div class="main-content">
+    <h1 class="primary-font">Welcome, <%= current_user.name %></h1>
+    <!-- Exercise Plan Card -->
+    <div class="card", class="secondary-font">
+      <% if @first_day_exercise_plan %>
+        <h3 class="secondary-font">Exercise Plan - Day 1:</h3>
+        <hr>
+        <% @first_day_exercise_plan.day_plan_content.each do |key, exercise| %>
+          <p><strong><%= key %>:</strong> <%= exercise %></p>
+        <% end %>
+      <% else %>
+        <p>No exercise plan available for the first day.</p>
+      <% end %>
+    </div>
 
-  <h1>Welcome, <%= current_user.email %></h1>
-  <% if @first_day_exercise_plan %>
-    <h3>Exercise Plan for the First Day:</h3>
-    <% @first_day_exercise_plan.day_plan_content.each do |key, exercise| %>
-      <p><strong><%= key %>:</strong> <%= exercise %></p>
+    <!-- Diet Plan Card -->
+    <div class="card", class="secondary-font">
+      <% if @first_day_diet_plan %>
+        <h3 class="secondary-font">Diet Plan - Day 1:</h3>
+        <hr>
+        <% @first_day_diet_plan.day_plan_content.each do |meal, food_items| %>
+          <p><strong><%= meal %>:</strong> <%= food_items %></p>
+        <% end %>
+      <% else %>
+        <p>No diet plan available for the first day.</p>
+      <% end %>
+    </div>
+
+    <!-- Generate First Plan Button -->
+    <% if current_user.weekly_plans.none? %>
+      <%= link_to 'Generate First Plan', new_weekly_plan_path, class: 'generate-btn' %>
     <% end %>
-  <% else %>
-    <p>No exercise plan available for the first day.</p>
-  <% end %>
-
-<% if @first_day_diet_plan %>
-  <h3>Diet Plan for the First Day:</h3>
-  <% @first_day_diet_plan.day_plan_content.each do |meal, food_items| %>
-    <p><strong><%= meal %>:</strong> <%= food_items %></p>
-  <% end %>
-<% else %>
-  <p>No diet plan available for the first day.</p>
-<% end %>
-    <!-- Add your existing dashboard content here -->
   </div>
 </div>
-
-<!-- Display a button to generate first plans -->
-<% if current_user.weekly_plans.none? %>
-  <%= link_to 'Generate First Plan', new_weekly_plan_path, class: 'btn btn-primary' %>
-<% end %>
