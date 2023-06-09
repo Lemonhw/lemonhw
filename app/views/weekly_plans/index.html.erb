@@ -7,7 +7,7 @@
     <h1>Weekly Plans</h1>
     <% @weekly_plans.each_with_index do |plan, index| %>
       <a href="/weekly_plans/<%= plan.id %>" class="card">
-        <h2>Week <%= index + 1 %></h2>
+        <h1>Week <%= index + 1 %></h1>
         <p>Starting weight: <%= plan.current_weight %></p>
         <p>Weight Goal: <%= plan.weight_goal %></p>
         <p>Fitness goal: <%= plan.fitness_goal %></p>
