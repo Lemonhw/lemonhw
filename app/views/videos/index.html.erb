@@ -1,11 +1,11 @@
-<h1>Videos</h1>
+<h1>Exercise Videos</h1>
 <div class="container">
   <div class="d-flex justify-content-center flex-wrap" style="gap: 1rem;">
     <% @videos.each do |video| %>
       <div class="video">
         <h3><%= video.title %></h3>
-        <div class="video-player">
-          <%= embed_video(video.url) %>
+        <div class="video-thumbnail">
+          <iframe width="360" height="215" src="<%= video.url %>" frameborder="0" allow="muted; autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
       </div>
     <% end %>
