@@ -61,8 +61,6 @@ gem "sidekiq", "~> 6.5.7"
 
 gem "sidekiq-failures"
 
-gem "redis"
-
 gem "bootstrap", "~> 5.2"
 gem "devise"
 gem "autoprefixer-rails"
