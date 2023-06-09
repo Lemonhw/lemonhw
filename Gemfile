@@ -57,6 +57,10 @@ gem "benchmark"
 
 gem "faraday"
 
+gem "sidekiq"
+
+gem "sidekiq-failures"
+
 gem "bootstrap", "~> 5.2"
 gem "devise"
 gem "autoprefixer-rails"
