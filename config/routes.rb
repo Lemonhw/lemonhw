@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
 
+  require "sidekiq/web"
+  mount Sidekiq::Web => '/sidekiq'
+
+  get 'redirect', to: 'redirects#index', as: :redirect
+
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
   resources :users, only: [:edit, :update]

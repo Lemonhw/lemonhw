@@ -16,43 +16,23 @@ class WeeklyPlansController < ApplicationController
   end
 
   def create
-    time = Benchmark.measure do
-      api_client = WeeklyPlanApiClient.new
-      birth_date = current_user.date_of_birth
-      current_date = Date.today
-      user_age = current_date.year - birth_date.year
-      user_age -= 1 if current_date.month < birth_date.month || (current_date.month == birth_date.month && current_date.day < birth_date.day)
-      user_info = {
-        age: user_age,
-        gender: current_user.gender,
-        height: current_user.height
-      }
+    birth_date = current_user.date_of_birth
+    current_date = Date.today
+    user_age = current_date.year - birth_date.year
+    user_age -= 1 if current_date.month < birth_date.month || (current_date.month == birth_date.month && current_date.day < birth_date.day)
 
-      @weekly_plan = WeeklyPlan.create!(take_params.merge(user: current_user))
-
-      plans_json = api_client.fetch_plans(user_info, take_params)
-      week_diet_plan = JSON.parse(plans_json[:diet_plan])
-      week_exercise_plan = JSON.parse(plans_json[:exercise_plan])
-      diet_plans = week_diet_plan.values
-      exercise_plans = week_exercise_plan.values
-
-      (0...6).to_a.each do |index|
-        @day_plan = DayPlan.create!(
-          day_number: index + 1,
-          weekly_plan: @weekly_plan
-        )
-        DietPlan.create!(
-          day_plan_content: diet_plans[index],
-          day_plan: @day_plan
-        )
-        ExercisePlan.create!(
-          day_plan_content: exercise_plans[index],
-          day_plan: @day_plan
-        )
-      end
+    if current_user.gender.downcase == "male"
+      s = 5
+    else
+      s = -161
     end
-    puts "Execution time: #{time.real} seconds"
-    redirect_to dashboard_path
+    current_bmr = (10 * params[:weekly_plan][:current_weight].to_i) + (6.25 * current_user.height) - (5 * user_age) + s
+    activity_factor = 1.55
+    t_d_e_e = current_bmr * activity_factor
+    calories_per_day = [(t_d_e_e - 1000), (t_d_e_e - 500)]
+    puts calories_per_day
+    redirect_to redirect_path
+    CreateWeeklyPlanJob.perform_later(current_user, user_age, current_bmr, calories_per_day, take_params)
   end
 
   private
