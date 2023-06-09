@@ -90,3 +90,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "redis", "~> 5.0"
