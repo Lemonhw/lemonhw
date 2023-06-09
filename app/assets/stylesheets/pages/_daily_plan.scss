@@ -2,14 +2,12 @@
   display: flex;
   background-color: black;
 
-
   aside.sidebar {
     width: 350px;
-    height: 100%;
+    height: 100vh;
     background-color: white;
-    margin-top: -40px;
+    margin-top: 100px;
     box-shadow: 3px 3px 10px #888888;
-
 
     ul {
       list-style-type: none;
@@ -49,32 +47,22 @@
   .main-content {
     flex: 1;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    grid-template-columns: 1fr 1fr;
     font-family: 'Montserrat Alternates', sans-serif;
 
-    h1 {
-      margin-bottom: 50px;
-    }
-
-    .temp-container {
-      display: grid;
-      margin: 0;
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 20px;
-      grid-auto-rows: minmax(100px, auto);
-    }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 
     .card {
-      display: flex;
+      flex-basis: calc(50% - 20px);
+      box-sizing: border-box;
+      height: 200px;
+      margin-bottom: 20px;
       border: 1px solid #ddd;
       border-radius: 5px;
-      align-self: center;
-      justify-self: center;
       font-weight: medium;
       box-shadow: 3px 4px 10px #888888;
+      padding: 20px;
 
       .card-image {
         width: 30%;
@@ -89,6 +77,7 @@
         padding: 20px;
       }
     }
+
     .generate-button,
     .generate-button:link,
     .generate-button:visited,
@@ -108,9 +97,9 @@
       margin-top: 30px;
       margin-bottom: 30px;
       line-height: 50px;
-      margin-left: auto; /* changes here */
-      margin-right: auto; /* changes here */
-      display: block; /* added this */
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
       font-size: 15px;
     }
 

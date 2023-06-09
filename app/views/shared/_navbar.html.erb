@@ -8,7 +8,7 @@
             <% if current_user.avatar.attached? %>
               <%= image_tag current_user.avatar.variant(resize: "100x100") %>
             <% else %>
-              <%= image_tag(gravatar_url(current_user.email, 30), alt: current_user.email) %>
+              <%= image_tag 'lemon.png', alt: current_user.email, style: "width: 40px" %>
             <% end %>
           </a>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
