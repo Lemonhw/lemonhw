@@ -1,51 +1,38 @@
 class CreateWeeklyPlanJob < ApplicationJob
   queue_as :default
 
-  def perform(user, params)
-    Rails.logger.info("Starting background job .........")
-    create_weekly_plan(user, params)
-    Rails.logger.info("Ending background job .........")
-  end
+  def perform(user, age, bmr, calories_per_day, params)
+    user_info = {
+      age: age,
+      gender: user.gender,
+      height: user.height
+    }
 
-  def create_weekly_plan(user, params)
-    time = Benchmark.measure do
-      birth_date = user.date_of_birth
-      current_date = Date.today
-      user_age = current_date.year - birth_date.year
-      user_age -= 1 if current_date.month < birth_date.month || (current_date.month == birth_date.month && current_date.day < birth_date.day)
-      user_info = {
-        age: user_age,
-        gender: user.gender,
-        height: user.height
-      }
+    @weekly_plan = WeeklyPlan.create!(params.merge(user: user))
 
-      @weekly_plan = WeeklyPlan.create!(params.merge(user: user))
+    plans_json = fetch_plans(user_info, params, calories_per_day)
+    week_diet_plan = JSON.parse(plans_json[:diet_plan])
+    week_exercise_plan = JSON.parse(plans_json[:exercise_plan])
+    diet_plans = week_diet_plan.values
+    exercise_plans = week_exercise_plan.values
 
-      plans_json = fetch_plans(user_info, params)
-      week_diet_plan = JSON.parse(plans_json[:diet_plan])
-      week_exercise_plan = JSON.parse(plans_json[:exercise_plan])
-      diet_plans = week_diet_plan.values
-      exercise_plans = week_exercise_plan.values
-
-      (0...6).to_a.each do |index|
-        @day_plan = DayPlan.create!(
-          day_number: index + 1,
-          weekly_plan: @weekly_plan
-        )
-        DietPlan.create!(
-          day_plan_content: diet_plans[index],
-          day_plan: @day_plan
-        )
-        ExercisePlan.create!(
-          day_plan_content: exercise_plans[index],
-          day_plan: @day_plan
-        )
-      end
+    (0...6).to_a.each do |index|
+      @day_plan = DayPlan.create!(
+        day_number: index + 1,
+        weekly_plan: @weekly_plan
+      )
+      DietPlan.create!(
+        day_plan_content: diet_plans[index],
+        day_plan: @day_plan
+      )
+      ExercisePlan.create!(
+        day_plan_content: exercise_plans[index],
+        day_plan: @day_plan
+      )
     end
-    puts "Execution time: #{time.real} seconds"
   end
 
-  def fetch_plans(user_info, params)
+  def fetch_plans(user_info, params, calories)
     # Access the API key based on the current environment
     # development:
     config_file = File.join(File.dirname(__FILE__), '..', '..', 'config', 'api_keys.yml')
@@ -70,38 +57,31 @@ class CreateWeeklyPlanJob < ApplicationJob
       prompt_for_fitness_goal = "They want to get up to #{weight_goal}"
     end
 
-    diet_prompt = <<~PROMPT
-      You are a personal trainer.
-      You are addressing your client.
-      Your client is a #{age} year old #{gender} who weighs #{current_weight}kg.
-      #{prompt_for_fitness_goal}
-      Suggest a 7 day diet plan for them. Do not include any introductory text.
+    # The daily calories is currently hardcoded. It must be modified to accept variables. AI would not return appropriate response.
+    diet_prompt = "You are a personal trainer.
+      I want to lose weight.
+      Suggest a 7 day diet plan for me. Do not include any introductory text.
       Start your response with Day 1.
-      After you have finished day 7 give a bief explanation of the diet plan, explaining why this diet plan suits your client.
-      The final explanation should be a key with the value being the explanation.
       Give the entire response in JSON format. The response should be enclosed in curly braces and each key should be enclosed in double quotes.
-      With each day as a key and the value as each meal (breakfast, lunch, dinner and snack) separated into separate keys.
+      With each day as a key and the value as each meal (breakfast, lunch, dinner and snack) and the total_calories for the day separated into separate keys.
       The value of each meal key should be a list of the different foods each meal contains and a total_calories key of which the value is total amount of calories in the meal.
+      The total_calories for each day MUST amount to between 2000 and 2600.
       Those foods should be keys themselves with the value being the calories that each food contains.
       Every key should be lowercase and separated by underscores.
-      Do not include line breaks. The response must be no greater than 1500 tokens.
-    PROMPT
+      Do not include line breaks. The response must be no greater than 1500 tokens."
 
-    exercise_prompt = <<~PROMPT
-      You are a personal trainer.
-      Your client is a #{age} year old #{gender} who weighs #{current_weight}kg.
+    exercise_prompt = "You are a personal trainer.
+      I am a #{age} year old #{gender} who weighs #{current_weight}kg.
       #{prompt_for_fitness_goal}
-      Suggest a 7 day exercise plan for them. Do not include any introductory text.
+      Suggest a 7 day exercise plan me. Do not include any introductory text.
+      Each exercise should take 10 minutes.
       Start your response with Day 1.
-      For each day, list 5 distinct exercises that the client can do.
-      After you have finished day 7 give a bief explanation of the exercise plan, explaining why this exercise plan suits your client.
-      The final explanation should be a key with the value being the explanation.
+      For each day, list 5 distinct exercises that I can do.
       Give the entire response in JSON format. The response should be enclosed in curly braces and each key should be enclosed in double quotes.
       With each day as a key and the value as each exercise separated into separate keys.
-      The value of each exercise key should be a brief description of the exercise.
+      The value of each exercise key should be a brief description of the exercise and how long the exercise should be done for given the 45 minute restraint.
       Every key should be lowercase and separated by underscores.
-      Do not include line breaks. The response must be no greater than 1500 tokens.
-    PROMPT
+      Do not include line breaks. The response must be no greater than 1500 tokens."
 
     diet_plan = make_request(diet_prompt, client)
     exercise_plan = make_request(exercise_prompt, client)

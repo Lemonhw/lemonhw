@@ -16,8 +16,23 @@ class WeeklyPlansController < ApplicationController
   end
 
   def create
-    CreateWeeklyPlanJob.perform_later(current_user, take_params)
-    redirect_to dashboard_path
+    birth_date = current_user.date_of_birth
+    current_date = Date.today
+    user_age = current_date.year - birth_date.year
+    user_age -= 1 if current_date.month < birth_date.month || (current_date.month == birth_date.month && current_date.day < birth_date.day)
+
+    if current_user.gender.downcase == "male"
+      s = 5
+    else
+      s = -161
+    end
+    current_bmr = (10 * params[:weekly_plan][:current_weight].to_i) + (6.25 * current_user.height) - (5 * user_age) + s
+    activity_factor = 1.55
+    t_d_e_e = current_bmr * activity_factor
+    calories_per_day = [(t_d_e_e - 1000), (t_d_e_e - 500)]
+    puts calories_per_day
+    redirect_to redirect_path
+    CreateWeeklyPlanJob.perform_later(current_user, user_age, current_bmr, calories_per_day, take_params)
   end
 
   private
