@@ -1,22 +1,43 @@
-<p><strong>Full Registration</strong></p>
+<div class="my-container signup">
+  <h1 class="text-center">Full Registration</h1>
 
-<%= form_for @user do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= form_for @user do |f| %>
+    <div class="device-form">
+      <div class="form-inputs">
+        <div class="form-field">
+          <%= f.label :name, class: "full-width form-label-text" %>
+          <%= f.text_field :name, class: "full-width" %>
+        </div>
 
-  <%= f.label :surname %>
-  <%= f.text_field :surname %>
+        <div class="form-field">
+          <%= f.label :surname, class: "full-width form-label-text" %>
+          <%= f.text_field :surname, class: "full-width" %>
+        </div>
 
-  <%= f.label :date_of_birth %>
-  <%= f.date_field :date_of_birth %>
+        <div class="form-field">
+          <%= f.label :date_of_birth, class: "full-width form-label-text" %>
+          <%= f.date_field :date_of_birth, class: "full-width" %>
+        </div>
 
-  <%= f.label :height %>
-  <%= f.number_field :height %>
+        <div class="form-field">
+          <%= f.label :height, class: "full-width form-label-text" %>
+          <%= f.number_field :height, class: "full-width" %>
+        </div>
 
-  <%= f.label :gender %>
-  <%= f.text_field :gender %>
+        <div class="form-field">
+          <%= f.label :gender, class: "full-width form-label-text" %>
+          <%= f.text_field :gender, class: "full-width" %>
+        </div>
 
-  <%= f.file_field :avatar %>
+        <div class="form-field">
+          <%= f.label :avatar, class: "full-width form-label-text" %>
+          <%= f.file_field :avatar, class: "full-width" %>
+        </div>
+      </div>
 
-  <%= f.submit "Go to Dashboard" %>
-<% end %>
+      <div class="form-actions">
+        <%= f.submit "Go to Dashboard", class: "btn   button-yellow" %>
+      </div>
+    </div>
+  <% end %>
+</div>
