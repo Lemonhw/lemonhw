@@ -4,8 +4,8 @@
     <% @videos.each do |video| %>
       <div class="video">
         <h3><%= video.title %></h3>
-        <div class="video-player">
-          <%= embed_video(video.url) %>
+        <div class="video-thumbnail">
+        <%= image_tag(video.thumbnail_url) %>
         </div>
       </div>
     <% end %>
