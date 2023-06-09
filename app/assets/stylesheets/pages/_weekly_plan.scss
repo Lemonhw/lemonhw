@@ -49,17 +49,31 @@
   .main-content {
     flex: 1;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
     font-family: 'Montserrat Alternates', sans-serif;
+
+    h1 {
+      margin-bottom: 50px;
+    }
+
+    .temp-container {
+      display: grid;
+      margin: 0;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
+      grid-auto-rows: minmax(100px, auto);
+    }
 
     .card {
       display: flex;
       border: 1px solid #ddd;
       border-radius: 5px;
-      margin-bottom: 20px;
+      align-self: center;
+      justify-self: center;
       font-weight: medium;
-      width: 80%;
-      margin-left: 10%;
-      margin-top: 5%;
       box-shadow: 3px 4px 10px #888888;
 
       .card-image {
