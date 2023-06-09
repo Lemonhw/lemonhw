@@ -5,8 +5,6 @@
 
     <div class="card d-flex">
       <p><%= link_to "Day #{plan.day_number}", weekly_plan_day_plan_path(@weekly_plan, plan) %></p>
-      <p><%= link_to "Diet Plan", diet_plan_weekly_plan_day_plan_path(@weekly_plan, plan) %></p>
-      <p><%= link_to "Exercise Plan", exercise_plan_weekly_plan_day_plan_path(@weekly_plan, plan) %></p>
     </div>
   <% end %>
 

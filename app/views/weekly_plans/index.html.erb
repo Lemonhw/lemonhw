@@ -1,20 +1,20 @@
 <div class="weekly-plan-container">
-  <div class="sidebar">
-      <%= render 'shared/sidebar' %>
-  </div>
+  <%= render 'shared/sidebar' %>
 
   <div class="main-content">
     <h1>Weekly Plans</h1>
-    <% @weekly_plans.each_with_index do |plan, index| %>
-      <a href="/weekly_plans/<%= plan.id %>" class="card">
-        <h2>Week <%= index + 1 %></h2>
-        <p>Starting weight: <%= plan.current_weight %></p>
-        <p>Weight Goal: <%= plan.weight_goal %></p>
-        <p>Fitness goal: <%= plan.fitness_goal %></p>
-      </a>
-    <% end %>
+    <div class="temp-container">
+      <% @weekly_plans.each_with_index do |plan, index| %>
+        <a href="/weekly_plans/<%= plan.id %>" class="card" style="width: 360px">
+          <h2 style="color:black">Week <%= index + 1 %></h2>
+          <p>Starting weight: <%= plan.current_weight %></p>
+          <p>Weight Goal: <%= plan.weight_goal %></p>
+          <p>Fitness goal: <%= plan.fitness_goal %></p>
+        </a>
+      <% end %>
+    </div>
     <div class="generate-button">
-      <%= link_to "Generate Your Next Week Plan", new_weekly_plan_path, class: "generate-button" %>
+      <%= link_to "Generate Your Next Week Plan", new_weekly_plan_path, class: "generate-button"%>
     </div>
   </div>
 </div>
