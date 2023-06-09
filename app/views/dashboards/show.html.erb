@@ -5,9 +5,17 @@
     <%= render 'shared/sidebar' %>
   </div>
 
+
+
   <!-- Main Content -->
   <div class="main-content">
-    <h1 class="primary-font">Welcome, <%= current_user.name %></h1>
+  <h1 class="primary-font">Welcome, <%= current_user.name %></h1>
+    <% if current_user.weekly_plans.none? %>
+      <div class="generate-button">
+        <%= link_to 'Please Click HERE to Generate your First Plan', new_weekly_plan_path, class: 'generate-button' %>
+      </div>
+    <% end %>
+
     <!-- Exercise Plan Card -->
     <div class="card", class="secondary-font">
       <% if @first_day_exercise_plan %>
@@ -35,8 +43,6 @@
     </div>
 
     <!-- Generate First Plan Button -->
-    <% if current_user.weekly_plans.none? %>
-      <%= link_to 'Generate First Plan', new_weekly_plan_path, class: 'generate-btn' %>
-    <% end %>
+
   </div>
 </div>

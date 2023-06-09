@@ -7,7 +7,7 @@
     height: 100vh;
     background-color: white;
     padding: 0px;
-    box-shadow: 30px;
+    box-shadow: 3px 3px 10px #888888;
 
     ul {
       list-style-type: none;
@@ -74,12 +74,32 @@
       }
     }
 
-    .generate-btn {
+    .generate-button,
+    .generate-button:link,
+    .generate-button:visited,
+    .generate-button:hover,
+    .generate-button:active {
       background-color: #ffff13;
-      color: white;
+      border-radius: 8px;
+      color: black;
+      cursor: pointer;
+      text-align: center;
       text-decoration: none;
-      padding: 10px;
-      border-radius: 5px;
+      transition: 200ms;
+      box-sizing: border-box;
+      width: 800px;
+      height: 100px;
+      font-weight: bold;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      line-height: 100px;
+      margin-left: 150px;
+      margin-right: 100px;
+      font-size: 20px;
+    }
+
+    .generate-button:hover {
+      background-color: #dddd24;
     }
   }
 }
