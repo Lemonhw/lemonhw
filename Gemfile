@@ -57,7 +57,7 @@ gem "benchmark"
 
 gem "faraday"
 
-gem "sidekiq"
+gem "sidekiq", "~> 6.5.7"
 
 gem "sidekiq-failures"
 
@@ -90,5 +90,3 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
-
-gem "redis", "~> 5.0"
