@@ -30,7 +30,7 @@ gem "jbuilder"
 gem 'gravatar_image_tag'
 
 # Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 4.0"
+gem "redis", "~> 4.0"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -42,7 +42,7 @@ gem 'gravatar_image_tag'
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", require: false
+gem "bootsnap"
 
 # Use Sass to process CSS
 gem "sassc-rails"
@@ -55,7 +55,7 @@ gem "ruby-openai"
 
 gem "benchmark"
 
-gem "faraday"
+gem 'faraday'
 
 gem "sidekiq"
 
@@ -66,7 +66,7 @@ gem "devise"
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
-gem 'youtube_api'
+# gem 'youtube_api'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

@@ -5,7 +5,7 @@
       <div class="video">
         <h3><%= video.title %></h3>
         <div class="video-thumbnail">
-        <%= image_tag(video.thumbnail_url) %>
+          <iframe width="560" height="315" src="<%= video.url %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
       </div>
     <% end %>
