@@ -3,6 +3,7 @@
 
   <div class="main-content">
     <h1>Weekly Plans</h1>
+
     <div class="temp-container">
       <% @weekly_plans.each_with_index do |plan, index| %>
         <a href="/weekly_plans/<%= plan.id %>" class="card" style="width: 360px">
@@ -13,6 +14,7 @@
         </a>
       <% end %>
     </div>
+
     <div class="generate-button">
       <%= link_to "Generate Your Next Week Plan", new_weekly_plan_path, class: "generate-button"%>
     </div>
