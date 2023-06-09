@@ -16,15 +16,13 @@
 
   <body>
     <div id="page-container">
-      <%= render 'layouts/navbar' %>
+      <%= render 'shared/navbar' %>
       <div id="content-wrap">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
         <%= render "shared/flashes" %>
 
         <%= yield %>
       </div>
-      <%= render 'layouts/footer' %>
+      <%= render 'shared/footer' %>
     </div>
   </body>
 </html>

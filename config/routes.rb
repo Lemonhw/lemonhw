@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:edit, :update]
 
+  resources :videos, only: [:index, :show]
 
   get 'dashboard', to: 'dashboards#show', as: :dashboard
 

@@ -8,8 +8,6 @@
   <h1>Welcome, <%= current_user.email %></h1>
   <% if @first_day_exercise_plan %>
     <h3>Exercise Plan for the First Day:</h3>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/abcdefg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
     <% @first_day_exercise_plan.day_plan_content.each do |key, exercise| %>
       <p><strong><%= key %>:</strong> <%= exercise %></p>
     <% end %>
