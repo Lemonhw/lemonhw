@@ -1,5 +1,85 @@
 .dashboard-container {
   display: flex;
-  height: 100vh;
-  background-image: none;
+  background-color: black;
+
+  aside.sidebar {
+    width: 350px;
+    height: 100vh;
+    background-color: white;
+    padding: 0px;
+    box-shadow: 30px;
+
+    ul {
+      list-style-type: none;
+
+      li {
+        margin-bottom: 15px;
+
+        .btn {
+          background-color: #ffff13;
+          border-radius: 8px;
+          color: #000;
+          cursor: pointer;
+          font-weight: medium;
+          padding: 10px 15px;
+          text-align: center;
+          text-decoration: none;
+          transition: 200ms;
+          box-sizing: border-box;
+          border: 0;
+          font-size: 16px;
+          user-select: none;
+          margin: 0 10px;
+          width: 250px;
+          height: 50px;
+          font-weight: bold;
+          margin-top: 30px;
+          box-shadow: 3px 4px 10px #888888;
+
+          &:hover {
+            background-color: #dddd24;
+          }
+        }
+      }
+    }
+  }
+
+  .main-content {
+    flex: 1;
+    padding: 20px;
+    font-family: 'Montserrat Alternates', sans-serif;
+
+    .card {
+      display: flex;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      font-weight: medium;
+      width: 80%;
+      margin-left: 10%;
+      margin-top: 5%;
+      box-shadow: 3px 4px 10px #888888;
+
+      .card-image {
+        width: 30%;
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .card-content {
+        flex: 1;
+        padding: 20px;
+      }
+    }
+
+    .generate-btn {
+      background-color: #ffff13;
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  }
 }

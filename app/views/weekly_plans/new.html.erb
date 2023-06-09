@@ -1,6 +1,24 @@
-<%= simple_form_for @weekly_plan do |f| %>
-  <%= f.input :current_weight, label: "Current Weight", input_html: { type: "number", required: true } %>
-  <%= f.input :weight_goal, label: "Weight Goal", input_html: { type: "number", required: true } %>
-  <%= f.input :fitness_goal, label: "Fitness Goal", collection: ["Weight Loss", "Muscle Gain"], prompt: "Select a fitness goal", required: true %>
-  <%= f.button :submit %>
-<% end %>
+<div class="my-container signup">
+  <h1 class="text-center">WHAT IS YOUR GOAL?</h1>
+  <%= form_for @weekly_plan do |f| %>
+    <div class="device-form">
+      <div class="form-inputs">
+        <div class="form-field">
+          <%= f.label :current_weight, "Current Weight", class: "full-width form-label-text" %>
+          <%= f.number_field :current_weight, class: "full-width", required: true %>
+        </div>
+        <div class="form-field">
+          <%= f.label :weight_goal, "Weight Goal", class: "full-width form-label-text" %>
+          <%= f.number_field :weight_goal, class: "full-width", required: true %>
+        </div>
+        <div class="form-field">
+          <%= f.label :fitness_goal, "Fitness Goal", class: "full-width form-label-text" %>
+          <%= f.select :fitness_goal, ["Weight Loss", "Muscle Gain"], { prompt: "Select a fitness goal" }, required: true %>
+        </div>
+      </div>
+      <div class="form-actions">
+        <%= f.submit "Go to Dashboard", class: "btn button-yellow" %>
+      </div>
+    </div>
+  <% end %>
+</div>

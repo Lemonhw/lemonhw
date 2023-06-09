@@ -10,9 +10,16 @@ Rails.application.routes.draw do
 
   resources :users, only: [:edit, :update]
 
+  resources :videos, only: [:index, :show]
+
   get 'dashboard', to: 'dashboards#show', as: :dashboard
 
   resources :weekly_plans, only: [:new, :create, :show, :index] do
-    resources :day_plans, only: [:show]
+    resources :day_plans, only: [:show] do
+      member do
+        get :diet_plan
+        get :exercise_plan
+      end
+    end
   end
 end
