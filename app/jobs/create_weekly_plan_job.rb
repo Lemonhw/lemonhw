@@ -63,9 +63,9 @@ class CreateWeeklyPlanJob < ApplicationJob
       Suggest a 7 day diet plan for me. Do not include any introductory text.
       Start your response with Day 1.
       Give the entire response in JSON format. The response should be enclosed in curly braces and each key should be enclosed in double quotes.
-      With each day as a key and the value as each meal (breakfast, lunch, dinner and snack) and the total_calories for the day separated into separate keys.
+      With each day as a key and the value as each meal (breakfast, lunch, dinner and snack).
       The value of each meal key should be a list of the different foods each meal contains and a total_calories key of which the value is total amount of calories in the meal.
-      The total_calories for each day MUST amount to between 2000 and 2600.
+      The total_calories for each day MUST be no lower than 2000 calories and should be no higher than 2600 calories.
       Those foods should be keys themselves with the value being the calories that each food contains.
       Every key should be lowercase and separated by underscores.
       Do not include line breaks. The response must be no greater than 1500 tokens."
@@ -77,6 +77,7 @@ class CreateWeeklyPlanJob < ApplicationJob
       Each exercise should take 10 minutes.
       Start your response with Day 1.
       For each day, list 5 distinct exercises that I can do.
+      2 of the days should be rest days and should not include any exercises. The rest days should have one exercise key with the value being 'rest'.
       Give the entire response in JSON format. The response should be enclosed in curly braces and each key should be enclosed in double quotes.
       With each day as a key and the value as each exercise separated into separate keys.
       The value of each exercise key should be a brief description of the exercise and how long the exercise should be done for given the 45 minute restraint.
