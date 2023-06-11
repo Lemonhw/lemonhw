@@ -30,7 +30,6 @@ gem "jbuilder"
 gem 'gravatar_image_tag'
 
 # Use Redis adapter to run Action Cable in production
-gem "redis", "~> 4.0"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -57,11 +56,9 @@ gem "benchmark"
 
 gem 'faraday'
 
-gem "sidekiq"
+gem "sidekiq", "~> 6.5.7"
 
 gem "sidekiq-failures"
-
-gem "redis"
 
 gem "bootstrap", "~> 5.2"
 gem "devise"
@@ -94,4 +91,4 @@ group :test do
   gem "webdrivers"
 end
 
-gem "redis", "~> 5.0"
+gem "redis", "~> 4.0"
