@@ -4,10 +4,9 @@
   <aside class="sidebar">
     <%= render 'shared/sidebar' %>
   </aside>
-    <div class="card d-flex">
-      <p><%= link_to "Day #{plan.day_number}", weekly_plan_day_plan_path(@weekly_plan, plan) %></p>
-    </div>
-  <% end %>
+
+  <div class="main-content">
+    <h1 class="primary-font">Day Plans</h1>
 
     <% if @weekly_plan.day_plans.any? %>
       <% @day_plans.each do |plan| %>
@@ -21,6 +20,7 @@
 
       <% if @next_plan %>
         <%= link_to "Next Plan", weekly_plan_path(@next_plan) %>
+      <% end %>
     <% else %>
       <p style="color: white">Day plans being generated</p>
     <% end %>
