@@ -90,8 +90,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
-<<<<<<< HEAD
 
 gem "redis", "~> 4.0"
-=======
->>>>>>> b63d49818cac783e27f6d8281572de0b2502ef09
