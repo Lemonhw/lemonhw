@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :set_resource
+
   def edit
     @user = User.find(params[:id])
   end
@@ -16,6 +18,11 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :surname, :date_of_birth, :gender, :height)
+    params.require(:user).permit(:name, :surname, :age, :gender, :height, :weight, :goal, :activity_level)
+  end
+
+  def set_resource
+    @resource = User.new
+    @resource_name = :user
   end
 end

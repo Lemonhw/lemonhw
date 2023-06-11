@@ -5,11 +5,6 @@
       <% if user_signed_in? %>
         <div class="dropdown">
           <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-            <% if current_user.avatar.attached? %>
-              <%= image_tag current_user.avatar.variant(resize: "100x100") %>
-            <% else %>
-              <%= image_tag 'lemon.png', alt: current_user.email, style: "width: 40px" %>
-            <% end %>
           </a>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
             <li><%= link_to "Dashboard", dashboard_path, class: "dropdown-item" %></li>
