@@ -276,6 +276,10 @@ GEM
 
 PLATFORMS
   x86_64-darwin-19
+<<<<<<< HEAD
+=======
+  x86_64-darwin-22
+>>>>>>> b63d49818cac783e27f6d8281572de0b2502ef09
   x86_64-linux
 
 DEPENDENCIES
