@@ -33,7 +33,7 @@ class WeeklyPlansController < ApplicationController
       lunch = diet_client.fetch_meal(JSON.parse(daily_diet_plan[0]["value"])["id"])
       dinner = diet_client.fetch_meal(JSON.parse(daily_diet_plan[0]["value"])["id"])
 
-      diet_plan = DietPlan.create(
+      DietPlan.create(
         day_plan_content: {
           breakfast: breakfast,
           lunch: lunch,
