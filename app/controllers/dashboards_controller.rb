@@ -3,6 +3,11 @@ class DashboardsController < ApplicationController
 
   def overview
     @weekly_plans = current_user.weekly_plans.order(created_at: :desc)
+
+  def show
+    @profile = current_user.profile
+    @weekly_plans = @profile.weekly_plans.order(created_at: :desc)
+
     if @weekly_plans.any?
       @weekly_plan = @weekly_plans.first
     end
