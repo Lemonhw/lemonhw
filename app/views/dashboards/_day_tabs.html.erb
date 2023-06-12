@@ -1,21 +1,16 @@
-<ul class="tabs">
-  <% day_plans.each do |day_plan| %>
-    <li>
-      <% if plan_type == :exercise_plan %>
-        <a href="#"
-           data-controller="tabs"
-           data-tabs-url="<%= exercise_plan_weekly_plan_day_plan_path(weekly_plan, day_plan) %>"
-           data-action="click->tabs#loadContent"
-           class="btn btn-primary">Day <%= day_plan.day_number %>
-        </a>
-      <% elsif plan_type == :diet_plan %>
-        <a href="#"
-           data-controller="tabs"
-           data-tabs-url="<%= diet_plan_weekly_plan_day_plan_path(weekly_plan, day_plan) %>"
-           data-action="click->tabs#loadContent"
-           class="btn btn-primary">Day <%= day_plan.day_number %>
-        </a>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
+<div class="tab-container" data-controller="dashboard">
+  <div class="tabs">
+    <% day_plans.each_with_index do |day_plan, i| %>
+      <div data-action="click->dashboard#switchTab" data-dashboard-target="tab" data-target-id="<%= day_plan.id %>" class="tab <%= "active" if i == 0 %>">Day <%= i + 1 %></div>
+    <% end %>
+  </div>
+  <div class="content">
+    <% day_plans.each_with_index do |day_plan, i| %>
+      <div data-dashboard-target="day" data-day-id="<%= day_plan.id %>" class="tab-content <%= "active" if i == 0 %>">
+        <!-- Content for Tab 1 -->
+        Day plan for day <%= i + 1 %>
+          <%= render 'diet_plan', diet_plan: @diet_plan, diet_plan_content: @diet_plan_content %>
+      </div>
+    <% end %>
+  </div>
+</div>

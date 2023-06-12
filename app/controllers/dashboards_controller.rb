@@ -9,6 +9,9 @@ class DashboardsController < ApplicationController
   def show
     @profile = current_user.profile
     @weekly_plans = @profile.weekly_plans.order(created_at: :desc)
+    @day_plan = DayPlan.find()
+    @diet_plan = @day_plan.diet_plan
+    @meal = @diet_plan.day_plan_content
 
     if @weekly_plans.any?
       @weekly_plan = @weekly_plans.first

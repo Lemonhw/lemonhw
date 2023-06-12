@@ -1,8 +1,3 @@
-<div class="main-content">
-  <h1 class="primary-font">Welcome, <%= current_user.name %></h1>
-  <% if current_user.weekly_plans.none? %>
-    <div class="generate-button">
-      <%= button_to 'Please Click HERE to Generate your First Plan', weekly_plans_path, method: :post, class: 'generate-button' %>
-    </div>
-  <% end %>
+<div class="main-content" id="content">
+  <%= render 'dashboards/show_content' %>
 </div>
