@@ -1,5 +1,5 @@
 <div class="main-content">
-  <h1 class="primary-font">Welcome, <%= current_user.name %></h1>
+  <h1 class="primary-font">Welcome, <%= current_user.profile.name %></h1>
   <% if @profile.weekly_plans.none? %>
     <div class="generate-button">
       <%= button_to 'Please Click HERE to Generate your First Plan', weekly_plans_path, method: :post, class: 'generate-button' %>
