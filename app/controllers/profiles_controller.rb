@@ -10,16 +10,23 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    Profile.create(profile_params.merge({user_id: current_user.id}))
-    @profile = Profile.find(current_user.id)
+    @profile = Profile.new(profile_params)
+    @profile.user = current_user
+
     fitness_client = FitnessApiClient.new(@profile)
     bmi = fitness_client.calc_bmi
     daily_calories = fitness_client.calc_daily_calories
     ideal_weight = fitness_client.calc_ideal_weight
-    @profile.update(bmi: bmi, daily_calories: daily_calories, ideal_weight: ideal_weight)
-    @profile.save
 
-    redirect_to result_profiles_path, notice: 'Profile successfully created.'
+    @profile.bmi = bmi
+    @profile.daily_calories = daily_calories
+    @profile.ideal_weight = ideal_weight
+
+    if @profile.save
+      redirect_to result_profiles_path, notice: 'Profile successfully created.'
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def result
