@@ -15,6 +15,49 @@
         <%= link_to 'Please Click HERE to Generate your First Plan', new_weekly_plan_path, class: 'generate-button' %>
       </div>
     <% end %>
+  <div class="tab-container" data-controller="dashboard">
+    <div class="tabs">
+      <div data-action="click->dashboard#switchTab" data-dashboard-target="tab" data-target-id="monday" class="tab active">Day One</div>
+      <div data-action="click->dashboard#switchTab" data-dashboard-target="tab" data-target-id="tuesday" class="tab">Day Two</div>
+      <div data-action="click->dashboard#switchTab" data-dashboard-target="tab" data-target-id="wednesday" class="tab">Day Three</div>
+      <div data-action="click->dashboard#switchTab" data-dashboard-target="tab" data-target-id="wednesday" class="tab">Day Four</div>
+      <div data-action="click->dashboard#switchTab" data-dashboard-target="tab" data-target-id="wednesday" class="tab">Day Five</div>
+      <div data-action="click->dashboard#switchTab" data-dashboard-target="tab" data-target-id="wednesday" class="tab">Day Six</div>
+      <div data-action="click->dashboard#switchTab" data-dashboard-target="tab" data-target-id="wednesday" class="tab">Day Seven</div>
+
+
+    </div>
+    <div class="content">
+      <div data-dashboard-target="day" data-day-id="monday" class="tab-content active">
+        <!-- Content for Tab 1 -->
+        Monday Content
+      </div>
+      <div data-dashboard-target="day" data-day-id="tuesday" class="tab-content">
+        <!-- Content for Tab 2 -->
+        Tuesday content
+      </div>
+      <div data-dashboard-target="day" data-day-id="wednesday" class="tab-content">
+        <!-- Content for Tab 3 -->
+        Wednesday content
+      </div>
+      <div data-dashboard-target="day" data-day-id="thursday" class="tab-content">
+        <!-- Content for Tab 3 -->
+        Thursday content
+      </div>
+      <div data-dashboard-target="day" data-day-id="friday" class="tab-content">
+        <!-- Content for Tab 3 -->
+        Friday content
+      </div>
+      <div data-dashboard-target="day" data-day-id="saturday" class="tab-content">
+        <!-- Content for Tab 3 -->
+        Saturday content
+      </div>
+      <div data-dashboard-target="day" data-day-id="sunday" class="tab-content">
+        <!-- Content for Tab 3 -->
+        Sunday content
+      </div>
+    </div>
+  </div>
 
     <!-- Exercise Plan Card -->
     <div class="card", class="secondary-font">
