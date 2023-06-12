@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_09_101700) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_12_093725) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,6 +66,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_101700) do
     t.index ["day_plan_id"], name: "index_exercise_plans_on_day_plan_id"
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.string "name"
+    t.string "surname"
+    t.integer "age"
+    t.integer "height"
+    t.integer "weight"
+    t.string "goal"
+    t.string "activity_level"
+    t.string "gender"
+    t.jsonb "bmi"
+    t.jsonb "ideal_weight"
+    t.jsonb "daily_calories"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -73,13 +91,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_101700) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name"
+    t.integer "age"
     t.integer "height"
     t.string "dietary_requirements", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "surname"
-    t.date "date_of_birth"
-    t.string "gender"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -94,11 +110,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_101700) do
   create_table "weekly_plans", force: :cascade do |t|
     t.string "fitness_goal"
     t.integer "current_weight"
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "weight_goal"
-    t.index ["user_id"], name: "index_weekly_plans_on_user_id"
+    t.bigint "profile_id"
+    t.index ["profile_id"], name: "index_weekly_plans_on_profile_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -106,5 +122,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_101700) do
   add_foreign_key "day_plans", "weekly_plans"
   add_foreign_key "diet_plans", "day_plans"
   add_foreign_key "exercise_plans", "day_plans"
-  add_foreign_key "weekly_plans", "users"
+  add_foreign_key "profiles", "users"
+  add_foreign_key "weekly_plans", "profiles"
 end
