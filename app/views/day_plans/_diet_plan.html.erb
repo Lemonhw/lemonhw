@@ -1,33 +1,60 @@
-<h2 style="color:black" class="align-self-start mb-5">Diet Plan</h2>
-<h4>Breakfast</h4>
-<h5><%= @meal["breakfast"]["title"] %></h5>
-<p>Diets: <%= @meal["breakfast"]["diets"] %></p>
-<p>Calories: <%= @meal["breakfast"]["nutrition"]["nutrients"][0]["amount"] %></p>
-<p>Carbohydrate: <%= @meal["breakfast"]["nutrition"]["nutrients"][3]["amount"] %></p>
-<p>Fat: <%= @meal["breakfast"]["nutrition"]["nutrients"][5]["amount"] %></p>
-<p>Sugar: <%= @meal["breakfast"]["nutrition"]["nutrients"][8]["amount"] %></p>
-<p>Time to prepare: <%= ["readyInMinutes"] %></p>
-<%= @meal["breakfast"]["instructions"].html_safe %>
-<%= @meal["breakfast"]%>
+<div class="dashboard-diet-plan">
+  <% meal = diet_plan.day_plan_content %>
+  <h2 style="color:black" class="align-self-start mb-5">Diet Plan</h2>
+  <h4>Breakfast</h4>
+  <%= image_tag meal["breakfast"]["image"] %>
+  <h5><%= meal["breakfast"]["title"] %></h5>
+  <p>Diets: <%= meal["breakfast"]["diets"] %></p>
+  <p>Calories: <%= meal["breakfast"]["nutrition"]["nutrients"][0]["amount"] %></p>
+  <p>Carbohydrate: <%= meal["breakfast"]["nutrition"]["nutrients"][3]["amount"] %></p>
+  <p>Fat: <%= meal["breakfast"]["nutrition"]["nutrients"][5]["amount"] %></p>
+  <p>Sugar: <%= meal["breakfast"]["nutrition"]["nutrients"][8]["amount"] %></p>
+  <p>Time to prepare: <%= ["readyInMinutes"] %></p>
+  <h5>Instructions</h5>
+  <%= meal["breakfast"]["instructions"].html_safe %>
+  <h5>Ingredients</h5>
+  <ul>
+  <% meal["breakfast"]["extendedIngredients"].each do |ingredient| %>
+    <li><%= ingredient["name"] %></li>
+  <% end %>
+  </ul>
 
-<h4>Lunch</h4>
-<h5><%= @meal["lunch"]["title"] %></h5>
-<p>Diets: <%= @meal["lunch"]["diets"] %></p>
-<p>Calories: <%= @meal["lunch"]["nutrition"]["nutrients"][0]["amount"] %></p>
-<p>Carbohydrate: <%= @meal["lunch"]["nutrition"]["nutrients"][3]["amount"] %></p>
-<p>Fat: <%= @meal["lunch"]["nutrition"]["nutrients"][5]["amount"] %></p>
-<p>Sugar: <%= @meal["lunch"]["nutrition"]["nutrients"][8]["amount"] %></p>
-<p>Time to prepare: <%= ["readyInMinutes"] %></p>
-<%= @meal["lunch"]["instructions"].html_safe %>
-<%= @meal["lunch"]%>
+  <hr>
 
-<h4>Dinner</h4>
-<h5><%= @meal["dinner"]["title"] %></h5>
-<p>Diets: <%= @meal["dinner"]["diets"] %></p>
-<p>Calories: <%= @meal["dinner"]["nutrition"]["nutrients"][0]["amount"] %></p>
-<p>Carbohydrate: <%= @meal["dinner"]["nutrition"]["nutrients"][3]["amount"] %></p>
-<p>Fat: <%= @meal["dinner"]["nutrition"]["nutrients"][5]["amount"] %></p>
-<p>Sugar: <%= @meal["dinner"]["nutrition"]["nutrients"][8]["amount"] %></p>
-<p>Time to prepare: <%= ["readyInMinutes"] %></p>
-<%= @meal["dinner"]["instructions"].html_safe %>
-<%= @meal["dinner"]%>
+  <h4>Lunch</h4>
+  <%= image_tag meal["lunch"]["image"] %>
+  <h5><%= meal["lunch"]["title"] %></h5>
+  <p>Diets: <%= meal["lunch"]["diets"] %></p>
+  <p>Calories: <%= meal["lunch"]["nutrition"]["nutrients"][0]["amount"] %></p>
+  <p>Carbohydrate: <%= meal["lunch"]["nutrition"]["nutrients"][3]["amount"] %></p>
+  <p>Fat: <%= meal["lunch"]["nutrition"]["nutrients"][5]["amount"] %></p>
+  <p>Sugar: <%= meal["lunch"]["nutrition"]["nutrients"][8]["amount"] %></p>
+  <p>Time to prepare: <%= ["readyInMinutes"] %></p>
+  <h5>Instructions</h5>
+  <%= meal["lunch"]["instructions"].html_safe %>
+
+  <h5>Ingredients</h5>
+  <% meal["lunch"]["extendedIngredients"].each do |ingredient| %>
+    <li><%= ingredient["name"] %></li>
+  <% end %>
+
+  <hr>
+
+  <h4>Dinner</h4>
+  <%= image_tag meal["dinner"]["image"] %>
+
+  <h5><%= meal["dinner"]["title"] %></h5>
+  <p>Diets: <%= meal["dinner"]["diets"] %></p>
+  <p>Calories: <%= meal["dinner"]["nutrition"]["nutrients"][0]["amount"] %></p>
+  <p>Carbohydrate: <%= meal["dinner"]["nutrition"]["nutrients"][3]["amount"] %></p>
+  <p>Fat: <%= meal["dinner"]["nutrition"]["nutrients"][5]["amount"] %></p>
+  <p>Sugar: <%= meal["dinner"]["nutrition"]["nutrients"][8]["amount"] %></p>
+  <p>Time to prepare: <%= ["readyInMinutes"] %></p>
+  <h5>Instructions</h5>
+  <%= meal["dinner"]["instructions"].html_safe %>
+  <h5>Ingredients</h5>
+  <% meal["dinner"]["extendedIngredients"].each do |ingredient| %>
+    <li><%= ingredient["name"] %></li>
+  <% end %>
+  <%#= meal["dinner"]%>
+</div>
