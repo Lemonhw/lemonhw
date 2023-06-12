@@ -10,6 +10,10 @@ class WeeklyPlansController < ApplicationController
     @weekly_plan = WeeklyPlan.find(params[:id])
     # Retrieve diet and exercise plans for the week
     @day_plans = @weekly_plan.day_plans.order(day_number: :asc)
+
+    if request.xhr?
+      render layout: false
+    end
   end
 
   def new

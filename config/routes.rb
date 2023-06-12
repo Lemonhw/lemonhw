@@ -18,6 +18,15 @@ Rails.application.routes.draw do
 
   get 'dashboard', to: 'dashboards#show', as: :dashboard
 
+  resources :dashboards, only: [] do
+    collection do
+      get :overview
+      get :exercise_plan
+      get :diet_plan
+    end
+  end
+
+
   resources :weekly_plans, only: [:new, :create, :show, :index] do
     resources :day_plans, only: [:show] do
       member do
