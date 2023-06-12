@@ -48,24 +48,26 @@ p "start seeding...."
     # )
   # end
 
-  # Video.create(
-  #   title: "Video 1",
-  #   url: "https://www.youtube.com/embed/VI3muCQbMyo"
-  # )
+  Video.destroy_all
 
-  # Video.create(
-  #   title: "Video 2",
-  #   url: "https://www.youtube.com/embed/S12mLBAECV0"
-  # )
-  # Video.create(
-  #   title: "Video 3",
-  #   url: "https://www.youtube.com/embed/eNEgR1fyros"
-  # )
+  Video.create(
+    title: "Video 1",
+    url: "https://www.youtube.com/embed/VI3muCQbMyo"
+  )
 
-  # Video.create(
-  #   title: "Video 4",
-  #   url: "https://www.youtube.com/embed/PZvwzobkCUM"
-  # )
+  Video.create(
+    title: "Video 2",
+    url: "https://www.youtube.com/embed/S12mLBAECV0"
+  )
+  Video.create(
+    title: "Video 3",
+    url: "https://www.youtube.com/embed/eNEgR1fyros"
+  )
+
+  Video.create(
+    title: "Video 4",
+    url: "https://www.youtube.com/embed/PZvwzobkCUM"
+  )
 # end
 
 p "seeding done!"
