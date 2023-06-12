@@ -1,17 +1,15 @@
 <div class="card mx-5 px-5 fs-5">
-  <p>We've estimated your current Basic Metabolic Rate as 2030 Kcal/day using the information provided</p>
-  <p>We will be recommending you an exercise regime of around 50 minutes, 5 days per week</p>
+  <p>We've estimated your current Basic Metabolic Rate as <%= @profile.daily_calories["BMR"]%>Kcal/day</p>
+  <%# <p>We will be recommending you an exercise regime of around 50 minutes, 5 days per week</p> %>
   <p>As you lose weight your BMR will increase</p>
 
-  <p>AI is generating your week's diet and exercise plans. This may take a few minutes as the AI analyzes your personal specifications and generates your personalised plans</p>
+  <%# <p>AI is generating your week's diet and exercise plans. This may take a few minutes as the AI analyzes your personal specifications and generates your personalised plans</p> %>
   <p><strong>Disclaimer:</strong> these are estimations we have caluclated based on the information you have supplied. Other factors may affect your BMR and it is recommended to seek the advice of a healthcare professional before following a diet and exercise regime.</p>
 
 
-  <p><%= @profile.bmi %></p>
-  <ul><% @profile.ideal_weight.each_pair do |equation, value| %></ul>
-    <li><%= equation %>: <%= value %></li>
-  <% end %>
-  <p>BMR: <%= @profile.daily_calories["BMR"]%></p>
-  <p>BMR: <%= @profile.daily_calories["goals"]["Weight loss"]["calory"]%></p>
+  <p>BMI: <%= @profile.bmi %></p>
+  <p>By getting the average of four different equations we've estimated your ideal weight as:   <%= @profile.ideal_weight.values.sum / 4 %></p>
+  <p>Ideal daily calorie intake : <%= @profile.daily_calories["goals"]["Weight loss"]["calory"]%></p>
+  <p>With this daily calorie intake a weight loss rate of 0.5kg/week is estimated</p>
   <%= link_to "Go to Dashboard", dashboard_path %>
 </div>

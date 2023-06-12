@@ -19,7 +19,7 @@ class ProfilesController < ApplicationController
     @profile.update(bmi: bmi, daily_calories: daily_calories, ideal_weight: ideal_weight)
     @profile.save
 
-    redirect_to redirect_path, notice: 'Profile successfully created.'
+    redirect_to result_profiles_path, notice: 'Profile successfully created.'
   end
 
   def result
