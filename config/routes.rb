@@ -10,9 +10,22 @@ Rails.application.routes.draw do
 
   resources :users, only: [:edit, :update]
 
+  resources :profiles, only: [:new, :create] do
+    get "result", to: "profiles#result", on: :collection
+  end
+
   resources :videos, only: [:index, :show]
 
   get 'dashboard', to: 'dashboards#show', as: :dashboard
+
+  resources :dashboards, only: [] do
+    collection do
+      get :overview
+      get :exercise_plan
+      get :diet_plan
+    end
+  end
+
 
   resources :weekly_plans, only: [:new, :create, :show, :index] do
     resources :day_plans, only: [:show] do

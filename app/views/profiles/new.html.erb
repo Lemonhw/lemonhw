@@ -1,53 +1,55 @@
 <div class="my-container signup">
   <h1 class="text-center">Full Registration</h1>
 
-  <%= form_for(@user, url: registration_path(@user)) do |f| %>
+  <%= form_for(@profile) do |f| %>
     <div class="device-form">
       <div class="form-inputs">
+
         <div class="form-field">
           <%= f.label :name, class: "full-width form-label-text" %>
           <%= f.text_field :name, required: true %>
         </div>
+
         <div class="form-field">
           <%= f.label :surname, class: "full-width form-label-text" %>
           <%= f.text_field :surname, required: true %>
         </div>
+
         <div class="form-field">
-          <%= f.label :date_of_birth, class: "full-width form-label-text" %>
-          <%= f.date_field :date_of_birth, required: true %>
+          <%= f.label :age, class: "full-width form-label-text" %>
+          <%= f.number_field :age, required: true %>
         </div>
+
         <div class="form-field">
           <%= f.label :height, class: "full-width form-label-text" %>
           <%= f.number_field :height, required: true %>
         </div>
-        <!-- weight field -->
+
         <div class="form-field">
           <%= f.label :weight, class: "full-width form-label-text" %>
           <%= f.number_field :weight, required: true %>
         </div>
-        <!-- goal field -->
+
         <div class="form-field">
           <%= f.label :goal, class: "full-width form-label-text" %>
-          <%= f.select :goal, ['Weight Loss', 'Muscle Gain', 'Healthy Routine', 'Olympics Ready'], {}, class: "full-width" %>
+          <%= f.select :goal, ['Weight Loss', 'Muscle Gain', 'Healthy Routine', 'Olympics Ready'], required: true %>
         </div>
-        <!-- activity level field -->
+
         <div class="form-field">
           <%= f.label :activity_level, class: "full-width form-label-text" %>
-          <%= f.select :activity_level, ['Sedentary', 'Lightly Active', 'Active', 'Very Active'], {}, class: "full-width" %>
+          <%= f.select :activity_level, options_for_select([["Sedentary: little or no exercise", 'level_1'], ["Exercise 1-3 times/week", 'level_2'], ["Exercise 4-5 times/week", 'level_3'], ["Daily exercise or intense exercise 3-4 times/week", 'level_4'], ["Intense exercise 6-7 times/week", 'level_5'], ["Very intense exercise daily, or physical job", 'level_6']]), required: true %>
         </div>
-        <!-- gender field updated to use a select dropdown -->
+
         <div class="form-field">
           <%= f.label :gender, class: "full-width form-label-text" %>
-          <%= f.select :gender, ['Woman/Girl', 'Man/Boy', 'Transwoman/Transgirl', 'Transman/Transboy', 'Non-binary/Genderqueer/Agender/Gender Fluid', 'Don\'t Know', 'Prefer Not To Say', 'Other'], {}, class: "full-width" %>
+          <%= f.select :gender, ['male', 'female'], required: true %>
         </div>
-        <div class="form-field">
-          <%= f.label :avatar, class: "full-width form-label-text" %>
-          <%= f.file_field :avatar, required: true %>
-        </div>
+
+
       </div>
 
       <div class="form-actions">
-        <%= f.submit "Go to Dashboard", class: "btn button-yellow" %>
+        <%= f.submit "Calculate my Personalized data", class: "btn button-yellow" %>
       </div>
     </div>
   <% end %>

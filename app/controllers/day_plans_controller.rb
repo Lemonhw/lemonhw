@@ -5,6 +5,10 @@ class DayPlansController < ApplicationController
     @diet_plan_content = @diet_plan.day_plan_content
     @exercise_plan = @day_plan.exercise_plan
     @exercise_plan_content = @exercise_plan.day_plan_content
+
+    if request.xhr?
+      render layout: false
+    end
   end
 
   def diet_plan

@@ -1,37 +1,26 @@
-<div class="my-container signup">
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
 
-  <h1 class="text-center">SIGN UP</h1>
+  <div class="form-inputs">
+    <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" } %>
+    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" } %>
+    <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
 
-  <p class="text-center">Sign up to begin the journey to a better you</p>
-
-  <div class="device-form">
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
-      <%= f.error_notification %>
-
-      <div class="form-inputs">
-        <%= f.input :email,
-                    required: true,
-                    autofocus: true,
-                    input_html: { autocomplete: "email", class: "full-width form-label-text" } %>
-        <%= f.input :password,
-                    required: true,
-                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                    input_html: { autocomplete: "new-password" },
-                    class: "full-width form-label-text" %>
-        <%= f.input :password_confirmation,
-                    required: true,
-                    input_html: { autocomplete: "new-password" },
-                    class: "full-width form-label-text" %>
-      </div>
-
-      <div class="form-actions">
-        <%= f.button :submit, "Sign up", class: 'button-yellow' %>
-      </div>
+    <%= f.simple_fields_for :profile do |profile| %>
+      <%= profile.input :name %>
+      <%= profile.input :surname %>
+      <%= profile.input :age %>
+      <%= profile.input :height %>
+      <%= profile.input :weight %>
+      <%= profile.input :goal %>
+      <%= profile.input :activity_level %>
+      <%= profile.input :gender %>
     <% end %>
   </div>
 
-  <%# <div class="text-center">
-    <%= link_to "Log in", new_user_session_path %>
-  <%# </div> %>
+  <div class="form-actions">
+    <%= f.button :submit, "Sign up" %>
+  </div>
+<% end %>
 
-</div>
+<%= render "devise/shared/links" %>

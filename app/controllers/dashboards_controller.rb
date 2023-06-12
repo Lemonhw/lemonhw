@@ -1,11 +1,32 @@
 class DashboardsController < ApplicationController
+  before_action :authenticate_user!
+
+  def overview
+    @weekly_plans = current_user.weekly_plans.order(created_at: :desc)
+  end
+
   def show
+    @profile = current_user.profile
+    @weekly_plans = @profile.weekly_plans.order(created_at: :desc)
+
+    if @weekly_plans.any?
+      @weekly_plan = @weekly_plans.first
+    end
+  end
+
+  def exercise_plan
     @weekly_plans = current_user.weekly_plans.order(created_at: :desc)
     if @weekly_plans.any?
-      first_weekly_plan = @weekly_plans.first
-      @first_day_exercise_plan = first_weekly_plan.day_plans.first&.exercise_plan
-      @first_day_diet_plan = first_weekly_plan.day_plans.first&.diet_plan
-      @video = Video.find_by(title: "Half An Hour Weight Loss - 30 Min Home Workout To Burn Fat")
+      @weekly_plan = @weekly_plans.first
+      @day_plans = @weekly_plan.day_plans.order(created_at: :asc)
+    end
+  end
+
+  def diet_plan
+    @weekly_plans = current_user.weekly_plans.order(created_at: :desc)
+    if @weekly_plans.any?
+      @weekly_plan = @weekly_plans.first
+      @day_plans = @weekly_plan.day_plans.order(created_at: :asc)
     end
   end
 end
