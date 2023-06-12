@@ -1,41 +1,15 @@
 <div class="tab-container" data-controller="dashboard">
-    <div class="tabs">
-      <div data-action="click->dashboard#switchTab" data-dashboard-target="tab" data-target-id="day1" class="tab active">Day One</div>
-      <div data-action="click->dashboard#switchTab" data-dashboard-target="tab" data-target-id="day2" class="tab">Day Two</div>
-      <div data-action="click->dashboard#switchTab" data-dashboard-target="tab" data-target-id="day3" class="tab">Day Three</div>
-      <div data-action="click->dashboard#switchTab" data-dashboard-target="tab" data-target-id="day4" class="tab">Day Four</div>
-      <div data-action="click->dashboard#switchTab" data-dashboard-target="tab" data-target-id="day5" class="tab">Day Five</div>
-      <div data-action="click->dashboard#switchTab" data-dashboard-target="tab" data-target-id="day6" class="tab">Day Six</div>
-      <div data-action="click->dashboard#switchTab" data-dashboard-target="tab" data-target-id="day7" class="tab">Day Seven</div>
-    </div>
-    <div class="content">
-      <div data-dashboard-target="day" data-day-id="day1" class="tab-content active">
-        <!-- Content for Tab 1 -->
-        Monday Content
-      </div>
-      <div data-dashboard-target="day" data-day-id="day2" class="tab-content">
-        <!-- Content for Tab 2 -->
-        Tuesday content
-      </div>
-      <div data-dashboard-target="day" data-day-id="day3" class="tab-content">
-        <!-- Content for Tab 3 -->
-        Wednesday content
-      </div>
-      <div data-dashboard-target="day" data-day-id="day4" class="tab-content">
-        <!-- Content for Tab 3 -->
-        Thursday content
-      </div>
-      <div data-dashboard-target="day" data-day-id="day5" class="tab-content">
-        <!-- Content for Tab 3 -->
-        Friday content
-      </div>
-      <div data-dashboard-target="day" data-day-id="day6" class="tab-content">
-        <!-- Content for Tab 3 -->
-        Saturday content
-      </div>
-      <div data-dashboard-target="day" data-day-id="day7" class="tab-content">
-        <!-- Content for Tab 3 -->
-        Sunday content
-      </div>
-    </div>
+  <div class="tabs">
+    <% day_plans.each_with_index do |day_plan, i| %>
+      <div data-action="click->dashboard#switchTab" data-dashboard-target="tab" data-target-id="<%= day_plan.id %>" class="tab <%= "active" if i == 0 %>">Day <%= i + 1 %></div>
+    <% end %>
   </div>
+  <div class="content">
+    <% day_plans.each_with_index do |day_plan, i| %>
+      <div data-dashboard-target="day" data-day-id="<%= day_plan.id %>" class="tab-content <%= "active" if i == 0 %>">
+        <!-- Content for Tab 1 -->
+        Day plan for day <%= i + 1 %>
+      </div>
+    <% end %>
+  </div>
+</div>
