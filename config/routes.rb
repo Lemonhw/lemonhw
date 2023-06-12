@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:edit, :update]
 
+  resources :profiles, only: [:new, :create]
+
   resources :videos, only: [:index, :show]
 
   get 'dashboard', to: 'dashboards#show', as: :dashboard

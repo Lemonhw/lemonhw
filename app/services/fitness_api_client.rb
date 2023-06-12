@@ -1,17 +1,18 @@
 class FitnessApiClient
 
-  def initialize
+  def initialize(profile)
     @base_url = 'https://fitness-calculator.p.rapidapi.com'
-    # @height = current_user.height.to_s
-    # @weight = current_user.weight.to_s
-    # @age = User.age.to_s
-    # @activity_level = current_user.activity_level
-    # @gender = current_user.gender
-    @height = "180"
-    @weight = "90"
-    @age = "29"
-    @activity_level = "level_2"
-    @gender = "male"
+    @height = profile.height.to_s
+    @weight = profile.weight.to_s
+    @age = profile.age.to_s
+    @activity_level = profile.activity_level
+    @gender = profile.gender
+    @age = profile.age
+    # @height = "180"
+    # @weight = "90"
+    # @age = "29"
+    # @activity_level = "level_2"
+    # @gender = "male"
   end
 
   def calc_bmi
@@ -44,8 +45,3 @@ class FitnessApiClient
     response["data"]
   end
 end
-
-client = FitnessApiClient.new
-client.calc_bmi
-client.calc_daily_calories
-client.calc_ideal_weight
