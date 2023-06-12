@@ -9,6 +9,7 @@
       <div data-dashboard-target="day" data-day-id="<%= day_plan.id %>" class="tab-content <%= "active" if i == 0 %>">
         <!-- Content for Tab 1 -->
         Day plan for day <%= i + 1 %>
+          <%= render 'diet_plan', diet_plan: @diet_plan, diet_plan_content: @diet_plan_content %>
       </div>
     <% end %>
   </div>
