@@ -1,33 +1,10 @@
 <h2 style="color:black" class="align-self-start mb-5">Diet Plan</h2>
 <h4>Breakfast</h4>
-  <ul>
-    <% @diet_plan_content["breakfast"].each_pair do |key, value| %>
-      <% if key != "total_calories" %>
-        <li><%= key.split("_").join(" ") %>   (<strong><em><%= value %>kcal</em></strong>)</li>
-      <% end %>
-    <% end %>
-  </ul>
+<h5><%= @diet_plan.day_plan_content["breakfast"]["title"] %></h5>
+<p>Diets: <%= @diet_plan.day_plan_content["breakfast"]["diets"] %></p>
+<p>Calories: <%= @diet_plan.day_plan_content["breakfast"]["nutrition"]["calories"] %></p>
+<%= @diet_plan.day_plan_content["breakfast"]%>
 <h4>Lunch</h4>
-  <ul>
-    <% @diet_plan_content["lunch"].each_pair do |key, value| %>
-      <% if key != "total_calories" %>
-        <li><%= key.split("_").join(" ") %>   (<strong><em><%= value %>kcal</em></strong>)</li>
-      <% end %>
-    <% end %>
-  </ul>
+<%= @diet_plan.day_plan_content["lunch"]%>
 <h4>Dinner</h4>
-    <ul>
-    <% @diet_plan_content["dinner"].each_pair do |key, value| %>
-      <% if key != "total_calories" %>
-        <li><%= key.split("_").join(" ") %>   (<strong><em><%= value %>kcal</em></strong>)</li>
-      <% end %>
-    <% end %>
-  </ul>
-<h4>Snack</h4>
-    <ul>
-    <% @diet_plan_content["dinner"].each_pair do |key, value| %>
-      <% if key != "total_calories" %>
-        <li><%= key.split("_").join(" ") %>   (<strong><em><%= value %>kcal</em></strong>)</li>
-      <% end %>
-    <% end %>
-  </ul>
+<%= @diet_plan.day_plan_content["dinner"]%>

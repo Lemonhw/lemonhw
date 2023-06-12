@@ -1,6 +1,4 @@
 class WeeklyPlansController < ApplicationController
-  before_action :take_params, only: [:create]
-
   def index
     @profile = current_user.profile
     @weekly_plans = @profile.weekly_plans.order(created_at: :asc)
@@ -34,8 +32,8 @@ class WeeklyPlansController < ApplicationController
       day_plan = DayPlan.create(day_number: index + 1, weekly_plan: @weekly_plan)
 
       breakfast = diet_client.fetch_meal(JSON.parse(daily_diet_plan[0]["value"])["id"])
-      lunch = diet_client.fetch_meal(JSON.parse(daily_diet_plan[0]["value"])["id"])
-      dinner = diet_client.fetch_meal(JSON.parse(daily_diet_plan[0]["value"])["id"])
+      lunch = diet_client.fetch_meal(JSON.parse(daily_diet_plan[1]["value"])["id"])
+      dinner = diet_client.fetch_meal(JSON.parse(daily_diet_plan[2]["value"])["id"])
 
       DietPlan.create(
         day_plan_content: {
