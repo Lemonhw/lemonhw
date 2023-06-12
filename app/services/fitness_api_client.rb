@@ -29,7 +29,6 @@ class FitnessApiClient
   def calc_ideal_weight
     url = URI("https://fitness-calculator.p.rapidapi.com/idealweight?gender=#{@gender}&height=#{@height}")
     result = make_request(url)
-    binding.break
     return result
   end
 

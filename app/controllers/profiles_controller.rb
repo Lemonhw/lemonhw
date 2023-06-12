@@ -23,7 +23,7 @@ class ProfilesController < ApplicationController
     @profile.ideal_weight = ideal_weight
 
     if @profile.save
-      redirect_to redirect_path, notice: 'Profile successfully created.'
+      redirect_to result_profiles_path, notice: 'Profile successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
