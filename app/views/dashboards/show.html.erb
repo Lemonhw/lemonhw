@@ -1,48 +1,13 @@
 <div class="dashboard-container">
 
   <!-- Sidebar -->
-  <div class="sidebar">
+  <div class="sidebar" id="sidebar">
     <%= render 'shared/sidebar' %>
   </div>
 
-
-
   <!-- Main Content -->
-  <div class="main-content">
-  <h1 class="primary-font">Welcome, <%= current_user.name %></h1>
-    <% if current_user.weekly_plans.none? %>
-      <div class="generate-button">
-        <%= link_to 'Please Click HERE to Generate your First Plan', new_weekly_plan_path, class: 'generate-button' %>
-      </div>
-    <% end %>
-
-    <!-- Exercise Plan Card -->
-    <div class="card", class="secondary-font">
-      <% if @first_day_exercise_plan %>
-        <h3 class="secondary-font">Exercise Plan - Day 1:</h3>
-        <hr>
-        <% @first_day_exercise_plan.day_plan_content.each do |key, exercise| %>
-          <p><strong><%= key %>:</strong> <%= exercise %></p>
-        <% end %>
-      <% else %>
-        <p>No exercise plan available for the first day.</p>
-      <% end %>
-    </div>
-
-    <!-- Diet Plan Card -->
-    <div class="card", class="secondary-font">
-      <% if @first_day_diet_plan %>
-        <h3 class="secondary-font">Diet Plan - Day 1:</h3>
-        <hr>
-        <% @first_day_diet_plan.day_plan_content.each do |meal, food_items| %>
-          <p><strong><%= meal %>:</strong> <%= food_items %></p>
-        <% end %>
-      <% else %>
-        <p>No diet plan available for the first day.</p>
-      <% end %>
-    </div>
-
-    <!-- Generate First Plan Button -->
-
+  <div class="main-content" id="content">
+    <%= render 'dashboards/show_content' %>
   </div>
+
 </div>

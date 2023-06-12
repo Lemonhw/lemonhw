@@ -1,0 +1,28 @@
+<div class="main-content">
+  <h1 class="primary-font">Welcome, <%= current_user.name %></h1>
+  <% if current_user.weekly_plans.none? %>
+    <div class="generate-button">
+      <%= link_to 'Please Click HERE to Generate your First Plan', new_weekly_plan_path, class: 'generate-button' %>
+    </div>
+  <% end %>
+
+  <!-- Exercise Plan Card -->
+  <div class="card secondary-font">
+    <% if @day_plans.present? && @day_plans.first&.exercise_plan %>
+      <h3 class="secondary-font">Exercise Plan</h3>
+      <%= render 'day_tabs', day_plans: @day_plans, weekly_plan: @weekly_plan, plan_type: :exercise_plan %>
+    <% else %>
+      <p>No exercise plans available.</p>
+    <% end %>
+  </div>
+
+  <!-- Diet Plan Card -->
+  <div class="card secondary-font">
+    <% if @day_plans.present? && @day_plans.first&.diet_plan %>
+      <h3 class="secondary-font">Diet Plan</h3>
+      <%= render 'day_tabs', day_plans: @day_plans, weekly_plan: @weekly_plan, plan_type: :diet_plan %>
+    <% else %>
+      <p>No diet plans available.</p>
+    <% end %>
+  </div>
+</div>

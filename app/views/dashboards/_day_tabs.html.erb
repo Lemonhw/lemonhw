@@ -1,0 +1,21 @@
+<ul class="tabs">
+  <% day_plans.each do |day_plan| %>
+    <li>
+      <% if plan_type == :exercise_plan %>
+        <a href="#"
+           data-controller="tabs"
+           data-tabs-url="<%= exercise_plan_weekly_plan_day_plan_path(weekly_plan, day_plan) %>"
+           data-action="click->tabs#loadContent"
+           class="btn btn-primary">Day <%= day_plan.day_number %>
+        </a>
+      <% elsif plan_type == :diet_plan %>
+        <a href="#"
+           data-controller="tabs"
+           data-tabs-url="<%= diet_plan_weekly_plan_day_plan_path(weekly_plan, day_plan) %>"
+           data-action="click->tabs#loadContent"
+           class="btn btn-primary">Day <%= day_plan.day_number %>
+        </a>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

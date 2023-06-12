@@ -1,9 +1,44 @@
 <aside class="sidebar">
   <ul>
-    <li><%= link_to 'Home', root_path, class: 'btn btn-primary' %></li>
-    <li><%= link_to 'Profile details', edit_user_path(current_user), class: 'btn btn-primary' %></li>
-    <li><%= link_to 'Weekly Plans', weekly_plans_path, class: 'btn btn-primary' %></li>
-    <li><%= link_to 'Videos', videos_path, class: 'btn btn-primary' %></li>
-    <!-- Add more sidebar links or content as needed -->
+    <li>
+      <a href="#"
+         data-controller="sidebar"
+         data-sidebar-url="<%= overview_dashboards_path(current_user) %>"
+         data-action="click->sidebar#loadContent"
+         class="btn btn-primary">Overview
+      </a>
+    </li>
+    <li>
+      <a href="#"
+         data-controller="sidebar"
+         data-sidebar-url="<%= exercise_plan_dashboards_path(current_user) %>"
+         data-action="click->sidebar#loadContent"
+         class="btn btn-primary">Exercise Plans
+      </a>
+    </li>
+    <li>
+      <a href="#"
+         data-controller="sidebar"
+         data-sidebar-url="<%= diet_plan_dashboards_path(current_user) %>"
+         data-action="click->sidebar#loadContent"
+         class="btn btn-primary">Diet Plans
+      </a>
+    </li>
+    <li>
+      <a href="#"
+         data-controller="sidebar"
+         data-sidebar-url="<%= videos_path(current_user) %>"
+         data-action="click->sidebar#loadContent"
+         class="btn btn-primary">Videos
+      </a>
+    </li>
+    <li>
+      <a href="#"
+         data-controller="sidebar"
+         data-sidebar-url="<%= overview_dashboards_path(current_user) %>"
+         data-action="click->sidebar#loadContent"
+         class="btn btn-primary">Progress
+      </a>
+    </li>
   </ul>
 </aside>
