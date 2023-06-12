@@ -22,6 +22,10 @@ class ProfilesController < ApplicationController
     redirect_to redirect_path, notice: 'Profile successfully created.'
   end
 
+  def result
+    @profile = current_user.profile
+  end
+
   private
 
   def profile_params

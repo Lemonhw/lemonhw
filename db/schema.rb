@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_11_173240) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_12_093725) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,9 +75,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_11_173240) do
     t.string "goal"
     t.string "activity_level"
     t.string "gender"
-    t.string "bmi"
-    t.string "ideal_weight"
-    t.string "daily_calories"
+    t.jsonb "bmi"
+    t.jsonb "ideal_weight"
+    t.jsonb "daily_calories"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -110,11 +110,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_11_173240) do
   create_table "weekly_plans", force: :cascade do |t|
     t.string "fitness_goal"
     t.integer "current_weight"
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "weight_goal"
-    t.index ["user_id"], name: "index_weekly_plans_on_user_id"
+    t.bigint "profile_id"
+    t.index ["profile_id"], name: "index_weekly_plans_on_profile_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -123,5 +123,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_11_173240) do
   add_foreign_key "diet_plans", "day_plans"
   add_foreign_key "exercise_plans", "day_plans"
   add_foreign_key "profiles", "users"
-  add_foreign_key "weekly_plans", "users"
+  add_foreign_key "weekly_plans", "profiles"
 end

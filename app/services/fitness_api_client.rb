@@ -17,7 +17,8 @@ class FitnessApiClient
 
   def calc_bmi
     url = URI("#{@base_url}/bmi?age=#{@age}&weight=#{@weight}&height=#{@height}")
-    return make_request(url)
+    puts "CALC BMI URL: #{url}"
+    return make_request(url)["bmi"]
   end
 
   def calc_daily_calories
@@ -27,7 +28,9 @@ class FitnessApiClient
 
   def calc_ideal_weight
     url = URI("https://fitness-calculator.p.rapidapi.com/idealweight?gender=#{@gender}&height=#{@height}")
-    return make_request(url)
+    result = make_request(url)
+    binding.break
+    return result
   end
 
   private
@@ -42,6 +45,6 @@ class FitnessApiClient
 
     response = http.request(request)
     puts response.read_body
-    response["data"]
+    JSON.parse(response.read_body)["data"]
   end
 end

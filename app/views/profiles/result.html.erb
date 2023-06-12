@@ -8,7 +8,10 @@
 
 
   <p><%= @profile.bmi %></p>
-  <p><%= @profile.ideal_weight %></p>
-  <p><%= @profile.daily_calories %></p>
+  <ul><% @profile.ideal_weight.each_pair do |equation, value| %></ul>
+    <li><%= equation %>: <%= value %></li>
+  <% end %>
+  <p>BMR: <%= @profile.daily_calories["BMR"]%></p>
+  <p>BMR: <%= @profile.daily_calories["goals"]["Weight loss"]["calory"]%></p>
   <%= link_to "Go to Dashboard", dashboard_path %>
 </div>

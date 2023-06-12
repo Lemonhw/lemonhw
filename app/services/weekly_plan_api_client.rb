@@ -1,10 +1,10 @@
 class WeeklyPlanApiClient
-  def initialize
-    @calories = current_user.profile.daily_calories
+  def initialize(profile)
+    @calories = profile.daily_calories["goals"]["Weight loss"]["calory"]
   end
 
   def fetch_weekly_plan
-    url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/mealplans/generate?timeFrame=week&targetCalories=#{daily_calories}&diet=vegetarian&exclude=shellfish%2C%20olives")
+    url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/mealplans/generate?timeFrame=week&targetCalories=#{@calories}&diet=vegetarian&exclude=shellfish%2C%20olives")
 
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
@@ -14,13 +14,25 @@ class WeeklyPlanApiClient
     request["X-RapidAPI-Host"] = 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
 
     response = http.request(request)
-    puts response.read_body
+    # binding.break
+    items = JSON.parse(response.read_body)["items"]
+    items.group_by { |item| item["day"] }
   end
 
-  def fetch_recipe
+  def fetch_meal(id)
+    url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/#{id}/information?includeNutrition=true")
 
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+
+    request = Net::HTTP::Get.new(url)
+    request["X-RapidAPI-Key"] = 'bbe3ae6043msh65faa6d70c21d77p153ce9jsne9638654940e'
+    request["X-RapidAPI-Host"] = 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+
+    response = http.request(request)
+    JSON.parse(response.read_body)
   end
 end
 
-client = WeeklyPlanApiClient.new
+# client = WeeklyPlanApiClient.new(Profile.first)
 # client.fetch_weekly_plan

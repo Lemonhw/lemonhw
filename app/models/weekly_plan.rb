@@ -1,5 +1,5 @@
 class WeeklyPlan < ApplicationRecord
-  belongs_to :user
+  belongs_to :profile
   has_many :day_plans
 
   def next_plan
