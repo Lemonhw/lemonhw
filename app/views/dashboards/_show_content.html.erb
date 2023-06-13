@@ -37,10 +37,26 @@
   <p><strong>Disclaimer:</strong> these are estimations we have caluclated based on the information you have supplied. Other factors may affect your BMR and it is recommended to seek the advice of a healthcare professional before following a diet and exercise regime.</p>
 
   <p>BMI: <%= @profile.bmi %></p>
-  <%= column_chart({ 'underweight (<)' => 18.5, 'overweight (>)' => 25, 'your BMI' => @profile.bmi }, colors: ["#b00", "#666"])%>
+
+
+  <div class="bmi-position-wrapper">
+
+    <div class="bmi-position" style="left: <%= @profile.bmi / 50 * 100 %>%;">
+      <i class="fa-solid fa-arrow-down"></i>
+    </div>
+  </div>
+
+  <div class="progress">
+    <div class="progress-bar bg-success" role="progressbar" style="width:36%;">Healthy (<18)</div>
+    <div class="progress-bar bg-warning" role="progressbar" style="width:24%;">Warning (25-30)</div>
+    <div class="progress-bar bg-danger" role="progressbar" style="width:40%;">Danger (>39)</div>
+  </div>
+
+
+  <%= column_chart({ 'underweight (<)' => 18.5, 'overweight (>)' => 25, 'your BMI' => @profile.bmi }, colors: ["blue","red", "red"])%>
   <p>By getting the average of four different equations we've estimated your ideal weight as:   <%= @profile.ideal_weight.values.sum / 4 %></p>
-  <%= bar_chart({ 'daily calory intake 3 workouts a week' => 2200, 'daily calory intake 1 workout a week' => 1800, 'daily calory intake no workouts' => 1500  }) %>
+  <%= bar_chart({ 'daily calory intake 3 workouts a week' => 2200, 'daily calory intake 1 workout a week' => 1800, 'daily calory intake no workouts' => 1500  }, colors: ["red","grey", "blue"]) %>
   <p>Ideal daily calorie intake : <%= @profile.daily_calories["goals"]["Weight loss"]["calory"]%></p>
   <p>With this daily calorie intake a weight loss rate of 0.5kg/week is estimated</p>
-  <%= column_chart({'weight loss rate in no workouts' => 1500, 'weight loss rate in 1 workout a week' => 1800, 'weight loss rate in 3 workouts a week' => 2200 })%>
+  <%= column_chart({'weight loss rate in no workouts' => 1500, 'weight loss rate in 1 workout a week' => 1800, 'weight loss rate in 3 workouts a week' => 2200 }, colors: ["red","grey", "blue"])%>
 </div>
