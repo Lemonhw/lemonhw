@@ -19,6 +19,14 @@ class WeeklyPlansController < ApplicationController
   end
 
   def create
+
+    muscles = {
+      "1" => ["chest", "triceps", "traps"],
+      "3" => ["hamstrings", "quadriceps", "quadriceps"],
+      "4" => ["lats", "biceps", "lower_back"],
+      "6" => ["abdominals", "calves", "abdominals"]
+    }
+
     @profile = Profile.last
 
     @weekly_plan = WeeklyPlan.create(profile: @profile)
@@ -28,8 +36,8 @@ class WeeklyPlansController < ApplicationController
     daily_diet_plans = diet_client.fetch_weekly_plan.values
 
 
-    daily_diet_plans.each_with_index do |daily_diet_plan, index|
-      day_plan = DayPlan.create(day_number: index + 1, weekly_plan: @weekly_plan)
+    daily_diet_plans.each.with_index(1) do |daily_diet_plan, index|
+      day_plan = DayPlan.create(day_number: index, weekly_plan: @weekly_plan)
 
       breakfast = diet_client.fetch_meal(JSON.parse(daily_diet_plan[0]["value"])["id"])
       lunch = diet_client.fetch_meal(JSON.parse(daily_diet_plan[1]["value"])["id"])
@@ -45,12 +53,8 @@ class WeeklyPlansController < ApplicationController
       )
 
       difficulty = @profile.workout_difficulty.downcase
-      muscles = {
-        "1" => ["chest", "triceps", "traps"],
-        "3" => ["hamstrings", "quadriceps", "quadriceps"],
-        "4" => ["lats", "biceps", "lower_back"],
-        "6" => ["abdominals", "calves", "abdominals"]
-      }
+
+      muscles_index = index.to_s
 
       if day_plan.day_number == 2 || day_plan.day_number == 5 || day_plan.day_number == 7
         ExercisePlan.create(
@@ -58,19 +62,18 @@ class WeeklyPlansController < ApplicationController
           day_plan: day_plan
         )
       else
-        exercise1 = Exercise.where(difficulty: difficulty, muscle: muscles[index.to_s][0]).to_a.sample
-        exercise2 = Exercise.where(difficulty: difficulty, muscle: muscles[index.to_s][1]).to_a.sample
-        exercise3 = Exercise.where(difficulty: difficulty, muscle: muscles[index.to_s][2]).to_a.sample
-        exercise4 = Exercise.where(difficulty: difficulty, muscle: muscles[index.to_s][0]).to_a.sample
-        exercise5 = Exercise.where(difficulty: difficulty, muscle: muscles[index.to_s][1]).to_a.sample
+        exercise1 = Exercise.where(difficulty: difficulty, muscle: muscles[muscles_index][0]).to_a.sample
+        exercise2 = Exercise.where(difficulty: difficulty, muscle: muscles[muscles_index][1]).to_a.sample
+        exercise3 = Exercise.where(difficulty: difficulty, muscle: muscles[muscles_index][2]).to_a.sample
+        exercise4 = Exercise.where(difficulty: difficulty, muscle: muscles[muscles_index][0]).to_a.sample
+        exercise5 = Exercise.where(difficulty: difficulty, muscle: muscles[muscles_index][1]).to_a.sample
         ExercisePlan.create(
           day_plan_content: {
             exercise1: exercise1,
             exercise2: exercise2,
             exercise3: exercise3,
             exercise4: exercise4,
-            exercise5: exercise5,
-            exercise6: exercise5
+            exercise5: exercise5
           },
           day_plan: day_plan
         )
