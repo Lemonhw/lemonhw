@@ -1,41 +1,26 @@
   <!-- MAIN CONTENT -->
-<%# <div class="main-content">
+<div class="main-content">
   <h1 class="primary-font">Welcome, <%= current_user.profile.name %></h1>
-  <%# <% if @profile.weekly_plans.none? %> %>
-    <%# <div class="generate-button"> %>
-      <%# <%= button_to 'Please Click HERE to Generate your First Plan', weekly_plans_path, method: :post, class: 'generate-button' %> %>
-    <%# </div> %>
-  <%# <% end %> %>
-
-  <!-- Exercise Plan Card -->
-  <%# <div class="card secondary-font"> %>
-    <%# <% if @day_plans.present? && @day_plans.first&.exercise_plan %> %>
-      <%# <h3 class="secondary-font">Exercise Plan</h3> %>
-      <%# <%= render 'day_tabs', day_plans: @day_plans, weekly_plan: @weekly_plan, plan_type: :exercise_plan %> %>
-    <%# <% else %> %>
-      <%# <p>No exercise plans available.</p> %>
-    <%# <% end %> %>
-  <%# </div> %>
-
-  <!-- Diet Plan Card -->
-  <%# <div class="card secondary-font"> %>
-    <%# <% if @day_plans.present? && @day_plans.first&.diet_plan %> %>
-      <%# <h3 class="secondary-font">Diet Plan</h3> %>
-      <%# <%= render 'day_tabs', day_plans: @day_plans, weekly_plan: @weekly_plan, plan_type: :diet_plan %> %>
-    <%# <% else %> %>
-      <%# <p>No diet plans available.</p> %>
-    <%# <% end %> %>
-  <%# </div> %>
-<%# </div> %> %>
+  <% if @profile.weekly_plans.none? %>
+    <div class="generate-button">
+      <%= button_to 'Please Click HERE to Generate your Diet & Exercise Plans', weekly_plans_path, method: :post, class: 'generate-button' %>
+    </div>
+  <%end %>
+</div>
 
 <!-- Results Profile -->
 <div class="card mx-5 px-5 fs-5">
+  <hr>
   <p>We've estimated your current Basic Metabolic Rate as <%= @profile.daily_calories["BMR"]%>Kcal/day</p>
+  <hr>
   <%# <p>We will be recommending you an exercise regime of around 50 minutes, 5 days per week</p> %>
   <p>As you lose weight your BMR will increase</p>
+
+  <hr>
   <%# <p>AI is generating your week's diet and exercise plans. This may take a few minutes as the AI analyzes your personal specifications and generates your personalised plans</p> %>
   <p><strong>Disclaimer:</strong> these are estimations we have caluclated based on the information you have supplied. Other factors may affect your BMR and it is recommended to seek the advice of a healthcare professional before following a diet and exercise regime.</p>
 
+  <hr>
   <p>BMI: <%= @profile.bmi %></p>
 
 
@@ -57,6 +42,8 @@
   <p>By getting the average of four different equations we've estimated your ideal weight as:   <%= @profile.ideal_weight.values.sum / 4 %></p>
   <%= bar_chart({ 'daily calory intake 3 workouts a week' => 2200, 'daily calory intake 1 workout a week' => 1800, 'daily calory intake no workouts' => 1500  }, colors: ["red","grey", "blue"]) %>
   <p>Ideal daily calorie intake : <%= @profile.daily_calories["goals"]["Weight loss"]["calory"]%></p>
+
+  <hr>
   <p>With this daily calorie intake a weight loss rate of 0.5kg/week is estimated</p>
   <%= column_chart({'weight loss rate in no workouts' => 1500, 'weight loss rate in 1 workout a week' => 1800, 'weight loss rate in 3 workouts a week' => 2200 }, colors: ["red","grey", "blue"])%>
 </div>

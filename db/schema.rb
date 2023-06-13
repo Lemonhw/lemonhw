@@ -66,6 +66,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_13_135124) do
     t.index ["day_plan_id"], name: "index_exercise_plans_on_day_plan_id"
   end
 
+  create_table "exercises", force: :cascade do |t|
+    t.string "name"
+    t.string "exercise_type"
+    t.string "muscle"
+    t.string "difficulty"
+    t.text "instructions"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string "name"
     t.string "surname"

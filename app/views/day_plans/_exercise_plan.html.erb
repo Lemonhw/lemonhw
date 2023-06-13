@@ -1,6 +1,5 @@
 <h2 style="color:black" class="align-self-start mb-5">Exercise Plan</h2>
-  <ul>
-    <% @exercise_plan_content.each_pair do |key, value| %>
-      <li><strong><%= key.split("_").join(" ") %></strong> : <%= value %></li>
-    <% end %>
-  </ul>
+ <% exercise_plan.day_plan_content.each.with_index(1) do |exercise, index| %>
+    <h4><% exercise["name"] %></h4>
+    <p><% exercise["instructions"] %></p>
+<% end %>
