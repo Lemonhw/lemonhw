@@ -34,4 +34,12 @@ class DashboardsController < ApplicationController
       @day_plans = @weekly_plan.day_plans.order(created_at: :asc)
     end
   end
+
+  def videos
+    @videos = Video.all
+  end
+
+  def video
+    @video = Video.find(params[:id])
+  end
 end

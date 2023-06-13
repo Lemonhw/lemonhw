@@ -1,33 +1,33 @@
 <div class="my-container signup">
-  <h1 class="text-center">Full Registration</h1>
 
   <%= form_for(@profile) do |f| %>
     <div class="device-form">
+      <h1 class="text-center">FULL REGISTRATION</h1>
       <div class="form-inputs">
 
         <div class="form-field">
           <%= f.label :name, class: "full-width form-label-text" %>
-          <%= f.text_field :name, required: true %>
+          <%= f.text_field :name, required: true, placeholder: "John" %>
         </div>
 
         <div class="form-field">
           <%= f.label :surname, class: "full-width form-label-text" %>
-          <%= f.text_field :surname, required: true %>
+          <%= f.text_field :surname, required: true, placeholder: "Smith" %>
         </div>
 
         <div class="form-field">
           <%= f.label :age, class: "full-width form-label-text" %>
-          <%= f.number_field :age, required: true %>
+          <%= f.number_field :age, required: true, placeholder: "30" %>
         </div>
 
         <div class="form-field">
-          <%= f.label :height, class: "full-width form-label-text" %>
-          <%= f.number_field :height, required: true %>
+          <%= f.label :height, "Height (cm)", class: "full-width form-label-text" %>
+          <%= f.number_field :height, required: true, placeholder: "180" %>
         </div>
 
         <div class="form-field">
-          <%= f.label :weight, class: "full-width form-label-text" %>
-          <%= f.number_field :weight, required: true %>
+          <%= f.label :weight, "Height (cm)", class: "full-width form-label-text" %>
+          <%= f.number_field :weight, required: true, placeholder: "85" %>
         </div>
 
         <div class="form-field">
@@ -42,14 +42,18 @@
 
         <div class="form-field">
           <%= f.label :gender, class: "full-width form-label-text" %>
-          <%= f.select :gender, ['male', 'female'], required: true %>
+          <%= f.select :gender, ['male', 'female', 'transwoman/transgirl', 'transman/transboy', 'non-binary/genderqueer/agender/gender fluid', 'dont know', 'prefer not to say' , 'other'], required: true %>
         </div>
 
+        <div class="form-field">
+          <%= f.label "What level of fitness would you say you are?", class: "full-width form-label-text" %>
+          <%= f.select :workout_difficulty, ['Beginner', 'Intermediate', 'Advanced'], required: true %>
+        </div>
 
       </div>
 
       <div class="form-actions">
-        <%= f.submit "Calculate my Personalized data", class: "btn button-yellow" %>
+        <%= f.submit "Calculate my Personalised data", class: "btn button-yellow" %>
       </div>
     </div>
   <% end %>

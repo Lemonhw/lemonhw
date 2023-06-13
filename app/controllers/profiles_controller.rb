@@ -23,7 +23,7 @@ class ProfilesController < ApplicationController
     @profile.ideal_weight = ideal_weight
 
     if @profile.save
-      redirect_to result_profiles_path, notice: 'Profile successfully created.'
+      redirect_to dashboard_path, notice: 'Profile successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -36,6 +36,6 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:name, :surname, :age, :height, :weight, :goal, :activity_level, :gender)
+    params.require(:profile).permit(:name, :surname, :age, :height, :weight, :goal, :activity_level, :gender, :workout_difficulty)
   end
 end
