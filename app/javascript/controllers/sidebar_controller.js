@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = ["link"]
 
   connect() {
-    this.loadContent(this.data.get("url"))
+    // this.loadContent(this.data.get("url"))
   }
 
   loadContent(event) {
@@ -15,8 +15,12 @@ export default class extends Controller {
     fetch(url, { headers: { accept: "text/html" } })
       .then(response => response.text())
       .then(html => {
-        const content = document.querySelector('#content')
-        content.innerHTML = html
+        const contentWindow = document.querySelector('#content')
+        const element = document.createElement('div')
+        element.innerHTML = html
+        const newContent = element.querySelector('#dashboard-content').innerHTML
+
+        contentWindow.innerHTML = newContent
       })
   }
 }

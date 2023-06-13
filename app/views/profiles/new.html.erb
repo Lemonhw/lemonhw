@@ -42,9 +42,13 @@
 
         <div class="form-field">
           <%= f.label :gender, class: "full-width form-label-text" %>
-          <%= f.select :gender, ['male', 'female'], required: true %>
+          <%= f.select :gender, ['male', 'female', 'transwoman/transgirl', 'transman/transboy', 'non-binary/genderqueer/agender/gender fluid', 'dont know', 'prefer not to say' , 'other'], required: true %>
         </div>
 
+        <div class="form-field">
+          <%= f.label "What level of fitness would you say you are?", class: "full-width form-label-text" %>
+          <%= f.select :workout_difficulty, ['Beginner', 'Intermediate', 'Advanced'], required: true %>
+        </div>
 
       </div>
 

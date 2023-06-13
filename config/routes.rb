@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get "result", to: "profiles#result", on: :collection
   end
 
-  resources :videos, only: [:index, :show]
+  # resources :videos, only: [:index, :show]
 
   get 'dashboard', to: 'dashboards#show', as: :dashboard
 
@@ -23,6 +23,8 @@ Rails.application.routes.draw do
       get :overview
       get :exercise_plan
       get :diet_plan
+      get :videos
+      get :video
     end
   end
 

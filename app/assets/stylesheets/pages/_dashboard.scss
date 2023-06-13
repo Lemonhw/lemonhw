@@ -1,11 +1,12 @@
 .dashboard-container {
   display: flex;
-  background-color: black;
+  background-color: rgb(255, 254, 254);
 
   .tab-container {
     .tabs {
       display: flex;
       justify-content: center;
+      width: 100%;
     }
 
     .tab {
@@ -25,7 +26,6 @@
     .content {
       border: 1px solid lightgray;
       padding: 10px;
-      margin-top: 10px;
       .tab-content {
         color: black;
         display: none;
@@ -68,7 +68,7 @@
           height: 50px;
           font-weight: bold;
           margin-top: 30px;
-          box-shadow: 3px 4px 10px #888888;
+
 
           &:hover {
             background-color: #dddd24;
@@ -104,7 +104,6 @@
 
       .card-content {
         flex: 1;
-        padding: 20px;
       }
     }
 

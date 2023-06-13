@@ -8,7 +8,7 @@
     <% day_plans.each_with_index do |day_plan, i| %>
       <div data-dashboard-target="day" data-day-id="<%= day_plan.id %>" class="tab-content <%= "active" if i == 0 %>">
         <!-- Content for Tab 1 -->
-        Day plan for day <%= i + 1 %>
+          <% i + 1 %>
           <%= render 'day_plans/diet_plan', diet_plan: day_plan.diet_plan %>
       </div>
     <% end %>
