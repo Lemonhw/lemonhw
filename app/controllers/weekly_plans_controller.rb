@@ -43,6 +43,38 @@ class WeeklyPlansController < ApplicationController
         },
         day_plan: day_plan
       )
+
+      difficulty = @profile.workout_difficulty.downcase
+      muscles = {
+        "1" => ["chest", "triceps", "traps"],
+        "3" => ["hamstrings", "quadriceps", "quadriceps"],
+        "4" => ["lats", "biceps", "lower_back"],
+        "6" => ["abdominals", "calves", "abdominals"]
+      }
+
+      if day_plan.day_number == 2 || day_plan.day_number == 5 || day_plan.day_number == 7
+        ExercisePlan.create(
+          day_plan_content: "rest",
+          day_plan: day_plan
+        )
+      else
+        exercise1 = Exercise.where(difficulty: difficulty, muscle: muscles[index.to_s][0]).to_a.sample
+        exercise2 = Exercise.where(difficulty: difficulty, muscle: muscles[index.to_s][1]).to_a.sample
+        exercise3 = Exercise.where(difficulty: difficulty, muscle: muscles[index.to_s][2]).to_a.sample
+        exercise4 = Exercise.where(difficulty: difficulty, muscle: muscles[index.to_s][0]).to_a.sample
+        exercise5 = Exercise.where(difficulty: difficulty, muscle: muscles[index.to_s][1]).to_a.sample
+        ExercisePlan.create(
+          day_plan_content: {
+            exercise1: exercise1,
+            exercise2: exercise2,
+            exercise3: exercise3,
+            exercise4: exercise4,
+            exercise5: exercise5,
+            exercise6: exercise5
+          },
+          day_plan: day_plan
+        )
+      end
     end
     # if current_user.gender.downcase == "male"
     #   s = 5

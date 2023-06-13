@@ -49,13 +49,14 @@
 #   end
 # end
 
-exercise_types = ["cardio", "strength", "powerlifting"]
+exercise_types = ["cardio", "strength"]
 muscles = [
   "chest",
-  "back",
-  "shoulders",
+  "lats",
+  "lower_back",
   "biceps",
   "triceps",
+  "traps",
   "quadriceps",
   "abdominals",
   "hamstrings",
@@ -68,8 +69,8 @@ exercise_api_client = ExercisesApiClient.new
 exercise_types.each do |type|
   muscles.each do |muscle|
     difficulties.each do |difficulty|
-      sleep(1)
-      result = JSON.parse(exercise_api_client.fetch_exercises(type, muscle, difficulty, 3))
+      sleep(0.5)
+      result = JSON.parse(exercise_api_client.fetch_exercises(type, muscle, difficulty, 10))
       result.each do |exercise|
         Exercise.create!(
           name: exercise["name"],
