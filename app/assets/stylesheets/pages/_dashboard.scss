@@ -1,6 +1,6 @@
 .dashboard-container {
   display: flex;
-  background-color: rgb(255, 254, 254);
+  background-color: #F1F5F9;
 
   .tab-container {
     .tabs {
@@ -37,10 +37,11 @@
   }
 
   aside.sidebar {
-    width: 350px;
-    height: 100vh;
+    position: fixed;
+    width: 250px;
+    height: 100%;
     background-color: white;
-    margin-top: -40px;
+    margin: 0 auto;
     box-shadow: 3px 3px 10px #888888;
 
     ul {
@@ -50,7 +51,7 @@
         margin-bottom: 15px;
 
         .btn {
-          background-color: #ffff13;
+          background-color: white;
           border-radius: 8px;
           color: #000;
           cursor: pointer;
@@ -64,16 +65,23 @@
           font-size: 16px;
           user-select: none;
           margin: 0 10px;
-          width: 250px;
+          width: 150px;
           height: 50px;
           font-weight: bold;
           margin-top: 30px;
 
+          &.active {
+            background-color: #ffff13;
+          }
 
           &:hover {
-            background-color: #dddd24;
+            background-color: #ffff13;
           }
         }
+        .btn-primary.active {
+          background-color: #ffff13;
+        }
+
       }
     }
   }
