@@ -1,5 +1,14 @@
 .dashboard-diet-plan {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: -100px auto;
+  margin-bottom: auto;
+
   img {
     width: 300px;
+    display: block;
+    border-radius: 8px;
   }
 }
