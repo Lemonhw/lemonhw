@@ -1,6 +1,7 @@
 .dashboard-container {
   display: flex;
   background-color: rgb(255, 254, 254);
+  margin-top: -20px;
 
   .tab-container {
     .tabs {
@@ -24,7 +25,7 @@
     }
 
     .content {
-      border: 1px solid lightgray;
+      border: 0px solid lightgray;
       padding: 10px;
       .tab-content {
         color: black;
@@ -37,10 +38,11 @@
   }
 
   aside.sidebar {
-    width: 350px;
-    height: 100vh;
+    position: fixed;
+    width: 250px;
+    height: 100%;
     background-color: white;
-    margin-top: -40px;
+    margin: 0 auto;
     box-shadow: 3px 3px 10px #888888;
 
     ul {
@@ -50,7 +52,7 @@
         margin-bottom: 15px;
 
         .btn {
-          background-color: #ffff13;
+          background-color: white;
           border-radius: 8px;
           color: #000;
           cursor: pointer;
@@ -64,22 +66,31 @@
           font-size: 16px;
           user-select: none;
           margin: 0 10px;
-          width: 250px;
+          width: 150px;
           height: 50px;
           font-weight: bold;
           margin-top: 30px;
 
+          &.active {
+            background-color: #ffff13;
+          }
 
           &:hover {
-            background-color: #dddd24;
+            background-color: #ffff13;
           }
         }
+        .btn-primary.active {
+          background-color: #ffff13;
+        }
+
       }
     }
   }
 
   .main-content {
-    flex: 1;
+    position: relative;
+    width: calc(100% - 250px);
+    left: 250px;
     padding: 20px;
     font-family: 'Montserrat Alternates', sans-serif;
 
@@ -93,6 +104,7 @@
       margin-left: 10%;
       margin-top: 5%;
       box-shadow: 3px 4px 10px #888888;
+      transition: height 2s ease;
 
       .card-image {
         width: 30%;
@@ -138,6 +150,7 @@
   }
 }
 
+
 .bmi-position-wrapper {
   position: relative;
   width: 100%;
@@ -146,5 +159,25 @@
     bottom: 5px;
     width: 20px;
     height: 20px;
+
+.dropdown-content {
+  transition: height 0.5s ease;
+  height: 0;
+  overflow: hidden;
+}
+
+.dropdown-content.content-expanded {
+  height: 300px;
+  animation: expand 0.7s ease;
+}
+
+@keyframes expand {
+  0% {
+    opacity: 0;
+    height: 0;
+  }
+  100% {
+    opacity: 1;
+    height: 300px;
   }
 }

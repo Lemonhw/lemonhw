@@ -15,8 +15,8 @@ class WeeklyPlanApiClient
 
     response = http.request(request)
     # binding.break
-    items = JSON.parse(response.read_body)["items"]
-    items.group_by { |item| item["day"] }
+      items = JSON.parse(response.read_body)["items"]
+      items.group_by { |item| item["day"] }
   end
 
   def fetch_meal(id)

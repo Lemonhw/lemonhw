@@ -1,13 +1,13 @@
 <div class="my-container signup">
 
-  <%= form_for(@profile, url: profile_path) do |f| %>
+  <%= form_for(@profile, url: edit_profile_path) do |f| %>
     <div class="device-form">
-      <h1 class="text-center">FULL REGISTRATION</h1>
+      <h1 class="text-center">EDIT PROFILE</h1>
       <div class="form-inputs">
 
         <div class="form-field">
           <%= f.label :name, class: "full-width form-label-text" %>
-          <%= f.text_field :name, required: true, placeholder: "John" %>
+          <%= f.text_field :name, required: true %>
         </div>
 
         <div class="form-field">
@@ -53,7 +53,7 @@
       </div>
 
       <div class="form-actions">
-        <%= f.submit "Calculate my Personalised data", class: "btn button-yellow" %>
+        <%= f.submit "Update Profile", class: "btn button-yellow" %>
       </div>
     </div>
   <% end %>

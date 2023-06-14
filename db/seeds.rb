@@ -124,8 +124,8 @@ exercise_types.each do |type|
 #       day_plan_id: day_plan.id,
 #       day_plan_content: "exercise_1: Treadmill - 30 minutes, exercise_2: Squats - 3 sets of 10, exercise_3: Bench Press - 3 sets of 10, exercise_4: Lunges - 3 sets of 10, exercise_5: Plank - 3 sets of 1 minute"
 #     )
-#   end
-# end
+  end
+end
 
 Video.destroy_all
 

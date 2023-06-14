@@ -10,9 +10,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:edit, :update]
 
-  resources :profiles, only: [:new, :create] do
-    get "result", to: "profiles#result", on: :collection
-  end
+  resource :profile, only: [:new, :create, :edit, :update]
+  get 'profile/result', to: 'profiles#result', as: 'result_profile'
 
   # resources :videos, only: [:index, :show]
 

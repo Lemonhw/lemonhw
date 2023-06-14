@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: -100px auto;
+  margin: -191px auto;
   margin-bottom: auto;
 
   img {
@@ -11,4 +11,83 @@
     display: block;
     border-radius: 8px;
   }
+}
+
+
+// DIET PLAN RORY CSS
+
+.diet-plan-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 8px;
+  box-shadow: 3px 4px 10px #888888;
+  padding: 25px;
+  margin-bottom: 25px;
+}
+
+.diet-container-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.diet-container-image {
+  order: 1;
+  flex-basis: 33.33%;
+  max-width: 33.33%;
+  min-width: 39.33%;
+}
+
+.diet-container-image img {
+  width: 100%;
+  height: 244px;
+  border-radius: 8px;
+}
+
+.diet-container-body {
+  order: 2;
+  flex-basis: 66.66%;
+  min-width: 52.66%;
+  padding-left: 10px;
+}
+
+.diet-container-titles,
+.diet-symbols,
+.prep-time,
+.nutrition-pills {
+  margin-bottom: 10px;
+}
+
+.nutrition-pills {
+  display: flex;
+}
+
+.nutrition-pill {
+  flex-basis: 20%;
+  background-color: yellow;
+  color: black;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 8px;
+  font-size: 12px; /* Adjust the font size as needed */
+}
+
+.diet-content {
+  width: 100%;
+  margin-top: 18px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.diet-ingredient-content {
+  flex-basis: 33.33%;
+  max-width: 33.33%;
+  min-width: 33.33%;
+}
+
+.diet-content-instructions {
+  flex-basis: 66.66%;
+  max-width: 56.66%;
+  min-width: 56.66%;
 }
