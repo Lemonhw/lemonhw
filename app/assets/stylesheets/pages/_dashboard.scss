@@ -104,6 +104,7 @@
       margin-left: 10%;
       margin-top: 5%;
       box-shadow: 3px 4px 10px #888888;
+      transition: height 2s ease;
 
       .card-image {
         width: 30%;
@@ -146,5 +147,27 @@
     .generate-button:hover {
       background-color: #dddd24;
     }
+  }
+}
+
+.dropdown-content {
+  transition: height 0.5s ease;
+  height: 0;
+  overflow: hidden;
+}
+
+.dropdown-content.content-expanded {
+  height: 300px;
+  animation: expand 0.7s ease;
+}
+
+@keyframes expand {
+  0% {
+    opacity: 0;
+    height: 0;
+  }
+  100% {
+    opacity: 1;
+    height: 300px;
   }
 }
