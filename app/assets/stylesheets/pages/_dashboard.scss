@@ -153,11 +153,11 @@
 .dropdown-content {
   transition: height 0.5s ease;
   height: 0;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .dropdown-content.content-expanded {
-  height: 300px;
+  height: 500px;
   animation: expand 0.7s ease;
 }
 
@@ -168,6 +168,6 @@
   }
   100% {
     opacity: 1;
-    height: 300px;
+    height: 500px;
   }
 }

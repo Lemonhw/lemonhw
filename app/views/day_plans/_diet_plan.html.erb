@@ -2,17 +2,10 @@
   <% meal = diet_plan.day_plan_content %>
   <h2 style="color:black" class="align-self-start mb-5"></h2>
 
-  
   <hr>
-
-
   <hr>
-
-
-    <%#= meal["dinner"]%>
-  </div>
-
-<%# START OF RORY CODE %>
+  <hr>
+</div>
 
   <div class="diet-plan-container">
     <div class="diet-container-header">
@@ -111,9 +104,10 @@
         </div>
       </div>
     </div>
+    </div>
 
 
-  </div>
+
 
    <div data-controller="info-dropdown">
       <button type="button" data-info-dropdown-target="button" data-action="click->info-dropdown#toggle">More information</button>
@@ -128,8 +122,6 @@
         <%= meal["lunch"]["instructions"].html_safe %>
       </div>
     </div>
-  </div>
-
   </div>
 
   <div class="diet-plan-container">
@@ -173,7 +165,6 @@
     </div>
 
 
-  </div>
 
    <div data-controller="info-dropdown">
       <button type="button" data-info-dropdown-target="button" data-action="click->info-dropdown#toggle">More information</button>
@@ -189,4 +180,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>
