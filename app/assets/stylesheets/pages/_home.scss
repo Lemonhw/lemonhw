@@ -37,7 +37,7 @@ h6 {
   grid-column: auto;
   justify-content: center;
   align-items: center;
-  min-height: 50vh;
+  min-height: 30vh;
   text-align: center;
 }
 
@@ -54,10 +54,9 @@ h6 {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60%;
-  padding: 1px;
   margin: auto;
-  margin-bottom: 70px;
+  margin-bottom: 120px;
+
 }
 
 .signup-bar__email {
