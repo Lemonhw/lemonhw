@@ -1,26 +1,29 @@
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+<div class="my-container">
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, input_html: { autocomplete: "email", value: params[:email] } %>
-    <%= f.input :password, required: true, autofocus: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
+    <div class="form-inputs">
+      <%= f.input :email, required: true, input_html: { autocomplete: "email", value: params[:email] } %>
+      <%= f.input :password, required: true, autofocus: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
 
-    <%= f.simple_fields_for :profile do |profile| %>
-      <%= profile.input :name %>
-      <%= profile.input :surname %>
-      <%= profile.input :age %>
-      <%= profile.input :height %>
-      <%= profile.input :weight %>
-      <%= profile.input :goal %>
-      <%= profile.input :activity_level %>
-      <%= profile.input :gender %>
-    <% end %>
-  </div>
+      <%= f.simple_fields_for :profile do |profile| %>
+        <%= profile.input :name %>
+        <%= profile.input :surname %>
+        <%= profile.input :age %>
+        <%= profile.input :height %>
+        <%= profile.input :weight %>
+        <%= profile.input :goal %>
+        <%= profile.input :activity_level %>
+        <%= profile.input :gender %>
+      <% end %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit, "Sign up" %>
+    </div>
+  <% end %>
 
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+
+</div>
