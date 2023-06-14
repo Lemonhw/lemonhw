@@ -5,7 +5,10 @@
   <hr>
   <hr>
   <hr>
+<<<<<<< HEAD
 </div>
+=======
+>>>>>>> 316531da7170f181e1e267ac064ab8022b07e111
 
   <div class="diet-plan-container">
     <div class="diet-container-header">
@@ -46,10 +49,7 @@
           </div>
         </div>
       </div>
-
-
     </div>
-
    <div data-controller="info-dropdown">
       <button type="button" data-info-dropdown-target="button" data-action="click->info-dropdown#toggle">More information</button>
       <div data-info-dropdown-target="content" class="dropdown-content">
@@ -65,50 +65,55 @@
     </div>
   </div>
 
+
   <div class="diet-plan-container">
     <div class="diet-container-header">
 
-    <div class="diet-container-image">
-      <%= image_tag meal["lunch"]["image"]%>
+      <div class="diet-container-image">
+        <%= image_tag meal["lunch"]["image"]%>
+      </div>
+
+      <div class="diet-container-body">
+        <div class="diet-container-titles">
+          <h4>Lunch</h4>
+          <h5><%= meal["lunch"]["title"] %></h5>
+        </div>
+
+        <div class="diet-symbols">
+          <%# insert symbols for diet restrictions %>
+        </div>
+
+        <div class="prep-time">
+          <p>Time to prepare: <%= meal["lunch"]["readyInMinutes"] %> Minutes</p>
+        </div>
+
+        <div class="nutrition-pills">
+          <div class="nutrition-pill">
+            <p><%= meal["lunch"]["nutrition"]["nutrients"][0]["amount"] %> Calories</p>
+          </div>
+          <div class="nutrition-pill">
+            <p>Protein: <%= meal["lunch"]["nutrition"]["nutrients"][2]["amount"] %> g</p>
+          </div>
+          <div class="nutrition-pill">
+            <p>Carbohydrates: <%= meal["lunch"]["nutrition"]["nutrients"][3]["amount"] %> g</p>
+          </div>
+          <div class="nutrition-pill">
+            <p>Sugar: <%= meal["lunch"]["nutrition"]["nutrients"][8]["amount"] %> g</p>
+          </div>
+          <div class="nutrition-pill">
+            <p>Fat: <%= meal["lunch"]["nutrition"]["nutrients"][5]["amount"] %> g</p>
+          </div>
+        </div>
+      </div>
+    </div>
+<<<<<<< HEAD
     </div>
 
-    <div class="diet-container-body">
-      <div class="diet-container-titles">
-        <h4>Lunch</h4>
-        <h5><%= meal["lunch"]["title"] %></h5>
-      </div>
-
-      <div class="diet-symbols">
-        <%# insert symbols for diet restrictions %>
-      </div>
-
-      <div class="prep-time">
-        <p>Time to prepare: <%= meal["lunch"]["readyInMinutes"] %> Minutes</p>
-      </div>
-
-      <div class="nutrition-pills">
-        <div class="nutrition-pill">
-          <p><%= meal["lunch"]["nutrition"]["nutrients"][0]["amount"] %> Calories</p>
-        </div>
-        <div class="nutrition-pill">
-          <p>Protein: <%= meal["lunch"]["nutrition"]["nutrients"][2]["amount"] %> g</p>
-        </div>
-        <div class="nutrition-pill">
-          <p>Carbohydrates: <%= meal["lunch"]["nutrition"]["nutrients"][3]["amount"] %> g</p>
-        </div>
-        <div class="nutrition-pill">
-          <p>Sugar: <%= meal["lunch"]["nutrition"]["nutrients"][8]["amount"] %> g</p>
-        </div>
-        <div class="nutrition-pill">
-          <p>Fat: <%= meal["lunch"]["nutrition"]["nutrients"][5]["amount"] %> g</p>
-        </div>
-      </div>
-    </div>
-    </div>
 
 
 
-
+=======
+>>>>>>> 316531da7170f181e1e267ac064ab8022b07e111
    <div data-controller="info-dropdown">
       <button type="button" data-info-dropdown-target="button" data-action="click->info-dropdown#toggle">More information</button>
       <div data-info-dropdown-target="content" class="dropdown-content">
@@ -127,45 +132,49 @@
   <div class="diet-plan-container">
     <div class="diet-container-header">
 
-    <div class="diet-container-image">
-      <%= image_tag meal["dinner"]["image"]%>
+      <div class="diet-container-image">
+        <%= image_tag meal["dinner"]["image"]%>
+      </div>
+
+      <div class="diet-container-body">
+        <div class="diet-container-titles">
+          <h4>Dinner</h4>
+          <h5><%= meal["dinner"]["title"] %></h5>
+        </div>
+
+        <div class="diet-symbols">
+          <%# insert symbols for diet restrictions %>
+        </div>
+
+        <div class="prep-time">
+          <p>Time to prepare: <%= meal["dinner"]["readyInMinutes"] %> Minutes</p>
+        </div>
+
+        <div class="nutrition-pills">
+          <div class="nutrition-pill">
+            <p><%= meal["dinner"]["nutrition"]["nutrients"][0]["amount"] %> Calories</p>
+          </div>
+          <div class="nutrition-pill">
+            <p>Protein: <%= meal["dinner"]["nutrition"]["nutrients"][2]["amount"] %> g</p>
+          </div>
+          <div class="nutrition-pill">
+            <p>Carbohydrates: <%= meal["dinner"]["nutrition"]["nutrients"][3]["amount"] %> g</p>
+          </div>
+          <div class="nutrition-pill">
+            <p>Sugar: <%= meal["dinner"]["nutrition"]["nutrients"][8]["amount"] %> g</p>
+          </div>
+          <div class="nutrition-pill">
+            <p>Fat: <%= meal["dinner"]["nutrition"]["nutrients"][5]["amount"] %> g</p>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="diet-container-body">
-      <div class="diet-container-titles">
-        <h4>Dinner</h4>
-        <h5><%= meal["dinner"]["title"] %></h5>
-      </div>
-
-      <div class="diet-symbols">
-        <%# insert symbols for diet restrictions %>
-      </div>
-
-      <div class="prep-time">
-        <p>Time to prepare: <%= meal["dinner"]["readyInMinutes"] %> Minutes</p>
-      </div>
-
-      <div class="nutrition-pills">
-        <div class="nutrition-pill">
-          <p><%= meal["dinner"]["nutrition"]["nutrients"][0]["amount"] %> Calories</p>
-        </div>
-        <div class="nutrition-pill">
-          <p>Protein: <%= meal["dinner"]["nutrition"]["nutrients"][2]["amount"] %> g</p>
-        </div>
-        <div class="nutrition-pill">
-          <p>Carbohydrates: <%= meal["dinner"]["nutrition"]["nutrients"][3]["amount"] %> g</p>
-        </div>
-        <div class="nutrition-pill">
-          <p>Sugar: <%= meal["dinner"]["nutrition"]["nutrients"][8]["amount"] %> g</p>
-        </div>
-        <div class="nutrition-pill">
-          <p>Fat: <%= meal["dinner"]["nutrition"]["nutrients"][5]["amount"] %> g</p>
-        </div>
-      </div>
-    </div>
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 316531da7170f181e1e267ac064ab8022b07e111
    <div data-controller="info-dropdown">
       <button type="button" data-info-dropdown-target="button" data-action="click->info-dropdown#toggle">More information</button>
       <div data-info-dropdown-target="content" class="dropdown-content">
@@ -180,5 +189,6 @@
       </div>
     </div>
   </div>
+
 </div>
 </div>

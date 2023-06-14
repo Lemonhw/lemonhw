@@ -1,5 +1,5 @@
 .top-section {
-  background-image: image-url('background.jpg');
+  background-image: image-url('background.png');
   background-color: black;
   background-repeat: no-repeat;
   background-size: cover;
@@ -9,13 +9,14 @@
 
 .bottom-section {
   background-color: black;
-  padding-top: 30px;
+  padding-top: 20px;
   padding-bottom: 30px;
 }
 
 
 h1 {
   text-align: center;
+  font-size: 4em;
   color: #FFFF13;
 }
 
@@ -43,7 +44,7 @@ h6 {
 .button-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   margin-top: 10px;
   padding: 10px;
 }
@@ -54,7 +55,7 @@ h6 {
   justify-content: center;
   align-items: center;
   width: 60%;
-  padding: 10px;
+  padding: 1px;
   margin: auto;
   margin-bottom: 70px;
 }
@@ -64,7 +65,8 @@ h6 {
   margin-right: 10px;
   padding: 10px;
   border-radius: 8px;
-  background-color: semi-transparent;
+  background-color: rgba(255, 255, 255, 0.788);
+  border: 0;
 }
 
 .signup-bar__submit {
@@ -147,6 +149,9 @@ h6 {
 
 #myBtn {
   display: none; /* Hidden by default */
+  background-color: black;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
   position: fixed; /* Fixed/sticky position */
   bottom: 20px; /* Place the button at the bottom of the page */
   right: 30px; /* Place the button 30px from the right */
@@ -154,12 +159,14 @@ h6 {
   border: none; /* Remove borders */
   outline: none; /* Remove outline */
   background-color: #555; /* Set a background color */
-  color: white; /* Text color */
+  color: #FFFF13; /* Text color */
   cursor: pointer; /* Add a mouse pointer on hover */
   padding: 15px; /* Some padding */
   border-radius: 10px; /* Rounded corners */
+
 }
 
 #myBtn:hover {
-  background-color: #555; /* Add a dark-grey background on hover */
+  background-color: #FFFF13;
+  color: black; /* Add a dark-grey background on hover */
 }

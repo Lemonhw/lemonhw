@@ -29,6 +29,14 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def edit
+    @profile = current_user.profile
+  end
+
+  def update
+    @profile = current_user.profile
+  end
+
   def result
     @profile = current_user.profile
   end
