@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates&display=swap');
 
 body {
-  background: #F1F5F9;
+  background-image: image-url('background.png');
   margin: 0;
   padding: 0;
   display: flex;
@@ -20,8 +20,10 @@ body {
     text-align: center;
     font-family: "Raleway", sans-serif;
     font-weight: bold;
-    margin-top: 30px;
-    margin-bottom: 40px;
+    margin-top: 24px;
+    margin-bottom: 36px;
+    color: black;
+    font-size: 39px;
   }
 
   p.text-center {
@@ -32,12 +34,12 @@ body {
   }
 
   .device-form {
-    background-color: #ffffff;
+    background-color: #ffffffe1;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
     max-width: 1200px;
     border-radius: 8px;
-    width: 500px;
+    width: 899px;
   }
 
   .form-actions button[type="submit"] {
@@ -67,10 +69,13 @@ body {
 .button-yellow {
   color: black;
   background-color: yellow;
-  width: 100%;
+  width: 96%;
   font-family: "Montserrat Alternates", sans-serif;
   font-weight: bold;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.267);
+  margin: 0 auto;
+  padding: 15px 0px;
+  border-radius: 12px;
 
   &:hover {
     background-color: #FFFFAD;
@@ -146,7 +151,10 @@ h2 {
   flex-direction: column;
   margin-bottom: 30px;
   width: 400px;
-  margin: 0 auto; /* Centered horizontally */
+}
+
+.form-field input::placeholder {
+  color: rgb(211, 211, 211);
 }
 
 .form-field:not(:first-child) {
@@ -186,4 +194,31 @@ h2 {
   margin-top: 40px;
   margin-bottom: 50px;
   flex-grow: auto;
+}
+
+select {
+background: white;
+border: none;
+height: 30px;
+
+}
+.names {
+ width: 400px;
+ .form-field {
+  margin-bottom: 0px;
+ }
+ margin-bottom: 30px;
+}
+
+.name, .surname {
+  width: 45%
+}
+
+.surname {
+  margin-top: 0px !important
+}
+
+.form-actions {
+  margin-left: 13px;
+  border-radius: 6px;
 }
