@@ -14,22 +14,19 @@
     <p>Sugar: <%= meal["breakfast"]["nutrition"]["nutrients"][8]["amount"] %> g</p>
     <p>Time to prepare: <%=meal["breakfast"]["readyInMinutes"] %> Minutes </p>
 
-   <div class="dropdown">
-      <button data-toggle="collapse" type="button" data-bs-toggle="dropdown" aria-expanded="false">Ingredients</button>
-      <ul class="dropdown-menu">
-          <% meal["breakfast"]["extendedIngredients"].each do |ingredient| %>
-            <li class="dropdown-item" > <%= ingredient["name"] %>  </li>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="dropdown">
-      <button data-toggle="collapse" type="button" data-bs-toggle="dropdown" aria-expanded="false">Instructions</button>
-      <ul class="dropdown-menu">
+   <div data-controller="info-dropdown">
+      <button type="button" data-info-dropdown-target="button" data-action="click->info-dropdown#toggle">More information</button>
+      <div data-info-dropdown-target="content" class="dropdown-content">
+        <h5>Ingredients</h5>
+        <ul>
+            <% meal["breakfast"]["extendedIngredients"].each do |ingredient| %>
+              <li> <%= ingredient["name"] %>  </li>
+          <% end %>
+        </ul>
+        <h5>Instructions</h5>
         <%= meal["breakfast"]["instructions"].html_safe %>
-      </ul>
+      </div>
     </div>
-
   </div>
 
   <hr>
@@ -45,13 +42,20 @@
     <p>Fat: <%= meal["lunch"]["nutrition"]["nutrients"][5]["amount"] %> g</p>
     <p>Sugar: <%= meal["lunch"]["nutrition"]["nutrients"][8]["amount"] %> g</p>
     <p>Time to prepare: <%= meal["lunch"]["readyInMinutes"] %> Minutes</p>
-    <h5>Instructions</h5>
-    <%= meal["lunch"]["instructions"].html_safe %>
 
-    <h5>Ingredients</h5>
-    <% meal["lunch"]["extendedIngredients"].each do |ingredient| %>
-      <li><%= ingredient["name"] %></li>
-    <% end %>
+    <div data-controller="info-dropdown">
+      <button type="button" data-info-dropdown-target="button" data-action="click->info-dropdown#toggle">More information</button>
+      <div data-info-dropdown-target="content" class="hidden">
+        <h5>Ingredients</h5>
+        <ul>
+            <% meal["lunch"]["extendedIngredients"].each do |ingredient| %>
+              <li> <%= ingredient["name"] %>  </li>
+          <% end %>
+        </ul>
+        <h5>Instructions</h5>
+        <%= meal["lunch"]["instructions"].html_safe %>
+      </div>
+    </div>
   </div>
 
   <hr>
@@ -69,12 +73,18 @@
     <p>Fat: <%= meal["dinner"]["nutrition"]["nutrients"][5]["amount"] %> g</p>
     <p>Sugar: <%= meal["dinner"]["nutrition"]["nutrients"][8]["amount"] %> g</p>
     <p>Time to prepare: <%= meal["dinner"]["readyInMinutes"] %> Minutes</p>
-    <h5>Instructions</h5>
-    <%= meal["dinner"]["instructions"].html_safe %>
-    <h5>Ingredients</h5>
-    <% meal["dinner"]["extendedIngredients"].each do |ingredient| %>
-      <li><%= ingredient["name"] %></li>
-    <% end %>
-  </div>
-  <%#= meal["dinner"]%>
+
+    <div data-controller="info-dropdown">
+      <button type="button" data-info-dropdown-target="button" data-action="click->info-dropdown#toggle">More information</button>
+      <div data-info-dropdown-target="content" class="hidden">
+        <h5>Ingredients</h5>
+        <ul>
+            <% meal["dinner"]["extendedIngredients"].each do |ingredient| %>
+              <li> <%= ingredient["name"] %> </li>
+          <% end %>
+        </ul>
+        <h5>Instructions</h5>
+        <%= meal["dinner"]["instructions"].html_safe %>
+      </div>
+    </div>
 </div>
