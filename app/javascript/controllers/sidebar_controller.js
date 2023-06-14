@@ -4,11 +4,16 @@ export default class extends Controller {
   static targets = ["link"]
 
   connect() {
-    // this.loadContent(this.data.get("url"))
   }
 
   loadContent(event) {
     event.preventDefault()
+
+    document.querySelectorAll('.btn-primary').forEach((btn) => {
+      btn.classList.remove('active')
+    })
+
+    event.target.classList.add("active")
 
     const url = event.target.dataset.sidebarUrl
 
