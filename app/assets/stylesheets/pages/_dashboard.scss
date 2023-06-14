@@ -1,6 +1,7 @@
 .dashboard-container {
   display: flex;
   background-color: #F1F5F9;
+  margin-top: -20px;
 
   .tab-container {
     .tabs {
@@ -87,7 +88,9 @@
   }
 
   .main-content {
-    flex: 1;
+    position: relative;
+    width: calc(100% - 250px);
+    left: 250px;
     padding: 20px;
     font-family: 'Montserrat Alternates', sans-serif;
 
