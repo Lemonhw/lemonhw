@@ -91,3 +91,26 @@
   max-width: 56.66%;
   min-width: 56.66%;
 }
+
+// EXERCISE PLAN
+
+.rest-day-heading {
+  color: black;
+  /* Add any other desired styles */
+}
+
+.full-exercise-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.exercise-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft drop shadow */
+  padding: 15px; /* Adjust the padding as needed */
+  margin-bottom: 10px; /* Adjust the margin-bottom as needed */
+  max-width: 1000px; /* Set the maximum width of the container */
+  width: 100%; /* Make the container occupy the available width */
+}
