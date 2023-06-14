@@ -1,7 +1,7 @@
 <!-- Diet Plan Card -->
 <div id="dashboard-content" class="card secondary-font">
   <% if @day_plans.present? && @day_plans.first&.diet_plan %>
-    <%= render 'day_tabs', day_plans: @day_plans, weekly_plan: @weekly_plan, plan_type: :diet_plan %>
+    <%= render 'day_tabs', day_plans: @day_plans, weekly_plan: @weekly_plan, plan_type: "diet" %>
   <% else %>
     <p>No diet plans available.</p>
   <% end %>

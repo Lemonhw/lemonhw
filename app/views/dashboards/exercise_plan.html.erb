@@ -2,7 +2,7 @@
 <div id="dashboard-content" class="card secondary-font">
   <% if @day_plans.present? && @day_plans.first&.exercise_plan %>
     <h3 class="secondary-font">Exercise Plan</h3>
-    <%= render 'day_tabs', day_plans: @day_plans, weekly_plan: @weekly_plan, plan_type: :exercise_plan %>
+    <%= render 'day_tabs', day_plans: @day_plans, weekly_plan: @weekly_plan, plan_type: "exercise" %>
   <% else %>
     <p>No exercise plans available.</p>
   <% end %>

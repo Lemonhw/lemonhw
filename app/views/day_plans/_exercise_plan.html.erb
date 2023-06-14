@@ -1,6 +1,11 @@
 <h2 style="color:black" class="align-self-start mb-5">Exercise Plan</h2>
-  <ul>
-    <% @exercise_plan_content.each_pair do |key, value| %>
-      <li><strong><%= key.split("_").join(" ") %></strong> : <%= value %></li>
+<% if exercise_plan.day_plan_content == "rest" %>
+  <h2>Rest day</h2>
+<% else %>
+  <% exercise_plan.day_plan_content.keys.each do |exercise_key| %>
+    <% if exercise_plan.day_plan_content[exercise_key] %>
+      <p><strong><%= exercise_plan.day_plan_content[exercise_key]["name"] %></strong></p>
+      <p><%= exercise_plan.day_plan_content[exercise_key]["instructions"] %></p>
     <% end %>
-  </ul>
+  <% end %>
+<% end %>
