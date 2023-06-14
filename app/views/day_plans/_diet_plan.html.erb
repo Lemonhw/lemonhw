@@ -1,80 +1,192 @@
 <div class="dashboard-diet-plan">
   <% meal = diet_plan.day_plan_content %>
   <h2 style="color:black" class="align-self-start mb-5"></h2>
-  <div class="card">
-    <h4>Breakfast</h4>
-    <hr>
-    <%= image_tag(meal["breakfast"]["image"].presence || "logo1.png") %>
-    <h5><%= meal["breakfast"]["title"] %></h5>
-    <p>Diets: <%= meal["breakfast"]["diets"] %></p>
-    <p><%= meal["breakfast"]["nutrition"]["nutrients"][0]["amount"] %> Calories</p>
-    <p>Protein: <%= meal["breakfast"]["nutrition"]["nutrients"][2]["amount"] %> g</p>
-    <p>Carbohydrate: <%= meal["breakfast"]["nutrition"]["nutrients"][3]["amount"] %> g</p>
-    <p>Fat: <%= meal["breakfast"]["nutrition"]["nutrients"][5]["amount"] %> g</p>
-    <p>Sugar: <%= meal["breakfast"]["nutrition"]["nutrients"][8]["amount"] %> g</p>
-    <p>Time to prepare: <%=meal["breakfast"]["readyInMinutes"] %> Minutes </p>
 
-   <div class="dropdown">
-      <button data-toggle="collapse" type="button" data-bs-toggle="dropdown" aria-expanded="false">Ingredients</button>
-      <ul class="dropdown-menu">
-          <% meal["breakfast"]["extendedIngredients"].each do |ingredient| %>
-            <li class="dropdown-item" > <%= ingredient["name"] %>  </li>
-        <% end %>
-      </ul>
-    </div>
 
-    <div class="dropdown">
-      <button data-toggle="collapse" type="button" data-bs-toggle="dropdown" aria-expanded="false">Instructions</button>
-      <ul class="dropdown-menu">
-        <%= meal["breakfast"]["instructions"].html_safe %>
-      </ul>
-    </div>
-
-  </div>
-
-  <hr>
-  <div class="card">
-    <h4>Lunch</h4>
-    <hr>
-    <%= image_tag meal["lunch"]["image"]%>
-    <h5><%= meal["lunch"]["title"] %></h5>
-    <p>Diets: <%= meal["lunch"]["diets"] %></p>
-    <p><%= meal["lunch"]["nutrition"]["nutrients"][0]["amount"] %> Calories</p>
-    <p>Protein: <%= meal["lunch"]["nutrition"]["nutrients"][2]["amount"] %> g</p>
-    <p>Carbohydrate: <%= meal["lunch"]["nutrition"]["nutrients"][3]["amount"] %> g</p>
-    <p>Fat: <%= meal["lunch"]["nutrition"]["nutrients"][5]["amount"] %> g</p>
-    <p>Sugar: <%= meal["lunch"]["nutrition"]["nutrients"][8]["amount"] %> g</p>
-    <p>Time to prepare: <%= meal["lunch"]["readyInMinutes"] %> Minutes</p>
-    <h5>Instructions</h5>
-    <%= meal["lunch"]["instructions"].html_safe %>
-
-    <h5>Ingredients</h5>
-    <% meal["lunch"]["extendedIngredients"].each do |ingredient| %>
-      <li><%= ingredient["name"] %></li>
-    <% end %>
-  </div>
 
   <hr>
 
-  <div class="card">
-    <h4>Dinner</h4>
-    <hr>
-    <%= image_tag meal["dinner"]["image"]%>
 
-    <h5><%= meal["dinner"]["title"] %></h5>
-    <p>Diets: <%= meal["dinner"]["diets"] %></p>
-    <p><%= meal["dinner"]["nutrition"]["nutrients"][0]["amount"] %> Calories</p>
-    <p>Protein: <%= meal["dinner"]["nutrition"]["nutrients"][2]["amount"] %> g</p>
-    <p>Carbohydrate: <%= meal["dinner"]["nutrition"]["nutrients"][3]["amount"] %> g</p>
-    <p>Fat: <%= meal["dinner"]["nutrition"]["nutrients"][5]["amount"] %> g</p>
-    <p>Sugar: <%= meal["dinner"]["nutrition"]["nutrients"][8]["amount"] %> g</p>
-    <p>Time to prepare: <%= meal["dinner"]["readyInMinutes"] %> Minutes</p>
-    <h5>Instructions</h5>
-    <%= meal["dinner"]["instructions"].html_safe %>
-    <h5>Ingredients</h5>
-    <% meal["dinner"]["extendedIngredients"].each do |ingredient| %>
-      <li><%= ingredient["name"] %></li>
-    <% end %>
+  <hr>
+
+
+    <%#= meal["dinner"]%>
   </div>
-  <%#= meal["dinner"]%>
+
+<%# START OF RORY CODE %>
+
+  <div class="diet-plan-container">
+    <div class="diet-container-header">
+
+      <div class="diet-container-image">
+        <%= image_tag meal["breakfast"]["image"]%>
+      </div>
+
+      <div class="diet-container-body">
+        <div class="diet-container-titles">
+          <h4>Breakfast</h4>
+          <h5><%= meal["breakfast"]["title"] %></h5>
+        </div>
+
+        <div class="diet-symbols">
+          <%# insert symbols for diet restrictions %>
+        </div>
+
+        <div class="prep-time">
+          <p>Time to prepare: <%= meal["breakfast"]["readyInMinutes"] %> Minutes</p>
+        </div>
+
+        <div class="nutrition-pills">
+          <div class="nutrition-pill">
+            <p><%= meal["breakfast"]["nutrition"]["nutrients"][0]["amount"] %> Calories</p>
+          </div>
+          <div class="nutrition-pill">
+            <p>Protein: <%= meal["breakfast"]["nutrition"]["nutrients"][2]["amount"] %> g</p>
+          </div>
+          <div class="nutrition-pill">
+            <p>Carbohydrates: <%= meal["breakfast"]["nutrition"]["nutrients"][3]["amount"] %> g</p>
+          </div>
+          <div class="nutrition-pill">
+            <p>Sugar: <%= meal["breakfast"]["nutrition"]["nutrients"][8]["amount"] %> g</p>
+          </div>
+          <div class="nutrition-pill">
+            <p>Fat: <%= meal["breakfast"]["nutrition"]["nutrients"][5]["amount"] %> g</p>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="diet-content">
+      <div class="diet-ingredient-content">
+      <h5>Ingredients</h5>
+      <% meal["breakfast"]["extendedIngredients"].each do |ingredient| %>
+        <li><%= ingredient["name"] %></li>
+      <% end %>
+      </div>
+
+      <div class="diet-content-instructions">
+      <h5>Instructions</h5>
+      <%= meal["breakfast"]["instructions"].html_safe %>
+      </div>
+    </div>
+  </div>
+
+  <div class="diet-plan-container">
+    <div class="diet-container-header">
+
+    <div class="diet-container-image">
+      <%= image_tag meal["lunch"]["image"]%>
+    </div>
+
+    <div class="diet-container-body">
+      <div class="diet-container-titles">
+        <h4>Lunch</h4>
+        <h5><%= meal["lunch"]["title"] %></h5>
+      </div>
+
+      <div class="diet-symbols">
+        <%# insert symbols for diet restrictions %>
+      </div>
+
+      <div class="prep-time">
+        <p>Time to prepare: <%= meal["lunch"]["readyInMinutes"] %> Minutes</p>
+      </div>
+
+      <div class="nutrition-pills">
+        <div class="nutrition-pill">
+          <p><%= meal["lunch"]["nutrition"]["nutrients"][0]["amount"] %> Calories</p>
+        </div>
+        <div class="nutrition-pill">
+          <p>Protein: <%= meal["lunch"]["nutrition"]["nutrients"][2]["amount"] %> g</p>
+        </div>
+        <div class="nutrition-pill">
+          <p>Carbohydrates: <%= meal["lunch"]["nutrition"]["nutrients"][3]["amount"] %> g</p>
+        </div>
+        <div class="nutrition-pill">
+          <p>Sugar: <%= meal["lunch"]["nutrition"]["nutrients"][8]["amount"] %> g</p>
+        </div>
+        <div class="nutrition-pill">
+          <p>Fat: <%= meal["lunch"]["nutrition"]["nutrients"][5]["amount"] %> g</p>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="diet-content">
+    <div class="diet-ingredient-content">
+      <h5>Ingredients</h5>
+      <% meal["lunch"]["extendedIngredients"].each do |ingredient| %>
+        <li><%= ingredient["name"] %></li>
+      <% end %>
+    </div>
+
+    <div class="diet-content-instructions">
+      <h5>Instructions</h5>
+      <%= meal["lunch"]["instructions"].html_safe %>
+    </div>
+  </div>
+  </div>
+
+  <div class="diet-plan-container">
+    <div class="diet-container-header">
+
+    <div class="diet-container-image">
+      <%= image_tag meal["dinner"]["image"]%>
+    </div>
+
+    <div class="diet-container-body">
+      <div class="diet-container-titles">
+        <h4>Dinner</h4>
+        <h5><%= meal["dinner"]["title"] %></h5>
+      </div>
+
+      <div class="diet-symbols">
+        <%# insert symbols for diet restrictions %>
+      </div>
+
+      <div class="prep-time">
+        <p>Time to prepare: <%= meal["dinner"]["readyInMinutes"] %> Minutes</p>
+      </div>
+
+      <div class="nutrition-pills">
+        <div class="nutrition-pill">
+          <p><%= meal["dinner"]["nutrition"]["nutrients"][0]["amount"] %> Calories</p>
+        </div>
+        <div class="nutrition-pill">
+          <p>Protein: <%= meal["dinner"]["nutrition"]["nutrients"][2]["amount"] %> g</p>
+        </div>
+        <div class="nutrition-pill">
+          <p>Carbohydrates: <%= meal["dinner"]["nutrition"]["nutrients"][3]["amount"] %> g</p>
+        </div>
+        <div class="nutrition-pill">
+          <p>Sugar: <%= meal["dinner"]["nutrition"]["nutrients"][8]["amount"] %> g</p>
+        </div>
+        <div class="nutrition-pill">
+          <p>Fat: <%= meal["dinner"]["nutrition"]["nutrients"][5]["amount"] %> g</p>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="diet-content">
+    <div class="diet-ingredient-content">
+      <h5>Ingredients</h5>
+      <% meal["dinner"]["extendedIngredients"].each do |ingredient| %>
+        <li><%= ingredient["name"] %></li>
+      <% end %>
+    </div>
+
+    <div class="diet-content-instructions">
+      <h5>Instructions</h5>
+      <%= meal["dinner"]["instructions"].html_safe %>
+    </div>
+  </div>
+
+
 </div>
