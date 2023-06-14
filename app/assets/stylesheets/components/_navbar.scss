@@ -1,7 +1,10 @@
 /* app/assets/stylesheets/_navbar.scss */
 
-.navbar {
+.navbar1 {
   position: fixed;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
   width: 100%;
   top: 0;
   background-color: white;
@@ -10,23 +13,22 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   z-index: 34;
 
-  .container {
+  .container1 {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 0.1rem 0.1rem;
+    // padding: 0.1rem 0.1rem;
     width: 100%;
   }
 
   .navbar-brand {
     font-size: 1.5rem;
     font-weight: bold;
+    margin-right: auto;
   }
 
   .logo-img {
     height: 40px;
     width: auto;
-
   }
 
   .navbar-links {
@@ -34,5 +36,16 @@
       margin-left: 1rem;
       text-decoration: none;
     }
+  }
+
+  .avatar-img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-left: 1rem;
+  }
+
+  .dropdown-toggle::after {
+    display: none;
   }
 }
