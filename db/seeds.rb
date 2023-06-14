@@ -147,5 +147,13 @@ Video.create(
   title: "Video 4",
   url: "https://www.youtube.com/embed/PZvwzobkCUM"
 )
+Video.create(
+  title: "Video 5",
+  url: "https://www.youtube.com/embed/SheSCOp24eY"
+)
+Video.create(
+  title: "Video 6",
+  url: "https://www.youtube.com/embed/p9BcoGJTYN0"
+)
 
 p "seeding done!"

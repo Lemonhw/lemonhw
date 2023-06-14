@@ -2,59 +2,63 @@
 
   <%= form_for(@profile, url: profile_path) do |f| %>
     <div class="device-form">
-      <h1 class="text-center">FULL REGISTRATION</h1>
-      <div class="form-inputs">
+      <h1 class="text-center">Your Details</h1>
+      <div class="form-inputs d-flex justify-content-around">
+        <div class="form-details">
+          <div class="names d-flex justify-content-between">
+              <div class="form-field name">
+                <%= f.label :name, class: "full-width form-label-text" %>
+                <%= f.text_field :name, required: true, placeholder: "John" %>
+              </div>
 
-        <div class="form-field">
-          <%= f.label :name, class: "full-width form-label-text" %>
-          <%= f.text_field :name, required: true, placeholder: "John" %>
+              <div class="form-field surname">
+                <%= f.label :surname, class: "full-width form-label-text" %>
+                <%= f.text_field :surname, required: true, placeholder: "Smith" %>
+              </div>
+
+          </div>
+          <div class="form-field">
+            <%= f.label :age, class: "full-width form-label-text" %>
+            <%= f.number_field :age, required: true, placeholder: "30" %>
+          </div>
+
+          <div class="form-field">
+            <%= f.label :height, "Height (cm)", class: "full-width form-label-text" %>
+            <%= f.number_field :height, required: true, placeholder: "180" %>
+          </div>
+
+          <div class="form-field">
+            <%= f.label :weight, "Weight (kg)", class: "full-width form-label-text" %>
+            <%= f.number_field :weight, required: true, placeholder: "85" %>
+          </div>
         </div>
+        <div class="form-extro">
+          <div class="form-field">
+            <%= f.label :goal, class: "full-width form-label-text" %>
+            <%= f.select :goal, ['Weight Loss', 'Muscle Gain', 'Healthy Routine', 'Olympics Ready'], required: true %>
+          </div>
 
-        <div class="form-field">
-          <%= f.label :surname, class: "full-width form-label-text" %>
-          <%= f.text_field :surname, required: true, placeholder: "Smith" %>
+          <div class="form-field">
+            <%= f.label :activity_level, class: "full-width form-label-text" %>
+            <%= f.select :activity_level, options_for_select([["Sedentary: little or no exercise", 'level_1'], ["Exercise 1-3 times/week", 'level_2'], ["Exercise 4-5 times/week", 'level_3'], ["Daily exercise or intense exercise 3-4 times/week", 'level_4'], ["Intense exercise 6-7 times/week", 'level_5'], ["Very intense exercise daily, or physical job", 'level_6']]), required: true %>
+          </div>
+
+          <div class="form-field">
+            <%= f.label :gender, class: "full-width form-label-text" %>
+            <%= f.select :gender, ['male', 'female', 'transwoman/transgirl', 'transman/transboy', 'non-binary/genderqueer/agender/gender fluid', 'dont know', 'prefer not to say' , 'other'], required: true %>
+          </div>
+
+          <div class="form-field">
+            <%= f.label "What level of fitness would you say you are?", class: "full-width form-label-text" %>
+            <%= f.select :workout_difficulty, ['Beginner', 'Intermediate', 'Advanced'], required: true %>
+          </div>
+
+          </div>
         </div>
-
-        <div class="form-field">
-          <%= f.label :age, class: "full-width form-label-text" %>
-          <%= f.number_field :age, required: true, placeholder: "30" %>
-        </div>
-
-        <div class="form-field">
-          <%= f.label :height, "Height (cm)", class: "full-width form-label-text" %>
-          <%= f.number_field :height, required: true, placeholder: "180" %>
-        </div>
-
-        <div class="form-field">
-          <%= f.label :weight, "Weight (kg)", class: "full-width form-label-text" %>
-          <%= f.number_field :weight, required: true, placeholder: "85" %>
-        </div>
-
-        <div class="form-field">
-          <%= f.label :goal, class: "full-width form-label-text" %>
-          <%= f.select :goal, ['Weight Loss', 'Muscle Gain', 'Healthy Routine', 'Olympics Ready'], required: true %>
-        </div>
-
-        <div class="form-field">
-          <%= f.label :activity_level, class: "full-width form-label-text" %>
-          <%= f.select :activity_level, options_for_select([["Sedentary: little or no exercise", 'level_1'], ["Exercise 1-3 times/week", 'level_2'], ["Exercise 4-5 times/week", 'level_3'], ["Daily exercise or intense exercise 3-4 times/week", 'level_4'], ["Intense exercise 6-7 times/week", 'level_5'], ["Very intense exercise daily, or physical job", 'level_6']]), required: true %>
-        </div>
-
-        <div class="form-field">
-          <%= f.label :gender, class: "full-width form-label-text" %>
-          <%= f.select :gender, ['male', 'female', 'transwoman/transgirl', 'transman/transboy', 'non-binary/genderqueer/agender/gender fluid', 'dont know', 'prefer not to say' , 'other'], required: true %>
-        </div>
-
-        <div class="form-field">
-          <%= f.label "What level of fitness would you say you are?", class: "full-width form-label-text" %>
-          <%= f.select :workout_difficulty, ['Beginner', 'Intermediate', 'Advanced'], required: true %>
-        </div>
-
+          <div class="form-actions">
+              <%= f.submit "Calculate my Personalised data", class: "btn button-yellow" %>
+            </div>
       </div>
 
-      <div class="form-actions">
-        <%= f.submit "Calculate my Personalised data", class: "btn button-yellow" %>
-      </div>
-    </div>
   <% end %>
 </div>
