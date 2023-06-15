@@ -1,15 +1,15 @@
   <!-- MAIN CONTENT -->
 <div class="main-content-button">
   <h1 class="primary-font mx-5" id="welcome-title">Welcome, <%= current_user.profile.name %></h1>
+</div>
+
+<!-- Results Profile -->
+<div class="mx-5 px-5 fs-5 dashboard-card">
   <% if @profile.weekly_plans.none? %>
     <div class="generate-button">
       <%= button_to 'Please Click HERE to Generate your Diet & Exercise Plans', weekly_plans_path, method: :post, class: 'generate-button' %>
     </div>
   <%end %>
-</div>
-
-<!-- Results Profile -->
-<div class="mx-5 px-5 fs-5 dashboard-card">
   <p>We've estimated your current Basic Metabolic Rate (BMR) as <strong><%= @profile.daily_calories["BMR"]%> Kcal/day</strong></p>
   <%# <p>We will be recommending you an exercise regime of around 50 minutes, 5 days per week</p> %>
   <%# <p>AI is generating your week's diet and exercise plans. This may take a few minutes as the AI analyzes your personal specifications and generates your personalised plans</p> %>
