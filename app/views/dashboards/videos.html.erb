@@ -1,10 +1,10 @@
 <div id="dashboard-content">
-  <h1>Exercise Videos</h1>
+  <h1 id="dashboard-header">Exercise Videos</h1>
   <div class="container">
     <div class="d-flex justify-content-center flex-wrap" style="gap: 1rem;">
       <% @videos.each do |video| %>
         <div class="video">
-          <h3><%= video.title %></h3>
+          <h3 id="video-title"><%= video.title %></h3>
           <div class="video-thumbnail">
             <iframe width="360" height="215" src="<%= video.url %>" frameborder="0" allow="muted; autoplay; encrypted-media" allowfullscreen></iframe>
           </div>
