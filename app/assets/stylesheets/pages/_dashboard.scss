@@ -47,6 +47,7 @@
     height: 100%;
     background-color: black;
     margin: 0 auto;
+    z-index: 10;
     // box-shadow: 3px 3px 10px #888888;
 
     ul {
@@ -262,4 +263,24 @@
   font-size: 58px;
   text-align: center;
   font-weight: bold;
+}
+
+
+.rest-day {
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    color: Black;
+    font-size: 48px;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 30px;
+  }
 }
