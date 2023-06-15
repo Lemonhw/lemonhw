@@ -45,6 +45,10 @@
     margin-left: 1rem;
   }
 
+  .avatar-img:hover {
+    cursor: pointer;
+  }
+
   .dropdown-toggle::after {
     display: none;
   }
