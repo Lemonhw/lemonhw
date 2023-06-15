@@ -6,7 +6,7 @@
   <hr>
   <hr>
 
-  <div class="diet-plan-container">
+  <div class="diet-plan-container" data-controller="info-dropdown">
     <div class="diet-container-header">
 
       <div class="diet-container-image">
@@ -44,25 +44,25 @@
             <p>Fat: <%= meal["breakfast"]["nutrition"]["nutrients"][5]["amount"] %> g</p>
           </div>
         </div>
+        <button type="button" data-info-dropdown-target="button" data-action="click->info-dropdown#toggle" class="more-information-btn">More information</button>
       </div>
     </div>
-   <div data-controller="info-dropdown">
-      <button type="button" data-info-dropdown-target="button" data-action="click->info-dropdown#toggle">More information</button>
-      <div data-info-dropdown-target="content" class="dropdown-content">
-        <h5>Ingredients</h5>
-        <ul>
-            <% meal["breakfast"]["extendedIngredients"].each do |ingredient| %>
-              <li> <%= ingredient["name"] %>  </li>
-          <% end %>
-        </ul>
-        <h5>Instructions</h5>
-        <%= meal["breakfast"]["instructions"].html_safe %>
-      </div>
+   <div>
+    <div data-info-dropdown-target="content" class="dropdown-content">
+      <h5>Ingredients</h5>
+      <ul>
+          <% meal["breakfast"]["extendedIngredients"].each do |ingredient| %>
+            <li> <%= ingredient["name"] %>  </li>
+        <% end %>
+      </ul>
+      <h5>Instructions</h5>
+      <%= meal["breakfast"]["instructions"].html_safe %>
+    </div>
     </div>
   </div>
 
 
-  <div class="diet-plan-container">
+  <div class="diet-plan-container" data-controller="info-dropdown">
     <div class="diet-container-header">
 
       <div class="diet-container-image">
@@ -100,10 +100,10 @@
             <p>Fat: <%= meal["lunch"]["nutrition"]["nutrients"][5]["amount"] %> g</p>
           </div>
         </div>
+        <button type="button" data-info-dropdown-target="button" data-action="click->info-dropdown#toggle" class="more-information-btn">More information</button>
       </div>
     </div>
-   <div data-controller="info-dropdown">
-      <button type="button" data-info-dropdown-target="button" data-action="click->info-dropdown#toggle">More information</button>
+   <div>
       <div data-info-dropdown-target="content" class="dropdown-content">
         <h5>Ingredients</h5>
         <ul>
@@ -117,7 +117,7 @@
     </div>
   </div>
 
-  <div class="diet-plan-container">
+  <div class="diet-plan-container" data-controller="info-dropdown">
     <div class="diet-container-header">
 
       <div class="diet-container-image">
@@ -155,10 +155,10 @@
             <p>Fat: <%= meal["dinner"]["nutrition"]["nutrients"][5]["amount"] %> g</p>
           </div>
         </div>
+        <button type="button" data-info-dropdown-target="button" data-action="click->info-dropdown#toggle" class="more-information-btn">More information</button>
       </div>
     </div>
-   <div data-controller="info-dropdown">
-      <button type="button" data-info-dropdown-target="button" data-action="click->info-dropdown#toggle">More information</button>
+   <div>
       <div data-info-dropdown-target="content" class="dropdown-content">
         <h5>Ingredients</h5>
         <ul>

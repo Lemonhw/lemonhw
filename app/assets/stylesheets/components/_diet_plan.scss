@@ -20,9 +20,11 @@
   display: flex;
   flex-wrap: wrap;
   margin: 8px;
-  box-shadow: 3px 4px 10px #888888;
+  box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.1);
   padding: 25px;
   margin-bottom: 25px;
+  border-radius: 12px;
+  background-color: rgb(250, 250, 250);
 }
 
 .diet-container-header {
@@ -34,9 +36,8 @@
 
 .diet-container-image {
   order: 1;
-  flex-basis: 33.33%;
-  max-width: 33.33%;
-  min-width: 39.33%;
+  flex-basis: auto;
+  width: 30%;
 }
 
 .diet-container-image img {
@@ -65,7 +66,7 @@
 
 .nutrition-pill {
   flex-basis: 20%;
-  background-color: yellow;
+  background-color: #ffef13;
   color: black;
   padding: 5px;
   margin: 5px;

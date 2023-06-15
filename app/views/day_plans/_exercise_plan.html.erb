@@ -1,11 +1,16 @@
-<h2 style="color:black" class="align-self-start mb-5">Exercise Plan</h2>
-<% if exercise_plan.day_plan_content == "rest" %>
-  <h2>Rest day</h2>
-<% else %>
-  <% exercise_plan.day_plan_content.keys.each do |exercise_key| %>
-    <% if exercise_plan.day_plan_content[exercise_key] %>
-      <p><strong><%= exercise_plan.day_plan_content[exercise_key]["name"] %></strong></p>
-      <p><%= exercise_plan.day_plan_content[exercise_key]["instructions"] %></p>
+<div data-controller="info-dropdown">
+  <h2 style="color:black" class="align-self-start mb-5">Exercise Plan</h2>
+  <% if exercise_plan.day_plan_content == "rest" %>
+    <h2>Rest day</h2>
+  <% else %>
+    <% exercise_plan.day_plan_content.keys.each do |exercise_key| %>
+      <% if exercise_plan.day_plan_content[exercise_key] %>
+        <div class="d-flex">
+          <h4><strong><%= exercise_plan.day_plan_content[exercise_key]["name"] %></strong></h4>
+          <button class="more-information-btn" data-info-dropdown-target="button" data-action="click->info-dropdown#toggle">Show instructions</button>
+        </div>
+        <p data-info-dropdown-target="content" class="dropdown-content"><%= exercise_plan.day_plan_content[exercise_key]["instructions"] %></p>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
+</div>

@@ -1,6 +1,6 @@
   <!-- MAIN CONTENT -->
 <div class="main-content-button">
-  <h1 class="primary-font" id="welcome-title">Welcome, <%= current_user.profile.name %></h1>
+  <h1 class="primary-font mx-5" id="welcome-title">Welcome, <%= current_user.profile.name %></h1>
   <% if @profile.weekly_plans.none? %>
     <div class="generate-button">
       <%= button_to 'Please Click HERE to Generate your Diet & Exercise Plans', weekly_plans_path, method: :post, class: 'generate-button' %>

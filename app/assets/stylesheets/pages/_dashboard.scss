@@ -12,15 +12,19 @@
 
     .tab {
       padding: 25px;
-      background-color: lightgray;
+      background-color: rgb(0, 0, 0);
+      color: white;
       cursor: pointer;
       border-radius: 10px;
       margin-left: -12px;
       border-right: 1px solid black;
+      transition: 0.2s;
       &.active {
-        background-color: #ffff13;
+        background-color: #ffef13;
         color: black;
         z-index: 30;
+        font-weight: 600;
+        transition: background-color 0.2s;
       }
     }
 
@@ -41,23 +45,24 @@
     position: fixed;
     width: 250px;
     height: 100%;
-    background-color: white;
+    background-color: black;
     margin: 0 auto;
-    box-shadow: 3px 3px 10px #888888;
+    // box-shadow: 3px 3px 10px #888888;
 
     ul {
+      margin-top: 50px;
       list-style-type: none;
+      padding-left: 0;
 
       li {
         margin-bottom: 15px;
 
         .btn {
-          background-color: white;
-          border-radius: 8px;
-          color: #000;
+          background-color: black;
+          color: #e2d929;
           cursor: pointer;
           font-weight: medium;
-          padding: 10px 15px;
+          padding: 10px 0px;
           text-align: center;
           text-decoration: none;
           transition: 200ms;
@@ -66,21 +71,45 @@
           font-size: 16px;
           user-select: none;
           margin: 0 10px;
-          width: 150px;
+          width: 90%;
           height: 50px;
-          font-weight: bold;
+          // font-weight: bold;
           margin-top: 30px;
+          transition: transform 0.2s;
 
           &.active {
-            background-color: #ffff13;
+            // background-color: #ffff13;
+            transform: scale(1.1);
+            color: #fff64c;
+            background-color: white;
+            color: black;
           }
 
           &:hover {
-            background-color: #ffff13;
+            // background-color: #ffff13;
+            transform: scale(1.1);
+            color: #fff64c;
+            transition: 0.2s;
           }
         }
+
+        .btn.btn-primary {
+          margin-left: 0;
+        }
+
         .btn-primary.active {
-          background-color: #ffff13;
+          // background-color: #ffff13;
+          transform: scale(1.1);
+          background-color: white;
+          color: black;
+          width: 96%;
+          transition: 0s;
+          padding-right: 22px
+        }
+
+        .btn-primary.active:hover {
+          width: 96%;
+          padding-right: 22px;
         }
 
       }
@@ -150,6 +179,12 @@
   }
 }
 
+.main-content-button {
+  display: flex;
+  justify-content: flex-start;
+  margin: 28px 0;
+}
+
 
 .bmi-position-wrapper {
   position: relative;
@@ -165,6 +200,7 @@
   transition: height 0.5s ease;
   height: 0;
   overflow: auto;
+  width: 96%;
 }
 
 .dropdown-content.content-expanded {
