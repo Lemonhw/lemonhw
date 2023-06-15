@@ -133,27 +133,49 @@ Video.create(
   title: "Video 1",
   url: "https://www.youtube.com/embed/VI3muCQbMyo"
 )
-
 Video.create(
   title: "Video 2",
-  url: "https://www.youtube.com/embed/S12mLBAECV0"
+  url: "https://www.youtube.com/embed/kEXWByynNas"
 )
 Video.create(
   title: "Video 3",
-  url: "https://www.youtube.com/embed/eNEgR1fyros"
+  url: "https://www.youtube.com/embed/S12mLBAECV0"
 )
-
 Video.create(
   title: "Video 4",
-  url: "https://www.youtube.com/embed/PZvwzobkCUM"
+  url: "https://www.youtube.com/embed/dk9IMyME7Io"
 )
 Video.create(
   title: "Video 5",
-  url: "https://www.youtube.com/embed/SheSCOp24eY"
+  url: "https://www.youtube.com/embed/eNEgR1fyros"
 )
 Video.create(
   title: "Video 6",
+  url: "https://www.youtube.com/embed/sZE3Qutq6rE"
+)
+Video.create(
+  title: "Video 7",
+  url: "https://www.youtube.com/embed/PZvwzobkCUM"
+)
+Video.create(
+  title: "Video 8",
+  url: "https://www.youtube.com/embed/oW7w-rDeF_w"
+)
+Video.create(
+  title: "Video 9",
+  url: "https://www.youtube.com/embed/SheSCOp24eY"
+)
+Video.create(
+  title: "Video 10",
+  url: "https://www.youtube.com/embed/Wm34OJb7tq8"
+)
+Video.create(
+  title: "Video 11",
   url: "https://www.youtube.com/embed/p9BcoGJTYN0"
+)
+Video.create(
+  title: "Video 12",
+  url: "https://www.youtube.com/embed/ToDAmxQ19No"
 )
 
 p "seeding done!"
