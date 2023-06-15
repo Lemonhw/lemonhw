@@ -104,7 +104,10 @@
           color: black;
           width: 96%;
           transition: 0s;
-          padding-right: 22px
+          padding-right: 22px;
+          border: 1px solid black;
+          border-left: none;
+          font-weight: bold;
         }
 
         .btn-primary.active:hover {
