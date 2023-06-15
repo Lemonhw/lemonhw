@@ -78,6 +78,7 @@ class WeeklyPlansController < ApplicationController
           day_plan: day_plan
         )
       end
+      flash[:notice] = 'Your plans have been generated successfully! Check out the Diet Plan and Exercise Plan tabs to see your plans'
     end
     # if current_user.gender.downcase == "male"
     #   s = 5
