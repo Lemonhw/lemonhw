@@ -63,12 +63,12 @@
         margin-bottom: 15px;
 
         .btn {
+          text-align: left;
           background-color: black;
           color: #e2d929;
           cursor: pointer;
           font-weight: medium;
-          padding: 10px 0px;
-          text-align: center;
+          padding: 10px 0 0 30px;
           text-decoration: none;
           transition: 200ms;
           box-sizing: border-box;
@@ -309,3 +309,4 @@
     border-radius: 30px;
   }
 }
+

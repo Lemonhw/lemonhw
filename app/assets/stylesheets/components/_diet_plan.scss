@@ -5,14 +5,15 @@
   flex-direction: column;
   margin: -191px auto;
   margin-bottom: auto;
+}
 
+.diet-container-image {
   img {
     width: 300px;
     display: block;
     border-radius: 8px;
   }
 }
-
 
 // DIET PLAN RORY CSS
 
@@ -56,9 +57,35 @@
   padding-left: 10px;
 }
 
+
+.diet-container-titles {
+  img {
+    margin-left: 5px;
+    margin-bottom: 5px;
+  }
+}
+
+.clock--margin {
+  margin-bottom: 15px !important;
+}
+
+#clock-img {
+  margin-right: 5px;
+}
+
+#clock-img-2 img{
+  // margin-top: 14px;
+  margin-right: 5px;
+}
+
+#clock-img-3 {
+  // margin-top: 14px;
+  margin-right: 5px;
+
 .diet-plan-name {
   font-size: 26px;
   margin: 40px 0;
+
 }
 
 .diet-container-titles,

@@ -5,7 +5,8 @@
          data-controller="sidebar"
          data-sidebar-url="<%= overview_dashboards_path %>"
          data-action="click->sidebar#loadContent"
-         class="btn btn-primary <%= 'active' if current_page?(overview_dashboards_path) %>">Overview
+         class="btn btn-primary <%= 'active' if current_page?(overview_dashboards_path) %>">
+         <%= image_tag('Vector.svg') %> Overview
       </a>
     </li>
     <li>
@@ -13,7 +14,10 @@
          data-controller="sidebar"
          data-sidebar-url="<%= exercise_plan_dashboards_path %>"
          data-action="click->sidebar#loadContent"
-         class="btn btn-primary <%= 'active' if current_page?(exercise_plan_dashboards_path) %>">Exercise Plan
+
+         class="btn btn-primary <%= 'active' if current_page?(exercise_plan_dashboards_path) %>">
+        <%= image_tag('dumbbell-solid.svg') %> Exercise Plans
+
       </a>
     </li>
     <li>
@@ -21,7 +25,10 @@
          data-controller="sidebar"
          data-sidebar-url="<%= diet_plan_dashboards_path %>"
          data-action="click->sidebar#loadContent"
-         class="btn btn-primary <%= 'active' if current_page?(diet_plan_dashboards_path) %>">Diet Plan
+
+         class="btn btn-primary <%= 'active' if current_page?(diet_plan_dashboards_path) %>">
+         <%= image_tag('lemon-regular.svg') %> Diet Plans
+
       </a>
     </li>
     <li>
@@ -29,8 +36,10 @@
          data-controller="sidebar"
          data-sidebar-url="<%= videos_dashboards_path %>"
          data-action="click->sidebar#loadContent"
+
          id="videos"
-         class="btn btn-primary <%= 'active' if current_page?(videos_dashboards_path) %>">Videos
+         class="btn btn-primary <%= 'active' if current_page?(videos_dashboards_path) %>">
+         <%= image_tag('play.svg') %> Videos  
       </a>
     </li>
     <li>

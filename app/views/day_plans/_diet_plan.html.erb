@@ -1,6 +1,6 @@
 <div class="dashboard-diet-plan">
   <% meal = diet_plan.day_plan_content %>
-  <h2 style="color:black" class="align-self-start mb-5"></h2>
+  <h2 style="color:black;" class="align-self-start mb-5"></h2>
 
   <hr>
   <hr>
@@ -15,6 +15,7 @@
 
       <div class="diet-container-body">
         <div class="diet-container-titles">
+
           <h4 class="diet-plan-name" >Breakfast</h4>
           <h5><%= meal["breakfast"]["title"] %></h5>
         </div>
@@ -24,7 +25,14 @@
         </div>
 
         <div class="prep-time">
-          <p>Time to prepare: <strong><%= meal["breakfast"]["readyInMinutes"] %> Minutes</strong></p>
+
+          <div class="diet-container-titles">
+            <div class="d-flex align-items-center">
+              <span id="clock-img"><%= image_tag('clock-regular.svg', class: "clock--margin") %></span>
+              <p><%= meal["breakfast"]["readyInMinutes"] %> Minutes </p>
+            </div>
+          </div>
+
         </div>
 
         <div class="nutrition-pills">
@@ -89,7 +97,12 @@
         </div>
 
         <div class="prep-time">
-          <p>Time to prepare: <strong><%= meal["lunch"]["readyInMinutes"] %> Minutes</strong></p>
+          <div class="diet-container-titles">
+            <div class="d-flex align-items-center">
+              <span id="clock-img-2"><%= image_tag('clock-regular.svg', class: "clock--margin") %></span>
+              <p><%= meal["lunch"]["readyInMinutes"] %> Minutes</p>
+            </div>
+          </div>
         </div>
 
         <div class="nutrition-pills">
@@ -151,7 +164,14 @@
         </div>
 
         <div class="prep-time">
-          <p>Time to prepare: <strong><%= meal["dinner"]["readyInMinutes"] %> Minutes</strong></p>
+
+          <div class="diet-container-titles">
+            <div class="d-flex align-items-center">
+              <span id="clock-img-3"> <%= image_tag('clock-regular.svg', class: "clock--margin") %> </span>
+              <p><%= meal["dinner"]["readyInMinutes"] %> Minutes</p>
+            </div>
+          </div>
+
         </div>
 
         <div class="nutrition-pills">
