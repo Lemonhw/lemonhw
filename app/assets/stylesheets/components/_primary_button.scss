@@ -23,3 +23,14 @@
 //   @extend .primary-button;
 //   background-color: blue;
 // }
+
+.down-arrow {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  background: none;
+  width: 40px;
+  border: none;
+  margin-top: -5px;
+}
