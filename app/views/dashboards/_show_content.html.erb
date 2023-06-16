@@ -5,9 +5,9 @@
 
 <!-- Results Profile -->
 <div class="mx-5 px-5 fs-5 dashboard-card">
-  <%# <% if @profile.weekly_plans.none? %>
+  <% if @profile.weekly_plans.none? %>
     <%= button_to 'Click HERE to Generate Your Personalised Diet & Exercise Plans', weekly_plans_path, method: :post, class: 'generate-button' %>
-  <%# <%end %>
+  <%end %>
   <div class="progress-container">
     <h4>BMR</h4>
     <p>We've estimated your current Basic Metabolic Rate (BMR) as <strong><%= @profile.daily_calories["BMR"]%> Kcal/day</strong></p>
