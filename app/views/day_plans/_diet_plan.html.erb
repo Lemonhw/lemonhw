@@ -15,10 +15,8 @@
 
       <div class="diet-container-body">
         <div class="diet-container-titles">
-          <div class="d-flex align-items-center">
-            <h4>Breakfast</h4>
-            <%# <%= image_tag('egg-solid.svg') %>
-          </div>
+
+          <h4 class="diet-plan-name" >Breakfast</h4>
           <h5><%= meal["breakfast"]["title"] %></h5>
         </div>
 
@@ -27,12 +25,14 @@
         </div>
 
         <div class="prep-time">
+
           <div class="diet-container-titles">
             <div class="d-flex align-items-center">
               <span id="clock-img"><%= image_tag('clock-regular.svg', class: "clock--margin") %></span>
               <p><%= meal["breakfast"]["readyInMinutes"] %> Minutes </p>
             </div>
           </div>
+
         </div>
 
         <div class="nutrition-pills">
@@ -57,14 +57,23 @@
     </div>
    <div>
     <div data-info-dropdown-target="content" class="dropdown-content">
-      <h5>Ingredients</h5>
-      <ul>
-          <% meal["breakfast"]["extendedIngredients"].each do |ingredient| %>
-            <li> <%= ingredient["name"] %>  </li>
-        <% end %>
-      </ul>
-      <h5>Instructions</h5>
-      <%= meal["breakfast"]["instructions"].html_safe %>
+      <div class="information-container">
+        <div class="information-wrapper" id="ingredients">
+          <h5 class="mb-4">Ingredients</h5>
+          <ul>
+              <% meal["breakfast"]["extendedIngredients"].each.with_index(0) do |ingredient, index| %>
+                <p> <%= ingredient["name"] %>  </p>
+                <% if index < meal["breakfast"]["extendedIngredients"].length - 1 %>
+                  <hr>
+                <% end %>
+            <% end %>
+          </ul>
+        </div>
+        <div class="information-wrapper" id="instructions">
+          <h5 class="mb-4">Instructions</h5>
+          <%= meal["breakfast"]["instructions"].html_safe %>
+        </div>
+      </div>
     </div>
     </div>
   </div>
@@ -79,7 +88,7 @@
 
       <div class="diet-container-body">
         <div class="diet-container-titles">
-          <h4>Lunch</h4>
+          <h4 class="diet-plan-name">Lunch</h4>
           <h5><%= meal["lunch"]["title"] %></h5>
         </div>
 
@@ -118,14 +127,21 @@
     </div>
    <div>
       <div data-info-dropdown-target="content" class="dropdown-content">
-        <h5>Ingredients</h5>
-        <ul>
-            <% meal["lunch"]["extendedIngredients"].each do |ingredient| %>
-              <li> <%= ingredient["name"] %>  </li>
-          <% end %>
-        </ul>
-        <h5>Instructions</h5>
-        <%= meal["lunch"]["instructions"].html_safe %>
+        <div class="information-container">
+          <div class="information-wrapper">
+            <h5 class="mb-4">Ingredients</h5>
+              <% meal["lunch"]["extendedIngredients"].each_with_index do |ingredient, index| %>
+                <p> <%= ingredient["name"] %>  </p>
+                <% if index < meal["lunch"]["extendedIngredients"].length - 1 %>
+                  <hr>
+                <% end %>
+              <% end %>
+          </div>
+          <div class="information-wrapper">
+            <h5 class="mb-4">Instructions</h5>
+            <%= meal["lunch"]["instructions"].html_safe %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -134,12 +150,12 @@
     <div class="diet-container-header">
 
       <div class="diet-container-image">
-        <%= image_tag meal["dinner"]["image"]%>
+        <%= image_tag meal["dinner"]["image"] %>
       </div>
 
       <div class="diet-container-body">
         <div class="diet-container-titles">
-          <h4>Dinner</h4>
+          <h4 class="diet-plan-name">Dinner</h4>
           <h5><%= meal["dinner"]["title"] %></h5>
         </div>
 
@@ -148,12 +164,14 @@
         </div>
 
         <div class="prep-time">
+
           <div class="diet-container-titles">
             <div class="d-flex align-items-center">
               <span id="clock-img-3"> <%= image_tag('clock-regular.svg', class: "clock--margin") %> </span>
               <p><%= meal["dinner"]["readyInMinutes"] %> Minutes</p>
             </div>
           </div>
+
         </div>
 
         <div class="nutrition-pills">
@@ -178,14 +196,21 @@
     </div>
    <div>
       <div data-info-dropdown-target="content" class="dropdown-content">
-        <h5>Ingredients</h5>
-        <ul>
-            <% meal["dinner"]["extendedIngredients"].each do |ingredient| %>
-              <li> <%= ingredient["name"] %>  </li>
-          <% end %>
-        </ul>
-        <h5>Instructions</h5>
-        <%= meal["dinner"]["instructions"].html_safe %>
+        <div class="information-container">
+          <div class="information-wrapper">
+            <h5 class="mb-4">Ingredients</h5>
+                <% meal["dinner"]["extendedIngredients"].each_with_index do |ingredient, index| %>
+                  <p> <%= ingredient["name"] %>  </p>
+                  <% if index < meal["dinner"]["extendedIngredients"].length - 1 %>
+                    <hr>
+                  <% end %>
+                <% end %>
+          </div>
+          <div class="information-wrapper">
+            <h5 class="mb-4">Instructions</h5>
+            <%= meal["dinner"]["instructions"].html_safe %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

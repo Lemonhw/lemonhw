@@ -21,7 +21,7 @@ body {
     font-family: "Raleway", sans-serif;
     font-weight: bold;
     margin-top: 24px;
-    margin-bottom: 36px;
+    margin-bottom: 5px;
     color: black;
     font-size: 39px;
   }
@@ -221,4 +221,13 @@ height: 30px;
 .form-actions {
   margin-left: 13px;
   border-radius: 6px;
+}
+
+.profile-microcopy {
+  font-size: 22px;
+  text-align: center;
+  margin-bottom: 40px;
+  margin-left: 55px;
+  margin-right: 55px;
+  margin-top: 40px;
 }

@@ -1,16 +1,31 @@
-<div data-controller="info-dropdown">
-  <h2 style="color:black" class="align-self-start mb-5">Exercise Plan</h2>
+<div>
   <% if exercise_plan.day_plan_content == "rest" %>
-    <h2>Rest day</h2>
+    <div class="rest-day">
+
+      <hr>
+
+      <h1 class="primary-font">REST DAY</h1>
+
+      <hr>
+
+      <%= image_tag("restday.png", alt: "Rest Day") %>
+    </div>
   <% else %>
-    <% exercise_plan.day_plan_content.keys.each do |exercise_key| %>
-      <% if exercise_plan.day_plan_content[exercise_key] %>
-        <div class="d-flex">
-          <h4><strong><%= exercise_plan.day_plan_content[exercise_key]["name"] %></strong></h4>
-          <button class="more-information-btn" data-info-dropdown-target="button" data-action="click->info-dropdown#toggle">Show instructions</button>
-        </div>
-        <p data-info-dropdown-target="content" class="dropdown-content"><%= exercise_plan.day_plan_content[exercise_key]["instructions"] %></p>
+    <div class="progress-container">
+      <% exercise_plan.day_plan_content.keys.each_with_index do |exercise_key, index| %>
+        <% if exercise_plan.day_plan_content[exercise_key] %>
+          <div data-controller="info-dropdown">
+            <div class="d-flex exercise-wrapper">
+              <h4><%= exercise_plan.day_plan_content[exercise_key]["name"] %></h4>
+              <button class="more-information-btn" id="show-instructions" data-info-dropdown-target="button" data-action="click->info-dropdown#toggle">Show instructions</button>
+            </div>
+            <p data-info-dropdown-target="content" class="dropdown-exercise-content"><%= exercise_plan.day_plan_content[exercise_key]["instructions"] %></p>
+          </div>
+          <% if index < exercise_plan.day_plan_content.keys.length - 1 %>
+              <hr>
+          <% end %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   <% end %>
 </div>

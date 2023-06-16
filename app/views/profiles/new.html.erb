@@ -2,7 +2,8 @@
 
   <%= form_for(@profile, url: profile_path) do |f| %>
     <div class="device-form">
-      <h1 class="text-center">Your Details</h1>
+      <h4 class = "profile-microcopy">Unlock your tailored fitness program with just one click. Please share your details with us.</h4>
+
       <div class="form-inputs d-flex justify-content-around">
         <div class="form-details">
           <div class="names d-flex justify-content-between">
@@ -56,7 +57,7 @@
           </div>
         </div>
           <div class="form-actions">
-              <%= f.submit "Calculate my Personalised data", class: "btn button-yellow" %>
+              <%= f.submit "Calculate my personalized data", class: "btn button-yellow" %>
             </div>
       </div>
 
