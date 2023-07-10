@@ -6,7 +6,7 @@ class ExercisesApiClient
     http.use_ssl = true
 
     request = Net::HTTP::Get.new(url)
-    request["X-RapidAPI-Key"] = 'bbe3ae6043msh65faa6d70c21d77p153ce9jsne9638654940e'
+    request["X-RapidAPI-Key"] = ENV.fetch('RAPID_API_KEY')
     request["X-RapidAPI-Host"] = 'exercises-by-api-ninjas.p.rapidapi.com'
 
     response = http.request(request)

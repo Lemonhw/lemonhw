@@ -17,17 +17,16 @@ class FitnessApiClient
 
   def calc_bmi
     url = URI("#{@base_url}/bmi?age=#{@age}&weight=#{@weight}&height=#{@height}")
-    puts "CALC BMI URL: #{url}"
     return make_request(url)["bmi"]
   end
 
   def calc_daily_calories
-    url = URI("https://fitness-calculator.p.rapidapi.com/dailycalorie?age=#{@age}&gender=#{@gender}&height=#{@height}&weight=#{@weight}&activitylevel=#{@activity_level}")
+    url = URI("#{@base_url}/dailycalorie?age=#{@age}&gender=#{@gender}&height=#{@height}&weight=#{@weight}&activitylevel=#{@activity_level}")
     return make_request(url)
   end
 
   def calc_ideal_weight
-    url = URI("https://fitness-calculator.p.rapidapi.com/idealweight?gender=#{@gender}&height=#{@height}")
+    url = URI("#{@base_url}/idealweight?gender=#{@gender}&height=#{@height}")
     result = make_request(url)
     return result
   end
@@ -39,7 +38,7 @@ class FitnessApiClient
     http.use_ssl = true
 
     request = Net::HTTP::Get.new(url)
-    request["X-RapidAPI-Key"] = 'bbe3ae6043msh65faa6d70c21d77p153ce9jsne9638654940e'
+    request["X-RapidAPI-Key"] = ENV.fetch('RAPID_API_KEY')
     request["X-RapidAPI-Host"] = 'fitness-calculator.p.rapidapi.com'
 
     response = http.request(request)
